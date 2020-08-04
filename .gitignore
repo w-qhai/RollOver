@@ -14,7 +14,6 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
 
 # Fortran module files
 *.mod
@@ -24,9 +23,23 @@
 *.lai
 *.la
 *.a
-*.lib
 
 # Executables
 *.exe
 *.out
 *.app
+
+
+*.log
+*.dso
+
+# dirs
+Bin/game/data/audio/
+Bin/game/data/images/
+Bin/common
+
+.vs/
+Debug/
+tools/*/
+tools/*.gif
+tools/*.png
