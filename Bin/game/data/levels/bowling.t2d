@@ -41,7 +41,7 @@
       imageMap = "day_yard_bgImageMap1";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.36011e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "10.395 0.000";
       size = "175.000 75.000";
@@ -55,7 +55,7 @@
       imageMap = "ConveyorBeltImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.36011e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-14.359 -32.250";
       size = "63.875 10.500";
@@ -70,7 +70,7 @@
       imageMap = "WallNutCardImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.36011e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-48.000 -45.750";
       size = "6.000 8.500";
@@ -86,7 +86,7 @@
       imageMap = "WallnutBowlingStrImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.36011e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-25.368 3.625";
       size = "2.750 62.750";
@@ -121,7 +121,6 @@
       CollisionPhysicsSend = "1";
       CollisionPhysicsReceive = "1";
       CollisionLayers = "-5";
-      CollisionResponseMode = "RIGID";
       CollisionPolyList = "-1.000 0.005 1.000 0.000 1.000 1.000 -1.000 1.000";
          mountID = "7";
    };

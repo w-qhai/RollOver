@@ -126,15 +126,15 @@ void CGameMain::GameMainLoop(float	fDeltaTime)
 void CGameMain::GameInit()
 {
 	///*welcome.t2d*/
-	//CSystem::LoadMap("welcome.t2d");
-	//CSprite title("Title");
-	//title.SpriteMoveTo(-0.909, -27.080, 18, true);
-	//CSprite load("load");
-	//load.SetSpriteAngularVelocity(80);
-	//load.SpriteMoveTo(0.75 + 41.5 / 2 - 6, 30.875 - 11.75 / 2 + 2.7, 10, true);
-	//load.SetSpriteLifeTime(4);
-	map_id = MapType::BowlingType;
-	CSystem::LoadMap("bowling.t2d");
+	CSystem::LoadMap("welcome.t2d");
+	CSprite title("Title");
+	title.SpriteMoveTo(-0.909, -27.080, 18, true);
+	CSprite load("load");
+	load.SetSpriteAngularVelocity(80);
+	load.SpriteMoveTo(0.75 + 41.5 / 2 - 6, 30.875 - 11.75 / 2 + 2.7, 10, true);
+	load.SetSpriteLifeTime(4);
+	//map_id = MapType::BowlingType;
+	//CSystem::LoadMap("bowling.t2d");
 }
 //=============================================================================
 //
@@ -364,14 +364,6 @@ Plant* CGameMain::create_sunflower(float x, float y) {
 }
 
 Plant* CGameMain::create_cherry_bomb(float x, float y, long double plant_time) {
-	// ´´½¨Ó£ÌÒÕ¨µ¯µÄ ¹¥»÷·¶Î§
-	//Range* rect = new Range(CSystem::MakeSpriteName(t_range->GetName(), vec_range.size()));
-	//vec_range.push_back(rect);
-	//name_to_sprite[rect->GetName()] = rect;
-	//rect->CloneSprite(t_range->GetName());
-	//rect->set_exist(true);
-	//rect->SetSpriteWidth(26.610);
-	//rect->SetSpriteHeight(22.156);
 
 	// ´´½¨Ó£ÌÒÕ¨µ¯µÄ ±¬Õ¨
 	Boom* boom = new Boom(CSystem::MakeSpriteName("Boom", vec_boom.size()));
@@ -436,15 +428,6 @@ Plant* CGameMain::create_potato_mine(float x, float y, long double plant_time) {
 }
 
 Plant* CGameMain::create_jalapeno(float x, float y, long double plant_time) {
-	// ´´½¨»ð±¬À±½·µÄ ¹¥»÷·¶Î§
-	//Range* rect = new Range(CSystem::MakeSpriteName(t_range->GetName(), vec_range.size()));
-	//vec_range.push_back(rect);
-	//name_to_sprite[rect->GetName()] = rect;
-	//rect->CloneSprite(t_range->GetName());
-	//rect->set_exist(true);
-	//rect->SetSpriteWidth(26.610);
-	//rect->SetSpriteHeight(22.156);
-
 	// ´´½¨»ð±¬À±½·µÄ ±¬Õ¨
 	Boom* boom = new Boom(CSystem::MakeSpriteName("Boom", vec_boom.size()));
 	vec_boom.push_back(boom);

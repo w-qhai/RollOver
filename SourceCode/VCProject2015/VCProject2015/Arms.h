@@ -28,3 +28,11 @@ public:
     Boom(const char* arms_name);
     void after_hit() override;
 };
+
+// ±¬Õ¨ ¼Ì³Ğ×ÔÎäÆ÷
+class WallNutBowling : public Arms
+{
+public:
+    WallNutBowling(const char* arms_name);
+    void after_hit() override;
+};

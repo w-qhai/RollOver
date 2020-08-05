@@ -54,3 +54,15 @@ void Boom::after_hit() {
 }
 
 ///////////////////////
+WallNutBowling::WallNutBowling(const char* arms_name) :
+    Arms(arms_name, 500)
+{
+
+}
+
+/// <summary>
+/// 攻击之后的特效
+/// </summary>
+void WallNutBowling::after_hit() {
+
+}

@@ -3,7 +3,7 @@
 bool		Bowling::left_pressed;	// 鼠标左键是否按下;
 Card*       Bowling::card;			// 植物卡d;
 Plant*      Bowling::seed;			// 植物种子
-
+WallNutBowling		Bowling::bowling("bowling");
 void Bowling::OnMouseMove(const float fMouseX, const float fMouseY) {
 	if (left_pressed && seed) {
 		seed->SetSpritePosition(fMouseX, fMouseY);
@@ -100,21 +100,33 @@ void Bowling::OnSpriteColSprite(const char* szSrcName, const char* szTarName) {
 		}
 
 		if (src->get_type() == "Plant" && tar->get_type() == "Zombie") {
+			Plant* p = reinterpret_cast<Plant*>(src);
+			Zombie* z = reinterpret_cast<Zombie*>(tar);
+		
+
+			// 碰撞后更改Y轴方向
 			if (src->GetSpriteLinearVelocityY()) {
 				src->SetSpriteLinearVelocityY(-src->GetSpriteLinearVelocityY());
 			}
+			// 坚果直走，碰撞后给个Y轴速度
 			else {
 				src->SetSpriteLinearVelocityY((int)src % 2 ? 20 : -20);
 			}
+			z->attacked_by(&bowling);
 		}
 
 		if (src->get_type() == "Zombie" && tar->get_type() == "Plant") {
+			Plant* p = reinterpret_cast<Plant*>(tar);
+			Zombie* z = reinterpret_cast<Zombie*>(src);
+
 			if (tar->GetSpriteLinearVelocityY()) {
 				tar->SetSpriteLinearVelocityY(-tar->GetSpriteLinearVelocityY());
 			}
 			else {
 				tar->SetSpriteLinearVelocityY((int)tar % 2 ? 20 : -20);
 			}
+
+			z->attacked_by(&bowling);
 		}
 	}
 
@@ -124,13 +136,14 @@ void Bowling::OnSpriteColWorldLimit(const char* szName, const int iColSide) {
 	PvZSprite* sprite = g_GameMain.get_sprite_by_name(szName);
 	
 	//0 左边，1 右边，2 上边，3 下边
-	if (sprite->get_type() == "Plant") {
+	std::cout << "Col" << std::endl;
+	if (sprite && sprite->get_type() == "Plant") {
 		if (iColSide == 1 || iColSide == 3) {
 			sprite->SetSpriteLinearVelocityY(-sprite->GetSpriteLinearVelocityY());
 		}
 	}
 
-	if (sprite->get_type() == "Zombie" && iColSide == 0) {
+	if (sprite && sprite->get_type() == "Zombie" && iColSide == 0) {
 		// GameOver
 	}
 }
