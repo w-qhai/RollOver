@@ -1,6 +1,6 @@
 #include "Zombie.h"
 #include "Plant.h"
-const char* Zombie::type = "Zombie";
+const std::string Zombie::type = "Zombie";
 
 Zombie::Zombie(const char* sprite_name, int health, int move_speed, double power) :
     PvZSprite(sprite_name),
@@ -15,7 +15,7 @@ Zombie::Zombie(const char* sprite_name, int health, int move_speed, double power
 
 }
 
-const char* Zombie::get_type() {
+const std::string Zombie::get_type() {
     return type;
 }
 bool Zombie::is_eating() {
@@ -61,7 +61,6 @@ void OrdinaryZombie::stop() {
 
 void OrdinaryZombie::eat_plant(Plant* plant, long double delta_time) {
     if (delta_time - next_attack > attack_interval) {
-        std::cout << "eating" << std::endl;
         plant->attacked_by(this);
         next_attack = delta_time;
     }
@@ -172,7 +171,6 @@ void BarricadeZombie::stop() {
 
 void BarricadeZombie::eat_plant(Plant* plant, long double delta_time) {
         if (delta_time - next_attack > attack_interval) {
-                std::cout << "eating" << std::endl;
                 plant->attacked_by(this);
                 next_attack = delta_time;
         }

@@ -1,6 +1,6 @@
 #include "Arms.h"
 
-const char* Arms::type = "Arms";
+const std::string Arms::type = "Arms";
 Arms::Arms(const char* sprite_name, int power) :
     PvZSprite(sprite_name),
     power(power)
@@ -12,7 +12,7 @@ int Arms::get_power() {
     return power;
 }
 
-const char* Arms::get_type() {
+const std::string Arms::get_type() {
     return type;
 }
 

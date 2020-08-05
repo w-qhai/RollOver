@@ -83,12 +83,6 @@ private:
 	PotatoMineCard* potato_mine_card;
 	WallNutCard* wall_nut_card;
 	JalapenoCard* jalapeno_card;
-
-	// 菜单选项
-	//CAnimateSprite* adcenture; // ("AdventureGame"); // 冒险模式
-	//CAnimateSprite* mini; // ("MiniGame");		   // 迷你游戏
-	//CAnimateSprite* edu; // ("EduGame");			   // 益智模式
-
 public:
 	CGameMain();            //构造函数
 	~CGameMain();           //析构函数  
@@ -96,7 +90,8 @@ public:
 	enum class MapType {
 		WelcomeType,
 		MenuType,
-		AdventureType
+		AdventureType,
+		BowlingType
 	} map_id;
 
 	// Get方法
@@ -125,7 +120,8 @@ public:
 	Plant*	create_wall_nut (float x, float y);
 	Plant*	create_potato_mine(float x, float y, long double plant_time);
 	Plant*	create_jalapeno(float x, float y, long double plant_time);
-	void create_gray_mask(Card* card);
+	void	create_gray_mask(Card* card);
+	void	move_bowling_card();
 	bool	planting(Plant* plant);
 	void	output_sun(int num = 25);	// 空值则由场景产出，否则为植物产出
 	void	add_sun(int num);

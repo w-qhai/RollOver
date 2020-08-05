@@ -45,6 +45,9 @@
     <ClCompile Include="MenuMode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BowlingMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Header\LessonX.h">
@@ -75,6 +78,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MenuMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BowlingMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

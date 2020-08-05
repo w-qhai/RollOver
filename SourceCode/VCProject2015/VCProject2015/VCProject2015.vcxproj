@@ -103,6 +103,7 @@
     <ClCompile Include="AdventureMode.cpp" />
     <ClCompile Include="Arms.cpp" />
     <ClCompile Include="Assist.cpp" />
+    <ClCompile Include="BowlingMode.cpp" />
     <ClCompile Include="MenuMode.cpp" />
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="PvZSprite.cpp" />
@@ -115,6 +116,7 @@
     <ClInclude Include="AdventureMode.h" />
     <ClInclude Include="Arms.h" />
     <ClInclude Include="Assist.h" />
+    <ClInclude Include="BowlingMode.h" />
     <ClInclude Include="MenuMode.h" />
     <ClInclude Include="Plant.h" />
     <ClInclude Include="PvZSprite.h" />

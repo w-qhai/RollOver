@@ -21,7 +21,8 @@ void Menu::OnMouseClick(const int iMouseType, const float fMouseX, const float f
 		// ...
 	}
 	else if (edu.IsPointInSprite(fMouseX, fMouseY)){
-		// ...
+		CSystem::LoadMap("bowling.t2d");
+		g_GameMain.map_id = CGameMain::MapType::BowlingType;
 	}
 }
 

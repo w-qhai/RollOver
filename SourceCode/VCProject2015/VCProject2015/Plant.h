@@ -12,7 +12,7 @@ public:
     virtual int attack(float delta_time) = 0;
     virtual bool attacked_by(Zombie* zombie);
     
-    const char* get_type() override;
+    const std::string get_type() override;
     void set_exist(bool exist);
     int get_cost() { return cost; }
     void change_zombie_animation();
@@ -21,7 +21,7 @@ protected:
     double health;                      // 血量
     long double next_attack;            // 距离下次攻击时间
     const float attack_interval;        // 攻击间隔
-    static const char* type;            // 类型
+    static const std::string type;            // 类型
     int cost;                           // 消耗阳光
     std::set<Zombie*> set_attack_zombie;    // 正在实施攻击的Zombie对象
 };

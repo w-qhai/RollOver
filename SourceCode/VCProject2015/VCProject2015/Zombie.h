@@ -1,13 +1,12 @@
 #pragma once
 #include "PvZSprite.h"
 #include "Arms.h"
-//#include "Plant.h"
 class Plant;
 
 class Zombie : public PvZSprite {
 public:
     Zombie(const char* sprite_name, int health, int speed, double power);
-    const char* get_type() override;
+    const std::string get_type() override;
 
     virtual void move() = 0;
     virtual void stop() = 0;
@@ -32,7 +31,7 @@ protected:
     Plant* eating_plant;
     float next_attack;                // 距离下次攻击时间
     const float attack_interval;      // 攻击间隔
-    static const char* type;
+    static const std::string type;
 };
 
 class OrdinaryZombie : public Zombie {

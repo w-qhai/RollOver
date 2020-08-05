@@ -125,14 +125,16 @@ void CGameMain::GameMainLoop(float	fDeltaTime)
 // 每局开始前进行初始化，清空上一局相关数据
 void CGameMain::GameInit()
 {
-	/*welcome.t2d*/
-	CSystem::LoadMap("welcome.t2d");
-	CSprite title("Title");
-	title.SpriteMoveTo(-0.909, -27.080, 18, true);
-	CSprite load("load");
-	load.SetSpriteAngularVelocity(80);
-	load.SpriteMoveTo(0.75 + 41.5 / 2 - 6, 30.875 - 11.75 / 2 + 2.7, 10, true);
-	load.SetSpriteLifeTime(4);
+	///*welcome.t2d*/
+	//CSystem::LoadMap("welcome.t2d");
+	//CSprite title("Title");
+	//title.SpriteMoveTo(-0.909, -27.080, 18, true);
+	//CSprite load("load");
+	//load.SetSpriteAngularVelocity(80);
+	//load.SpriteMoveTo(0.75 + 41.5 / 2 - 6, 30.875 - 11.75 / 2 + 2.7, 10, true);
+	//load.SetSpriteLifeTime(4);
+	map_id = MapType::BowlingType;
+	CSystem::LoadMap("bowling.t2d");
 }
 //=============================================================================
 //
@@ -143,6 +145,7 @@ void CGameMain::GameRun(float fDeltaTime)
 	welcome.SpriteMoveTo(-28.883, -23.750, 18, true);
 
 	static bool adventure_init = false;
+	static bool bowling_init = false;
 	switch (map_id) {
 	case MapType::AdventureType:
 		// 当前地图为 冒险模式的地图 且未初始化
@@ -200,7 +203,24 @@ void CGameMain::GameRun(float fDeltaTime)
 			card->ready(fDeltaTime);
 		}
 		break;
+	case MapType::BowlingType: 
+		if (bowling_init == false) {
+			CSprite convery_belt("ConveryBelt");
+			convery_belt.SetSpriteImmovable(true);
+			bowling_init = true;
+		}
 
+		if (fDeltaTime - timer > 3) {
+			create_ord_zombie(CSystem::RandomRange(0, 4));
+			WallNutCard* wnc = new WallNutCard(CSystem::MakeSpriteName(wall_nut_card->GetName(), vec_card.size()));
+			vec_card.push_back(wnc);
+			name_to_sprite[wnc->GetName()] = wnc;
+			wnc->CloneSprite("WallNutCard");
+			wnc->SetSpritePosition(14.310, -32.600);
+			wnc->SetSpriteLinearVelocityX(-10);
+			timer = fDeltaTime;
+		}
+		break;
 	default:
 		break;
 	}
@@ -438,7 +458,6 @@ Plant* CGameMain::create_jalapeno(float x, float y, long double plant_time) {
 	jp->CloneSprite(t_jalapeno->GetName());
 	jp->SetSpritePosition(x, y);
 	jp->SetSpriteImmovable(true);
-	//rect->SpriteMountToSprite(jp->GetName(), 0, 0);
 	jp->set_exist(false);
 	return jp;
 }
@@ -497,3 +516,11 @@ void CGameMain::add_sun(int num) {
 	sun_num->SetTextValue(sun_count);
 }
 
+void CGameMain::move_bowling_card() {
+	for (Card* wmc : vec_card) {
+		if (wmc->is_exist()) {
+			wmc->SetSpriteImmovable(false);
+			wmc->SetSpriteLinearVelocityX(-10);
+		}
+	}
+}

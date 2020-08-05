@@ -12,6 +12,7 @@
 //
 // 全局变量、宏定义
 #define		MAX_NAME_LEN		128	// 名字长度
+#define		mlog		std::cout << __FILE__ << "\nLine " << __LINE__ << ": "
 /////////////////////////////////////////////////////////////////////////////////
 //
 // Sprite精灵与世界边界碰撞响应定义( 碰撞之后API OnSpriteColWorldLimit 将被调用 )

@@ -5,6 +5,7 @@
 #include "LessonX.h"
 #include "../VCProject2015/VCProject2015/AdventureMode.h"
 #include "../VCProject2015/VCProject2015/MenuMode.h"
+#include "../VCProject2015/VCProject2015/BowlingMode.h"
 #include <iostream>
 #include <algorithm>
 #include <thread>
@@ -14,8 +15,8 @@
 #undef max
 
 long double 	fTimeDelta;
+FILE* stream;
 void init();
-
 int PASCAL WinMain(HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
 	LPSTR     lpCmdLine,
@@ -26,7 +27,6 @@ int PASCAL WinMain(HINSTANCE hInstance,
 		return 0;
 	}
 	CSystem::SetWindowTitle("PvZ");
-
 	while (CSystem::EngineMainLoop()) {
 		g_GameMain.GameMainLoop(fTimeDelta);
 	};
@@ -50,6 +50,9 @@ void CSystem::OnMouseMove(const float fMouseX, const float fMouseY)
 		break;
 	case CGameMain::MapType::AdventureType:
 		Adventure::OnMouseMove(fMouseX, fMouseY);
+	case CGameMain::MapType::BowlingType:
+		Bowling::OnMouseMove(fMouseX, fMouseY);
+		break;
 	default:
 		break;
 	}
@@ -73,6 +76,9 @@ void CSystem::OnMouseClick(const int iMouseType, const float fMouseX, const floa
 	case CGameMain::MapType::AdventureType:
 		Adventure::OnMouseClick(iMouseType, fMouseX, fMouseY);
 		break;
+	case CGameMain::MapType::BowlingType:
+		Bowling::OnMouseClick(iMouseType, fMouseX, fMouseY);
+		break;
 	default:
 		break;
 	}
@@ -90,6 +96,9 @@ void CSystem::OnMouseUp(const int iMouseType, const float fMouseX, const float f
 		break;
 	case CGameMain::MapType::AdventureType:
 		Adventure::OnMouseUp(iMouseType, fMouseX, fMouseY);
+	case CGameMain::MapType::BowlingType:
+		Bowling::OnMouseUp(iMouseType, fMouseX, fMouseY);
+		break;
 	default:
 		break;
 	}
@@ -142,6 +151,9 @@ void CSystem::OnSpriteColSprite(const char* szSrcName, const char* szTarName)
 	case CGameMain::MapType::AdventureType:
 		Adventure::OnSpriteColSprite(szSrcName, szTarName);
 		break;
+	case CGameMain::MapType::BowlingType:
+		Bowling::OnSpriteColSprite(szSrcName, szTarName);
+		break;
 	default:
 		break;
 	}
@@ -159,6 +171,9 @@ void CSystem::OnSpriteColWorldLimit(const char* szName, const int iColSide)
 		break;
 	case CGameMain::MapType::AdventureType:
 		Adventure::OnSpriteColWorldLimit(szName, iColSide);
+	case CGameMain::MapType::BowlingType:
+		Bowling::OnSpriteColWorldLimit(szName, iColSide);
+		break;
 	default:
 		break;
 	}
@@ -166,7 +181,6 @@ void CSystem::OnSpriteColWorldLimit(const char* szName, const int iColSide)
 
 void init() {
 	//开启控制台，方便调试信息输出
-	FILE* stream;
 	AllocConsole();
 	freopen_s(&stream, "CONOUT$", "a+", stdout);
 

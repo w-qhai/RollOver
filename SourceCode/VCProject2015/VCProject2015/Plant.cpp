@@ -1,6 +1,6 @@
 #include "Plant.h"
 
-const char* Plant::type = "Plant";
+const std::string Plant::type = "Plant";
 
 /* --------------------------------------------------- */
 // 植物类的实现
@@ -43,7 +43,7 @@ bool Plant::attacked_by(Zombie* zombie) {
 	}
 }
 
-const char* Plant::get_type() {
+const std::string Plant::get_type() {
 	return type;
 }
 

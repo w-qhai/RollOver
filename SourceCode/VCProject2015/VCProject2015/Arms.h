@@ -6,10 +6,10 @@ public:
     Arms(const char* sprite_name, int power);
     virtual void after_hit() = 0;
     virtual int get_power();
-    const char* get_type() override;
+    const std::string get_type() override;
 protected:
     int power;
-    static const char* type;
+    static const std::string type;
 };
 
 

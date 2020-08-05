@@ -1,5 +1,5 @@
 #include "Assist.h"
-const char* Assist::type = "Assist";
+const std::string Assist::type = "Assist";
 Assist::Assist(const char* sprite_name) :
     PvZSprite(sprite_name)
 {
@@ -10,49 +10,49 @@ void Assist::set_exist(bool exist) {
     this->exist = exist;
 }
 
-const char* Assist::get_type() {
+const std::string Assist::get_type() {
     return type;
 }
 
 /*-----------------攻击范围-------------------*/
-const char* Range::type = "Range";
+const std::string Range::type = "Range";
 Range::Range(const char* assist_name) :
     Assist(assist_name)
 {
 
 }
 
-const char* Range::get_type() {
+const std::string Range::get_type() {
     return type;
 }
 
 
 /*-----------------小车-------------------*/
-const char* Car::type = "Car";
+const std::string Car::type = "Car";
 Car::Car(const char* assist_name) :
 	Assist(assist_name)
 {
 
 }
 
-const char* Car::get_type() {
+const std::string Car::get_type() {
 	return type;
 }
 
 /*-----------------铲子-------------------*/
-const char* Shovel::type = "Shovel";
+const std::string Shovel::type = "Shovel";
 Shovel::Shovel(const char* assist_name) :
 	Assist(assist_name)
 {
 
 }
 
-const char* Shovel::get_type() {
+const std::string Shovel::get_type() {
 	return type;
 }
 
 /*-----------------阳光-------------------*/
-const char* Sun::type = "Sun";
+const std::string Sun::type = "Sun";
 Sun::Sun(const char* assist_name, int num) :
     Assist(assist_name),
     num(num)
@@ -60,12 +60,12 @@ Sun::Sun(const char* assist_name, int num) :
 
 }
 
-const char* Sun::get_type() {
+const std::string Sun::get_type() {
     return type;
 }
 
 /*-----------------植物卡-------------------*/
-const char* Card::type = "Card";
+const std::string Card::type = "Card";
 Card::Card(const char* assist_name, double cooldown) :
     Assist(assist_name),
     cooldown(cooldown),
@@ -75,7 +75,7 @@ Card::Card(const char* assist_name, double cooldown) :
 
 }
 
-const char* Card::get_type() {
+const std::string Card::get_type() {
     return type;
 }
 
@@ -116,74 +116,74 @@ void Card::set_mask(CSprite* mask) {
 /*------------------一些植物卡-start------------------*/
 
 /*豌豆射手*/
-const char* PeaShooterCard::type = "PeaShooterCard";
+const std::string PeaShooterCard::type = "PeaShooterCard";
 PeaShooterCard::PeaShooterCard(const char* card_name) :
     Card(card_name, 2)
 {
 
 }
 
-const char* PeaShooterCard::get_type() {
+const std::string PeaShooterCard::get_type() {
     return type;
 }
 
 /*向日葵*/
-const char* SunflowerCard::type = "SunflowerCard";
+const std::string SunflowerCard::type = "SunflowerCard";
 SunflowerCard::SunflowerCard(const char* card_name) :
     Card(card_name, 2)
 {
 
 }
 
-const char* SunflowerCard::get_type() {
+const std::string SunflowerCard::get_type() {
     return type;
 }
 
 /*樱桃炸弹*/
-const char* CherryBombCard::type = "CherryBombCard";
+const std::string CherryBombCard::type = "CherryBombCard";
 CherryBombCard::CherryBombCard(const char* card_name) :
     Card(card_name, 2)
 {
 
 }
 
-const char* CherryBombCard::get_type() {
+const std::string CherryBombCard::get_type() {
     return type;
 }
 
 /*土豆地雷*/
-const char* PotatoMineCard::type = "PotatoMineCard";
+const std::string PotatoMineCard::type = "PotatoMineCard";
 PotatoMineCard::PotatoMineCard(const char* card_name) :
     Card(card_name, 2)
 {
 
 }
 
-const char* PotatoMineCard::get_type() {
+const std::string PotatoMineCard::get_type() {
     return type;
 }
 
 /*火爆辣椒*/
-const char* JalapenoCard::type = "JalapenoCard";
+const std::string JalapenoCard::type = "JalapenoCard";
 JalapenoCard::JalapenoCard(const char* card_name) :
     Card(card_name, 2)
 {
 
 }
 
-const char* JalapenoCard::get_type() {
+const std::string JalapenoCard::get_type() {
     return type;
 }
 
 /*坚果*/
-const char* WallNutCard::type = "WallNutCard";
+const std::string WallNutCard::type = "WallNutCard";
 WallNutCard::WallNutCard(const char* assist_name) :
     Card(assist_name, 2)
 {
 
 }
 
-const char* WallNutCard::get_type() {
+const std::string WallNutCard::get_type() {
     return type;
 }
 /*------------------一些植物卡-end----------------*/
