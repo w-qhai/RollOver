@@ -6,6 +6,7 @@
 #include "../VCProject2015/VCProject2015/AdventureMode.h"
 #include "../VCProject2015/VCProject2015/MenuMode.h"
 #include "../VCProject2015/VCProject2015/BowlingMode.h"
+#include "../VCProject2015/VCProject2015/LevelChooser.h"
 #include <iostream>
 #include <algorithm>
 #include <thread>
@@ -79,6 +80,8 @@ void CSystem::OnMouseClick(const int iMouseType, const float fMouseX, const floa
 	case CGameMain::MapType::BowlingType:
 		Bowling::OnMouseClick(iMouseType, fMouseX, fMouseY);
 		break;
+	case CGameMain::MapType::LevelChooserType:
+		LevelChooser::OnMouseClick(iMouseType, fMouseX, fMouseY);
 	default:
 		break;
 	}

@@ -1,14 +1,10 @@
 #pragma once
 #include "LessonX.h"
+extern long double fTimeDelta;
 
-namespace Menu {
-    extern CStaticSprite adventure;	    // 冒险模式
-    extern CStaticSprite mini;			// 迷你游戏
-    extern CStaticSprite edu;			// 益智模式
-
-    extern CStaticSprite help_btn;		// 帮助按钮
-    extern CStaticSprite help_msg;		// 帮助消息面板
-    extern CStaticSprite help_close;	// 帮助关闭按钮
+namespace LevelChooser {
+    extern bool			left_pressed;   // 鼠标左键是否按下
+    extern CStaticSprite level_1;	    // 第一关
 
     void		OnMouseMove(const float fMouseX, const float fMouseY);
     void		OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY);
@@ -18,3 +14,4 @@ namespace Menu {
     void		OnSpriteColSprite(const char* szSrcName, const char* szTarName);
     void		OnSpriteColWorldLimit(const char* szName, const int iColSide);
 };
+

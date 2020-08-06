@@ -92,6 +92,7 @@ public:
 	enum class MapType {
 		WelcomeType,
 		MenuType,
+		LevelChooserType,
 		AdventureType,
 		BowlingType
 	} map_id;
