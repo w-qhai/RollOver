@@ -112,3 +112,11 @@ public:
 protected:
     static const std::string type;
 };
+
+class ThreePeaterCard : public Card {
+public:
+    ThreePeaterCard(const char* card_name);
+    const std::string get_type() override;
+protected:
+    static const std::string type;
+};

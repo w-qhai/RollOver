@@ -3,6 +3,7 @@
 #include "Zombie.h"
 #include "Arms.h"
 #include "Assist.h"
+#include <vector>
 
 // 植物基类
 class Plant : public PvZSprite 
@@ -96,4 +97,12 @@ private:
     long double plant_time;
 };
 
+// 三线射手 继承自植物基类
+class ThreePeater : public Plant {
 
+public:
+    ThreePeater(const char* plant_name, const std::vector<Pea*>& peas);
+    int attack(float delta_time) override;
+private:
+    std::vector<Pea*> peas;
+};

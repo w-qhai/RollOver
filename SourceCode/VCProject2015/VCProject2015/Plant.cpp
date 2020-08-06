@@ -278,3 +278,34 @@ void Jalapeno::set_exist(bool exist) {
 	this->SetSpriteCollisionPhysicsReceive(false);
 	this->SetSpriteCollisionPhysicsSend(false);
 }
+
+/* --------------------------------------------------- */
+// 三线射手
+ThreePeater::ThreePeater(const char* plant_name, const std::vector<Pea*>& pea) :
+	Plant(plant_name, 300, 2, 100),
+	peas(pea)
+{
+
+}
+
+/// <summary>
+/// 时间间隔积累到到一定程度后 开始进攻
+/// </summary>
+/// <param name="delta_time">每次时间间隔</param>
+int ThreePeater::attack(float delta_time) {
+	if (!peas[0]->is_exist() && !peas[1]->is_exist() && !peas[2]->is_exist() && this->is_exist()) {
+		if (delta_time - next_attack > attack_interval) {
+			for (Pea* pea : peas) {
+				pea->set_exist(true);
+				pea->CloneSprite("Pea");
+				// 微调位置一下 从嘴部发出
+				pea->SetSpritePosition(this->GetSpritePositionX() + 1, this->GetSpritePositionY() - 2);
+				pea->SetSpriteLinearVelocityX(40);
+			}
+			peas[0]->SetSpriteLinearVelocityY(10);
+			peas[2]->SetSpriteLinearVelocityY(-10);
+			next_attack = delta_time;
+		}
+	}
+	return 0;
+}

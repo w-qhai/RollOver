@@ -42,6 +42,7 @@ CGameMain::CGameMain() :
 	t_wall_nut(new WallNut("WallNut")),
 	t_potato_mine(new PotatoMine("PotatoMine", nullptr, 0)),
 	t_jalapeno(new Jalapeno("Jalapeno", nullptr, 0)),
+	t_three_peater(new ThreePeater("ThreePeater", std::vector<Pea*>(3))),
 
 	// 小车初始化
 	tool_car(new Car("Car")),
@@ -52,7 +53,8 @@ CGameMain::CGameMain() :
 	cherry_bomb_card(new CherryBombCard("CherryBombCard")),
 	potato_mine_card(new PotatoMineCard("PotatoMineCard")),
 	wall_nut_card(new WallNutCard("WallNutCard")),
-	jalapeno_card(new JalapenoCard("JalapenoCard"))
+	jalapeno_card(new JalapenoCard("JalapenoCard")),
+	three_peater_card(new ThreePeaterCard("ThreePeaterCard"))
 {
 	name_to_sprite[pea_shooter_card->GetName()] = pea_shooter_card;
 	vec_card.push_back(pea_shooter_card);
@@ -71,6 +73,9 @@ CGameMain::CGameMain() :
 
 	name_to_sprite[jalapeno_card->GetName()] = jalapeno_card;
 	vec_card.push_back(jalapeno_card);
+
+	name_to_sprite[three_peater_card->GetName()] = three_peater_card;
+	vec_card.push_back(three_peater_card);
 
 	name_to_sprite[tool_shovel->GetName()] = tool_shovel;
 }
@@ -150,12 +155,10 @@ void CGameMain::GameRun(float fDeltaTime)
 	case MapType::AdventureType:
 		// 当前地图为 冒险模式的地图 且未初始化
 		if (adventure_init == false) {
-			create_gray_mask(pea_shooter_card);
-			create_gray_mask(sunflower_card);
-			create_gray_mask(cherry_bomb_card);
-			create_gray_mask(potato_mine_card);
-			create_gray_mask(wall_nut_card);
-			create_gray_mask(jalapeno_card);
+
+			for (Card* card : vec_card) {
+				create_gray_mask(card);
+			}
 
 			create_car(-47.5, -5 + -17)->set_exist(true);
 			create_car(-47.5, -5 + -5)->set_exist(true);
@@ -445,7 +448,45 @@ Plant* CGameMain::create_jalapeno(float x, float y, long double plant_time) {
 	return jp;
 }
 
+Plant* CGameMain::create_three_peater(float x, float y) {
+	std::vector<Pea*> peas;
+	for (int i = 0; i < 3; i++) {
+		Pea * pea = new Pea(CSystem::MakeSpriteName(t_pea->GetName(), vec_pea.size()));
+		vec_pea.push_back(pea);
+		name_to_sprite[pea->GetName()] = pea;
+		pea->set_exist(false);
+		peas.push_back(pea);
+	}
 
+	ThreePeater* tp = new ThreePeater(CSystem::MakeSpriteName(t_three_peater->GetName(), vec_three_peater.size()), peas);
+	vec_three_peater.push_back(tp);
+	name_to_sprite[tp->GetName()] = tp;
+
+	tp->CloneSprite(t_three_peater->GetName());
+	tp->SetSpritePosition(x, y);
+	tp->SetSpriteImmovable(true);
+	tp->set_exist(false);
+
+	for (int i = 0; i < 3; i++) {
+		Range* r = new Range(CSystem::MakeSpriteName(t_range->GetName(), vec_range.size()));
+		vec_range.push_back(r);
+		name_to_sprite[r->GetName()] = r;
+		r->CloneSprite(t_range->GetName());
+		r->set_exist(true);
+		if (i == 0) {
+			r->SetSpriteRotation(15);
+			r->SpriteMountToSprite(tp->GetName(), 10, 2);
+		}
+		else if (i == 2) {
+			r->SetSpriteRotation(-15);
+			r->SpriteMountToSprite(tp->GetName(), 10, -2);
+		}
+		else {
+			r->SpriteMountToSprite(tp->GetName(), 11, 0);
+		}
+	}
+	return tp;
+}
 
 void CGameMain::create_gray_mask(Card* card) {
 	CSprite* gray_mask;
@@ -467,7 +508,6 @@ std::vector<PvZSprite*> CGameMain::get_sprites_by_position(float x, float y) {
 	// 右值引用 可以提高效率
 	return std::move(res);
 }
-
 
 bool CGameMain::planting(Plant* plant) {
 	if (sun_count >= plant->get_cost()) {

@@ -55,7 +55,7 @@ private:
 	std::vector<PotatoMine*>		vec_potato_mine;
 	std::vector<Jalapeno*>			vec_jalapeno;
 	std::vector<Card*>				vec_card;
-
+	std::vector<ThreePeater*>		vec_three_peater;
 	// 小车 铲子
 	Car* tool_car;
 	Shovel* tool_shovel;
@@ -75,6 +75,7 @@ private:
 	WallNut* t_wall_nut;
 	PotatoMine* t_potato_mine;
 	Jalapeno* t_jalapeno;
+	ThreePeater* t_three_peater;
 
 	// 植物卡
 	PeaShooterCard* pea_shooter_card;
@@ -83,6 +84,7 @@ private:
 	PotatoMineCard* potato_mine_card;
 	WallNutCard* wall_nut_card;
 	JalapenoCard* jalapeno_card;
+	ThreePeaterCard* three_peater_card;
 public:
 	CGameMain();            //构造函数
 	~CGameMain();           //析构函数  
@@ -120,6 +122,7 @@ public:
 	Plant*	create_wall_nut (float x, float y);
 	Plant*	create_potato_mine(float x, float y, long double plant_time);
 	Plant*	create_jalapeno(float x, float y, long double plant_time);
+	Plant*	create_three_peater(float x, float y);
 	void	create_gray_mask(Card* card);
 	void	move_bowling_card();
 	bool	planting(Plant* plant);

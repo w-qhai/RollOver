@@ -74,6 +74,10 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 						// 种下的时间 用来判断是否自动爆炸
 						seed = g_GameMain.create_jalapeno(fMouseX, fMouseY, fTimeDelta);
 					}
+					else if (sprite->get_type() == "ThreePeaterCard") {
+						std::cout << "Three" << std::endl;
+						seed = g_GameMain.create_three_peater(fMouseX, fMouseY);
+					}
 					seed->SetSpriteColorAlpha(100);
 				}
 				else {

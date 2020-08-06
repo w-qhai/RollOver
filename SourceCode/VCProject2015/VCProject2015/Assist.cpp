@@ -186,4 +186,17 @@ WallNutCard::WallNutCard(const char* assist_name) :
 const std::string WallNutCard::get_type() {
     return type;
 }
+
+/*三线豌豆*/
+const std::string ThreePeaterCard::type = "ThreePeaterCard";
+ThreePeaterCard::ThreePeaterCard(const char* assist_name) :
+    Card(assist_name, 2)
+{
+
+}
+
+const std::string ThreePeaterCard::get_type() {
+    return type;
+}
 /*------------------一些植物卡-end----------------*/
+
