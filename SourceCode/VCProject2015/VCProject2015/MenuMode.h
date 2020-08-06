@@ -6,6 +6,10 @@ namespace Menu {
     extern CStaticSprite mini;			// 迷你游戏
     extern CStaticSprite edu;			// 益智模式
 
+    extern CStaticSprite help_btn;		// 帮助按钮
+    extern CStaticSprite help_msg;		// 帮助消息面板
+    extern CStaticSprite help_close;	// 帮助关闭按钮
+
     void		OnMouseMove(const float fMouseX, const float fMouseY);
     void		OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY);
     void		OnMouseUp(const int iMouseType, const float fMouseX, const float fMouseY);

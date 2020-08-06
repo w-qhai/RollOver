@@ -33,7 +33,7 @@
    layerSortMode29 = "Normal";
    layerSortMode30 = "Normal";
    layerSortMode31 = "Normal";
-   DebugRendering = "36";
+   DebugRendering = "32";
       cameraPosition = "0 0";
       cameraSize = "100 75";
 
@@ -95,7 +95,7 @@
       imageMap = "AdventureModeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37778e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "20.688 -19.125";
       size = "41.375 18.250";
@@ -108,7 +108,7 @@
       imageMap = "EduModeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37778e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "19.087 7.625";
       size = "35.750 15.250";
@@ -121,7 +121,7 @@
       imageMap = "MiniModeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37778e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "19.563 -4.772";
       size = "39.125 16.625";
@@ -129,5 +129,45 @@
       WorldLimitMax = "50.000 37.500";
       CollisionPolyList = "-1.000 -1.000 1.000 -0.243 0.879 1.000 -1.000 0.162";
          mountID = "7";
+   };
+   new t2dScroller(helpMsg) {
+      imageMap = "HelpImageMap";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "-0.705 -64.804";
+      size = "83.965 54.608";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      LinkPoints = "0.776 -0.746";
+         mountID = "8";
+   };
+   new t2dScroller(helpClose) {
+      imageMap = "closeImageMap";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "31.877 -85.167";
+      size = "4.049 3.400";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      MountOffset = "0.776 -0.746";
+      MountOwned = "0";
+      MountInheritAttributes = "0";
+         mountID = "9";
+         mountToID = "8";
+   };
+   new t2dShapeVector(helpBtn) {
+      canSaveDynamicFields = "1";
+      Position = "33.966 26.982";
+      size = "7.931 9.287";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      CollisionPolyList = "-0.431 -0.624 0.558 -0.624 0.857 -0.069 1.000 0.516 0.725 0.928 -0.040 1.000 -0.454 0.953 -0.897 0.732 -0.983 0.383 -0.805 -0.088";
+      PolyList = "-0.010 -0.640";
+      LineColor = "1 1 1 1";
+      fillColor = "0.5 0.5 0.5 1";
+      FillMode = "0";
+         mountID = "10";
    };
 };
