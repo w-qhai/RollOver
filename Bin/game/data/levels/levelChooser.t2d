@@ -40,7 +40,7 @@
    new t2dScroller() {
       imageMap = "levelChooserImageMap";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "2.37778e-039 0 2.37778e-039 6.2071e-039";
       canSaveDynamicFields = "1";
       Position = "-0.000 0.153";
       size = "100.000 75.224";
@@ -59,5 +59,27 @@
       fillColor = "0.5 0.5 0.5 1";
       FillMode = "0";
          mountID = "3";
+   };
+   new t2dShapeVector(level2) {
+      canSaveDynamicFields = "1";
+      Position = "-26.458 -16.360";
+      size = "10.135 17.281";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      LineColor = "1 1 1 1";
+      fillColor = "0.5 0.5 0.5 1";
+      FillMode = "0";
+         mountID = "4";
+   };
+   new t2dShapeVector(level3) {
+      canSaveDynamicFields = "1";
+      Position = "-16.183 -16.729";
+      size = "9.856 16.542";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      LineColor = "1 1 1 1";
+      fillColor = "0.5 0.5 0.5 1";
+      FillMode = "0";
+         mountID = "5";
    };
 };
