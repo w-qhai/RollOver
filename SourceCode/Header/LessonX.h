@@ -25,7 +25,7 @@ class	CGameMain
 private:
 	int				m_iGameState;				// 游戏状态，0：结束或者等待开始；1：初始化；2：游戏进行中
 	long double		timer;						// 游戏运行时间
-
+	long double		zombie_timer;				// 生产僵尸计时器
 	std::map<std::string, PvZSprite*>	name_to_sprite;
 	// 阳光数量
 	int sun_count;

@@ -128,9 +128,6 @@
   <ItemGroup>
     <ResourceCompile Include="VCTemplate.rc" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="adventureConfig.ini" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

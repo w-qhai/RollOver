@@ -10,7 +10,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#define random(a,b) (rand()%(b-a)+a)	//c 产生 [a, b) 随机数
+//#define random(a,b) (rand()%(b-a)+a)	//c 产生 [a, b) 随机数
 ////////////////////////////////////////////////////////////////////////////////
 //
 //
@@ -25,6 +25,7 @@ CGameMain		g_GameMain;
 CGameMain::CGameMain() :
 	m_iGameState(1),
 	timer(0),
+	zombie_timer(0),
 	sun_count(20000),
 	sun_num(new CTextSprite("SunCount")),
 	game_map(new CSprite("background")),
@@ -502,6 +503,12 @@ void CGameMain::move_bowling_card() {
 }
 
 void CGameMain::load_adventure_level(int level_id, bool& isInit, float fDeltaTime) {
+	static int OrdinaryZombieCount		= 0;
+	static int BarricadeZombieCount		= 0;
+	static int BucketheadZombieCount	= 0;
+	static int NewspaperZombieCount		= 0;
+	static int FootballZombieCount		= 0;
+
 	// 当前地图为 冒险模式的地图 且未初始化
 	if (isInit == false) {
 		// 从配置文件加载僵尸数量信息
@@ -510,11 +517,11 @@ void CGameMain::load_adventure_level(int level_id, bool& isInit, float fDeltaTim
 		std::cout << level << std::endl;
 
 		// 从冒险模式config根据关卡，读取关卡信息
-		int OrdinaryZombie = GetPrivateProfileInt(level, "OrdinaryZombie", 0, "./adventureConfig.ini");
-		int BarricadeZombie = GetPrivateProfileInt(level, "BarricadeZombie", 0, "./adventureConfig.ini");
-		int BucketheadZombie = GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
-		int NewspaperZombie = GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
-		int FootballZombie = GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
+		OrdinaryZombieCount		= GetPrivateProfileInt(level, "OrdinaryZombie", 0, "./adventureConfig.ini");
+		BarricadeZombieCount	= GetPrivateProfileInt(level, "BarricadeZombie", 0, "./adventureConfig.ini");
+		BucketheadZombieCount	= GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
+		NewspaperZombieCount	= GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
+		FootballZombieCount		= GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
 
 		for (Card* card : vec_card) {
 			create_gray_mask(card);
@@ -526,64 +533,69 @@ void CGameMain::load_adventure_level(int level_id, bool& isInit, float fDeltaTim
 		create_car(-47.5, -5 + 20)->set_exist(true);
 		create_car(-47.5, -5 + 32)->set_exist(true);
 
-		/*create_fot_zombie(1);
-		create_fot_zombie(2);
-		create_fot_zombie(3);
-		create_fot_zombie(4);*/
-
-		srand((int)time(0));  // 产生随机种子  把0换成NULL也行
-
-		// 随机渲染僵尸
-		for (int i = 0; i < OrdinaryZombie; i++) {
-			create_ord_zombie(random(0, 4));
-		}
-		for (int i = 0; i < BarricadeZombie; i++) {
-			create_bar_zombie(random(0, 4));
-		}
-		for (int i = 0; i < BucketheadZombie; i++) {
-			create_buc_zombie(random(0, 4));
-		}
-		for (int i = 0; i < NewspaperZombie; i++) {
-			create_new_zombie(random(0, 4));
-		}
-		for (int i = 0; i < FootballZombie; i++) {
-			create_fot_zombie(random(0, 4));
-		}
-
 		sun_num->SetTextValue(sun_count);
 		isInit = true;
 	}
 
-	if (fDeltaTime - timer > 4) {
-		timer = fDeltaTime;
-		output_sun();
-	}
-	// 向日葵产生阳光
-	for (Sunflower* sunflower : vec_sunflower) {
-		if (sunflower->is_exist()) {
-			sunflower->attack(fDeltaTime);
+	if (isInit == true) {
+		if (fDeltaTime - timer > 4) {
+			output_sun();
+			timer = fDeltaTime;
 		}
-	}
-	// 土豆出头
-	for (PotatoMine* pm : vec_potato_mine) {
-		if (pm->is_exist()) {
-			pm->preparation(fDeltaTime);
+
+		// 随机渲染僵尸
+		if (fDeltaTime - zombie_timer > 2) {
+			zombie_timer = fDeltaTime;
+			if (OrdinaryZombieCount) {
+				OrdinaryZombieCount--;
+				std::cout << OrdinaryZombieCount << std::endl;
+				create_ord_zombie(CSystem::RandomRange(0, 4));
+			}
+			if (BarricadeZombieCount) {
+				BarricadeZombieCount--;
+				create_bar_zombie(CSystem::RandomRange(0, 4));
+			}
+			if (BucketheadZombieCount) {
+				BucketheadZombieCount--;
+				create_buc_zombie(CSystem::RandomRange(0, 4));
+			}
+			if (NewspaperZombieCount) {
+				NewspaperZombieCount--;
+				create_new_zombie(CSystem::RandomRange(0, 4));
+			}
+			if (FootballZombieCount) {
+				FootballZombieCount--;
+				create_fot_zombie(CSystem::RandomRange(0, 4));
+			}
+			zombie_timer = fDeltaTime;
 		}
-	}
-	// 樱桃爆炸
-	for (CherryBomb* cb : vec_cherry_bomb) {
-		if (cb->is_exist()) {
-			cb->preparation(fDeltaTime);
+		// 向日葵产生阳光
+		for (Sunflower* sunflower : vec_sunflower) {
+			if (sunflower->is_exist()) {
+				sunflower->attack(fDeltaTime);
+			}
 		}
-	}
-	// 辣椒爆炸
-	for (Jalapeno* jp : vec_jalapeno) {
-		if (jp->is_exist()) {
-			jp->preparation(fDeltaTime);
+		// 土豆出头
+		for (PotatoMine* pm : vec_potato_mine) {
+			if (pm->is_exist()) {
+				pm->preparation(fDeltaTime);
+			}
 		}
-	}
-	// 卡冷却
-	for (Card* card : vec_card) {
-		card->ready(fDeltaTime);
+		// 樱桃爆炸
+		for (CherryBomb* cb : vec_cherry_bomb) {
+			if (cb->is_exist()) {
+				cb->preparation(fDeltaTime);
+			}
+		}
+		// 辣椒爆炸
+		for (Jalapeno* jp : vec_jalapeno) {
+			if (jp->is_exist()) {
+				jp->preparation(fDeltaTime);
+			}
+		}
+		// 卡冷却
+		for (Card* card : vec_card) {
+			card->ready(fDeltaTime);
+		}
 	}
 }
