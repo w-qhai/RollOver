@@ -143,8 +143,6 @@ void CGameMain::GameInit()
 	load.SetSpriteAngularVelocity(80);
 	load.SpriteMoveTo(0.75 + 41.5 / 2 - 6, 30.875 - 11.75 / 2 + 2.7, 10, true);
 	load.SetSpriteLifeTime(4);
-	//map_id = MapType::BowlingType;
-	//CSystem::LoadMap("bowling.t2d");
 }
 //=============================================================================
 //
@@ -154,11 +152,9 @@ void CGameMain::GameRun(float fDeltaTime)
 	CSprite welcome("welcome");
 	welcome.SpriteMoveTo(-28.883, -23.750, 18, true);
 
-	static bool adventure_init = false;
-	static bool bowling_init = false;
 	switch (map_id) {
 	case MapType::AdventureType:
-		load_adventure_level(adventure_level_id, adventure_init, fDeltaTime);
+		load_adventure_level(adventure_level_id, fDeltaTime);
 		break;
 	case MapType::BowlingType:
 		if (bowling_init == false) {
@@ -443,9 +439,12 @@ Plant* CGameMain::create_three_peater(float x, float y) {
 }
 
 void CGameMain::create_gray_mask(Card* card) {
-	CSprite* gray_mask;
 	std::string name = std::string(card->GetName()) + "Mask";
-	gray_mask = new CSprite(name.c_str(), "GrayMask");
+	Assist* gray_mask;
+	gray_mask = new Assist(name.c_str());
+	name_to_sprite[name.c_str()] = gray_mask;
+	gray_mask->DeleteSprite();
+	gray_mask->CloneSprite("GrayMask");
 	gray_mask->SetSpritePosition(card->GetSpritePositionX(), card->GetSpritePositionY());
 	gray_mask->SpriteMountToSprite(card->GetName(), 0, 0);
 	card->set_mask(gray_mask);
@@ -502,7 +501,7 @@ void CGameMain::move_bowling_card() {
 	}
 }
 
-void CGameMain::load_adventure_level(int level_id, bool& isInit, float fDeltaTime) {
+void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 	static int OrdinaryZombieCount		= 0;
 	static int BarricadeZombieCount		= 0;
 	static int BucketheadZombieCount	= 0;
@@ -510,7 +509,7 @@ void CGameMain::load_adventure_level(int level_id, bool& isInit, float fDeltaTim
 	static int FootballZombieCount		= 0;
 
 	// 当前地图为 冒险模式的地图 且未初始化
-	if (isInit == false) {
+	if (adventure_init == false) {
 		// 从配置文件加载僵尸数量信息
 		char level[20];
 		sprintf(level, "level_%d", level_id);
@@ -522,22 +521,21 @@ void CGameMain::load_adventure_level(int level_id, bool& isInit, float fDeltaTim
 		BucketheadZombieCount	= GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
 		NewspaperZombieCount	= GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
 		FootballZombieCount		= GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
-
 		for (Card* card : vec_card) {
 			create_gray_mask(card);
+			card->plant_time(fDeltaTime);
 		}
-
-		create_car(-47.5, -5 + -17)->set_exist(true);
-		create_car(-47.5, -5 + -5)->set_exist(true);
-		create_car(-47.5, -5 + 9)->set_exist(true);
-		create_car(-47.5, -5 + 20)->set_exist(true);
-		create_car(-47.5, -5 + 32)->set_exist(true);
+		//create_car(-47.5, -5 + -17)->set_exist(true);
+		//create_car(-47.5, -5 + -5)->set_exist(true);
+		//create_car(-47.5, -5 + 9)->set_exist(true);
+		//create_car(-47.5, -5 + 20)->set_exist(true);
+		//create_car(-47.5, -5 + 32)->set_exist(true);
 
 		sun_num->SetTextValue(sun_count);
-		isInit = true;
+		adventure_init = true;
 	}
 
-	if (isInit == true) {
+	if (adventure_init == true) {
 		if (fDeltaTime - timer > 4) {
 			output_sun();
 			timer = fDeltaTime;
@@ -548,7 +546,6 @@ void CGameMain::load_adventure_level(int level_id, bool& isInit, float fDeltaTim
 			zombie_timer = fDeltaTime;
 			if (OrdinaryZombieCount) {
 				OrdinaryZombieCount--;
-				std::cout << OrdinaryZombieCount << std::endl;
 				create_ord_zombie(CSystem::RandomRange(0, 4));
 			}
 			if (BarricadeZombieCount) {
@@ -597,5 +594,13 @@ void CGameMain::load_adventure_level(int level_id, bool& isInit, float fDeltaTim
 		for (Card* card : vec_card) {
 			card->ready(fDeltaTime);
 		}
+	}
+}
+
+void CGameMain::reload() {
+	adventure_init = false;
+	bowling_init = false;
+	for (Card* card : vec_card) {
+		
 	}
 }

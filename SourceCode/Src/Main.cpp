@@ -165,6 +165,7 @@ void CSystem::OnSpriteColSprite(const char* szSrcName, const char* szTarName)
 // 引擎捕捉到精灵与世界边界碰撞之后，调用此函数 iColSide : 0 左边，1 右边，2 上边，3 下边
 void CSystem::OnSpriteColWorldLimit(const char* szName, const int iColSide)
 {
+	std::cout << szName << " " << iColSide << std::endl;
 	switch (g_GameMain.map_id)
 	{
 	case CGameMain::MapType::WelcomeType:

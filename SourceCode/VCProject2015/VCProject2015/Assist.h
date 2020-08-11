@@ -57,6 +57,7 @@ public:
     bool ready(long double now);
     void plant_time(long double now);
     void set_mask(CSprite* mask);
+    void set_not_ready(long double now); 
 protected:
     const double cooldown;          // 冷却时间
     double pre_select;              // 上次选择的时间 用于计算时间差

@@ -85,6 +85,9 @@ private:
 	WallNutCard* wall_nut_card;
 	JalapenoCard* jalapeno_card;
 	ThreePeaterCard* three_peater_card;
+
+	bool adventure_init = false;
+	bool bowling_init = false;
 public:
 	CGameMain();            //构造函数
 	~CGameMain();           //析构函数  
@@ -94,10 +97,12 @@ public:
 		MenuType,
 		LevelChooserType,
 		AdventureType,
-		BowlingType
+		BowlingType,
+		GameOverType
 	} map_id;
 
 	int adventure_level_id; // 冒险模式 关卡id
+
 
 	// Get方法
 	int				GetGameState()											{ return m_iGameState; }
@@ -131,8 +136,8 @@ public:
 	bool	planting(Plant* plant);
 	void	output_sun(int num = 25);	// 空值则由场景产出，否则为植物产出
 	void	add_sun(int num);
-
-	void	load_adventure_level(int level_id, bool &isInit, float fDeltaTime);  // 根据level_id 从 levelConfig.ini加载配置信息渲染冒险模式地图
+	void	reload();
+	void	load_adventure_level(int level_id, long double fDeltaTime);  // 根据level_id 从 levelConfig.ini加载配置信息渲染冒险模式地图
 };
 
 /////////////////////////////////////////////////////////////////////////////////

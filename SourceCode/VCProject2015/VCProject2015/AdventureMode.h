@@ -8,6 +8,10 @@ namespace Adventure {
     extern Card*        card;		    // 植物卡
     extern Plant*       seed;		    // 植物种子
     extern Shovel*      shovel;         // 选中了小铲子
+    extern CSprite      background;
+    extern CSprite      game_over;
+    extern CSprite      game_close;
+    extern CSprite      play_again;
 
     void		OnMouseMove(const float fMouseX, const float fMouseY);
     void		OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY);

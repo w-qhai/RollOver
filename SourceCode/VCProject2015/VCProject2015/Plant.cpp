@@ -253,6 +253,7 @@ int Jalapeno::attack(float delta_time) {
 		this->SetSpriteVisible(false);
 		boom->set_exist(true);
 		boom->CloneSprite("JalapenoAttack");
+		this->SetSpriteVisible(false);
 		boom->SetSpritePosition(0, this->GetSpritePositionY());
 		boom->SetSpriteLifeTime(0.5);
 		// ÍíµãÉ¾³ı£¬ÅÂ³öbug

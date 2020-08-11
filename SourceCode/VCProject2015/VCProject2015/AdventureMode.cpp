@@ -4,6 +4,10 @@ bool		Adventure::left_pressed;	// 鼠标左键是否按下;
 Card*		Adventure::card;			// 植物卡d;
 Plant*		Adventure::seed;			// 植物种子
 Shovel*		Adventure::shovel;			// 选中了小铲子
+CSprite		Adventure::background("background");
+CSprite     Adventure::game_over("GameOver");
+CSprite     Adventure::game_close("GameClose");
+CSprite     Adventure::play_again("PlayAgain");
 
 void Adventure::OnMouseMove(const float fMouseX, const float fMouseY) {
 	if (left_pressed && shovel) {
@@ -15,11 +19,30 @@ void Adventure::OnMouseMove(const float fMouseX, const float fMouseY) {
 }
 void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY) {
 
+
 	if (iMouseType == MOUSE_LEFT) {
 		left_pressed = true;
 		card = nullptr;
 		seed = nullptr;
 		shovel = nullptr;
+
+		if (game_over.IsSpriteVisible()) {
+			if (game_close.IsPointInSprite(fMouseX, fMouseY)) {
+				CSystem::LoadMap("menu.t2d");
+				g_GameMain.reload();
+				g_GameMain.map_id = CGameMain::MapType::MenuType;
+			}
+
+			if (play_again.IsPointInSprite(fMouseX, fMouseY)) {
+				game_over.SetSpriteVisible(false);
+				game_close.SetSpriteVisible(false);
+				play_again.SetSpriteVisible(false);
+				std::string s = "adventure_level";
+				g_GameMain.reload();
+				CSystem::LoadMap(std::string(s + std::to_string(g_GameMain.adventure_level_id) + ".t2d").c_str());
+			}
+		}
+
 		// 右值引用 提高效率
 		std::vector<PvZSprite*>&& sprites = g_GameMain.get_sprites_by_position(fMouseX, fMouseY);
 		for (const auto& sprite : sprites) {
@@ -167,6 +190,12 @@ void Adventure::OnKeyUp(const int iKey) {
 }
 
 void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) {
+	if (!game_over.IsSpriteVisible() && std::string(szTarName) == "background") {
+		game_over.SetSpriteVisible(true);
+		game_close.SetSpriteVisible(true);
+		play_again.SetSpriteVisible(true);
+		return;
+	}
 	PvZSprite* src = g_GameMain.get_sprite_by_name(szSrcName);
 	PvZSprite* tar = g_GameMain.get_sprite_by_name(szTarName);
 
