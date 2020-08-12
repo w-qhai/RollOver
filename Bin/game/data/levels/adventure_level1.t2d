@@ -334,7 +334,7 @@
       useSourceRect = "0";
       sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
       canSaveDynamicFields = "1";
-      Position = "10.840 0.000";
+      Position = "10.717 0.000";
       size = "175.000 75.000";
       Layer = "21";
       WorldLimitMin = "-50.000 -37.500";
@@ -514,7 +514,6 @@
          mountID = "35";
    };
    new t2dAnimatedSprite(PotatoMine) {
-      animationName = "PotatoMine1Animation";
       canSaveDynamicFields = "1";
       Position = "66.152 -43.125";
       size = "4.500 3.750";
@@ -603,7 +602,6 @@
          mountID = "41";
    };
    new t2dStaticSprite(JalapenoCard) {
-      imageMap = "JalapenoCardImageMap1";
       frame = "0";
       useSourceRect = "0";
       sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
@@ -631,7 +629,7 @@
       imageMap = "CloseGameImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.36011e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "-28.938 25.875";
@@ -644,7 +642,7 @@
       imageMap = "PlayAgainImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.36011e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "28.937 25.875";
@@ -652,5 +650,83 @@
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "45";
+   };
+   new t2dStaticSprite(GameMenuBtn) {
+      imageMap = "GameMenuImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "42.500 -33.938";
+      size = "15.000 7.125";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "46";
+   };
+   new t2dStaticSprite(GameMenu) {
+      imageMap = "MenuContainerImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Visible = "0";
+      Position = "-0.662 -2.499";
+      size = "46.500 57.713";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      LinkPoints = "-0.000 0.383 0.000 0.059 0.000 -0.246";
+         mountID = "47";
+   };
+   new t2dStaticSprite(Continue) {
+      imageMap = "ContinueImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Visible = "0";
+      Position = "-0.662 -9.598";
+      size = "24.313 9.904";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      CollisionPolyList = "-0.894 -0.847 0.820 -0.807 0.800 0.678 -0.884 0.698";
+      MountOffset = "0.000 -0.246";
+         mountID = "49";
+         mountToID = "47";
+   };
+   new t2dStaticSprite(ReBegin) {
+      imageMap = "RebeginImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Visible = "0";
+      Position = "-0.662 -0.797";
+      size = "23.573 9.959";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      CollisionPolyList = "-0.864 -0.787 0.825 -0.798 0.800 0.663 -0.879 0.675";
+      LinkPoints = "-0.015 -0.140";
+      MountOffset = "0.000 0.059";
+         mountID = "50";
+         mountToID = "47";
+   };
+   new t2dStaticSprite(MainMenu) {
+      imageMap = "MainMenuImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Visible = "0";
+      Position = "-0.662 8.552";
+      size = "23.327 9.631";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      CollisionPolyList = "-0.854 -0.798 0.913 -0.840 0.923 0.617 -0.884 0.617";
+      LinkPoints = "-0.054 -0.023";
+      MountOffset = "-0.000 0.383";
+      MountOwned = "0";
+      MountInheritAttributes = "0";
+         mountID = "48";
+         mountToID = "47";
    };
 };

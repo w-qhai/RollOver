@@ -9,6 +9,13 @@ CSprite     Adventure::game_over("GameOver");
 CSprite     Adventure::game_close("GameClose");
 CSprite     Adventure::play_again("PlayAgain");
 
+// 游戏中的菜单
+CSprite     Adventure::game_menu_btn("GameMenuBtn");
+CSprite     Adventure::game_menu("GameMenu");
+CSprite     Adventure::continue_("Continue");
+CSprite     Adventure::main_menu("MainMenu");
+CSprite     Adventure::rebegin("ReBegin");
+
 void Adventure::OnMouseMove(const float fMouseX, const float fMouseY) {
 	if (left_pressed && shovel) {
 		shovel->SetSpritePosition(fMouseX, fMouseY);
@@ -26,6 +33,29 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 		seed = nullptr;
 		shovel = nullptr;
 
+		/*------------------游戏菜单部分-------------------*/
+		if (game_menu_btn.IsPointInSprite(fMouseX, fMouseY)) {
+			if (game_menu.IsSpriteVisible()) {
+				game_menu.SetSpriteVisible(false);
+				continue_.SetSpriteVisible(false);
+				rebegin.SetSpriteVisible(false);
+				main_menu.SetSpriteVisible(false);
+			} else {
+				game_menu.SetSpriteVisible(true);
+				continue_.SetSpriteVisible(true);
+				rebegin.SetSpriteVisible(true);
+				main_menu.SetSpriteVisible(true);
+			}
+		}
+
+		if (main_menu.IsPointInSprite(fMouseX, fMouseY)) {
+			CSystem::LoadMap("menu.t2d");
+			g_GameMain.reload();
+			g_GameMain.map_id = CGameMain::MapType::MenuType;
+		}
+
+
+		/*------------------游戏中主体部分-------------------*/
 		if (game_over.IsSpriteVisible()) {
 			if (game_close.IsPointInSprite(fMouseX, fMouseY)) {
 				CSystem::LoadMap("menu.t2d");

@@ -13,6 +13,13 @@ namespace Adventure {
     extern CSprite      game_close;
     extern CSprite      play_again;
 
+    // 游戏中的菜单
+    extern CSprite      game_menu_btn;
+    extern CSprite      game_menu;
+    extern CSprite      main_menu;
+    extern CSprite      rebegin;
+    extern CSprite      continue_;
+
     void		OnMouseMove(const float fMouseX, const float fMouseY);
     void		OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY);
     void		OnMouseUp(const int iMouseType, const float fMouseX, const float fMouseY);
