@@ -56,7 +56,7 @@
       imageMap = "SelectedBoxImageMap1";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-20.341 -31.816";
       size = "55.375 10.750";
@@ -109,7 +109,7 @@
       imageMap = "ShovelBackImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "11.940 -32.764";
       size = "9.528 5.528";
@@ -123,7 +123,7 @@
       imageMap = "ShovelImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "12.630 -32.500";
       Layer = "19";
@@ -135,7 +135,7 @@
       imageMap = "SeedChooserImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-35.000 -32.143";
       size = "6.000 8.000";
@@ -164,7 +164,7 @@
       imageMap = "SeedChooserImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "2.500 -32.143";
       size = "6.000 8.000";
@@ -178,7 +178,7 @@
       imageMap = "SeedChooserImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-5.000 -32.143";
       size = "6.000 8.000";
@@ -192,7 +192,7 @@
       imageMap = "SeedChooserImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-12.550 -32.143";
       size = "6.000 8.000";
@@ -206,7 +206,7 @@
       imageMap = "SeedChooserImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-20.000 -32.143";
       size = "6.000 8.000";
@@ -220,7 +220,7 @@
       imageMap = "SeedChooserImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-27.500 -32.143";
       size = "6.000 8.000";
@@ -234,7 +234,7 @@
       imageMap = "SunflowerCardImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-35.000 -32.143";
       size = "6.000 8.500";
@@ -279,7 +279,7 @@
       imageMap = "PeashooterCardImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-27.500 -32.143";
       size = "6.000 8.500";
@@ -320,7 +320,7 @@
    new t2dStaticSprite(CherryBombCard) {
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "0.000 -12.143";
       size = "6.000 8.500";
@@ -332,9 +332,9 @@
       imageMap = "day_yard_bgImageMap1";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
-      Position = "10.717 0.000";
+      Position = "13.500 0.000";
       size = "175.000 75.000";
       Layer = "21";
       WorldLimitMin = "-50.000 -37.500";
@@ -348,7 +348,7 @@
       imageMap = "CherryBombCardImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-5.000 -32.143";
       size = "6.000 8.500";
@@ -364,7 +364,7 @@
       imageMap = "WallNutCardImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-20.000 -32.143";
       size = "6.000 8.500";
@@ -409,7 +409,7 @@
       imageMap = "carImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "40.625 -44.907";
       size = "8.750 7.125";
@@ -480,7 +480,7 @@
       imageMap = "PotatoMineCardImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-12.550 -32.143";
       size = "6.000 8.500";
@@ -564,7 +564,7 @@
       imageMap = "ThreePeaterCardImageMap1";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "2.500 -32.143";
       size = "6.000 8.500";
@@ -604,7 +604,7 @@
    new t2dStaticSprite(JalapenoCard) {
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-88.000 -59.250";
       size = "6.000 8.500";
@@ -616,7 +616,7 @@
       imageMap = "ZombiesWonImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36011e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "-0.000 -8.750";
@@ -629,7 +629,7 @@
       imageMap = "CloseGameImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "-28.938 25.875";
@@ -642,7 +642,7 @@
       imageMap = "PlayAgainImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "28.937 25.875";
@@ -655,7 +655,7 @@
       imageMap = "GameMenuImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "42.500 -33.938";
       size = "15.000 7.125";
@@ -667,7 +667,7 @@
       imageMap = "MenuContainerImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "-0.662 -2.499";
@@ -681,7 +681,7 @@
       imageMap = "ContinueImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "-0.662 -9.598";
@@ -690,34 +690,34 @@
       WorldLimitMax = "50.000 37.500";
       CollisionPolyList = "-0.894 -0.847 0.820 -0.807 0.800 0.678 -0.884 0.698";
       MountOffset = "0.000 -0.246";
-         mountID = "49";
+         mountID = "50";
          mountToID = "47";
    };
    new t2dStaticSprite(ReBegin) {
       imageMap = "RebeginImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
-      Position = "-0.662 -0.797";
+      Position = "-0.662 -0.796";
       size = "23.573 9.959";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
       CollisionPolyList = "-0.864 -0.787 0.825 -0.798 0.800 0.663 -0.879 0.675";
       LinkPoints = "-0.015 -0.140";
       MountOffset = "0.000 0.059";
-         mountID = "50";
+         mountID = "49";
          mountToID = "47";
    };
    new t2dStaticSprite(MainMenu) {
       imageMap = "MainMenuImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37257e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
-      Position = "-0.662 8.552";
+      Position = "-0.662 8.553";
       size = "23.327 9.631";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
@@ -728,5 +728,85 @@
       MountInheritAttributes = "0";
          mountID = "48";
          mountToID = "47";
+   };
+   new t2dStaticSprite() {
+      imageMap = "FlagMeterEmpImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "34.813 35.149";
+      size = "19.625 2.625";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "51";
+   };
+   new t2dStaticSprite() {
+      imageMap = "FlagMeterLevImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "35.375 36.813";
+      size = "10.750 1.375";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "52";
+   };
+   new t2dStaticSprite(Flag) {
+      imageMap = "FlagImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "26.250 33.875";
+      size = "2.500 2.250";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      CollisionActiveSend = "1";
+      CollisionActiveReceive = "1";
+         mountID = "53";
+   };
+   new t2dStaticSprite(ProgressBar1) {
+      imageMap = "FlagMeterFullImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "43.000 35.150";
+      size = "1.797 1.000";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "55";
+   };
+   new t2dShapeVector(ProgressBar) {
+      canSaveDynamicFields = "1";
+      Position = "44.000 35.171";
+      size = "2.880 1.022";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      CollisionActiveSend = "1";
+      CollisionActiveReceive = "1";
+      CollisionPhysicsSend = "1";
+      CollisionPhysicsReceive = "1";
+      PolyList = "-1.000 -1.000 -1.000 1.000 0.000 1.000 0.000 -1.000";
+      LineColor = "1 1 1 1";
+      fillColor = "0.596078 0.815686 0 1";
+      FillMode = "1";
+         mountID = "56";
+   };
+   new t2dStaticSprite(ZombieHead) {
+      imageMap = "ZombieHeadImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "42.535 34.941";
+      size = "2.750 2.875";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      CollisionPhysicsSend = "1";
+      CollisionPhysicsReceive = "1";
+         mountID = "54";
    };
 };

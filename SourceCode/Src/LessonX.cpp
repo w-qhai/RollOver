@@ -28,6 +28,9 @@ CGameMain::CGameMain() :
 	sun_num(new CTextSprite("SunCount")),
 	game_map(new CSprite("background")),
 	zombie_count(0),
+	progress_bar(new Assist("ProgressBar")),
+	progress_flag(new Assist("Flag")),
+	progress_head(new Assist("ZombieHead")),
 
 	// 模板初始化
 	t_ord_zombie(new OrdinaryZombie("OrdinaryZombie")),
@@ -81,6 +84,9 @@ CGameMain::CGameMain() :
 	vec_card.push_back(three_peater_card);
 
 	name_to_sprite[tool_shovel->GetName()] = tool_shovel;
+	name_to_sprite[progress_bar->GetName()] = progress_bar;
+	name_to_sprite[progress_flag->GetName()] = progress_flag;
+	name_to_sprite[progress_head->GetName()] = progress_head;
 }
 //==============================================================================
 //
@@ -511,7 +517,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 	static int BucketheadZombieCount = 0;
 	static int NewspaperZombieCount = 0;
 	static int FootballZombieCount = 0;
-
+	static int time_a_game = 30; // 一局时长
 	// 当前地图为 冒险模式的地图 且未初始化
 	if (adventure_init == false) {
 		// 从配置文件加载僵尸数量信息
@@ -525,6 +531,11 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		BucketheadZombieCount = GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
 		NewspaperZombieCount = GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
 		FootballZombieCount = GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
+		progress_bar->SetSpritePosition(44.000, 35.171);
+		progress_bar->SetSpriteWidth(2.880);
+		progress_bar->SetSpriteHeight(1.022);
+		progress_head->SetSpritePosition(42.535, 34.941);
+		progress_head->SpriteMoveTo(26.451, 34.987, (progress_head->GetSpritePositionX() - 26.451) / time_a_game,  true);
 		for (Card* card : vec_card) {
 			create_gray_mask(card);
 			card->plant_time(fDeltaTime);
@@ -540,15 +551,20 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 	}
 
 	if (adventure_init == true) {
+		static int statr_timer = fDeltaTime;
 		if (fDeltaTime - timer > 4) {
 			output_sun();
 			timer = fDeltaTime;
 		}
 
+		if ((fDeltaTime - statr_timer) / time_a_game <= 1) {
+			progress_bar->SetSpriteWidth(32 * (fDeltaTime - statr_timer) / time_a_game);
+		}
 		// 随机渲染僵尸
 		if (fDeltaTime - zombie_timer > 2) {
 			zombie_timer = fDeltaTime;
 			int zombie_type = CSystem::RandomRange(0, 4);
+			//progress_bar->SetSpritePositionX(progress_bar->GetSpritePositionX() - progress_bar->GetSpriteWidth() / 2);
 			// break在if里，有僵尸产生就break，不然就产生下一种僵尸，保证会有僵尸产生。越下面的僵尸，产生的概率越大
 			switch (zombie_type)
 			{

@@ -243,6 +243,11 @@ void Adventure::OnKeyUp(const int iKey) {
 }
 
 void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) {
+
+	if (std::string(szSrcName) == "ZombieHead" && std::string(szTarName) == "Flag") {
+		// Ò»´ó²¨½©Ê¬
+	}
+
 	if (!game_over.IsSpriteVisible() && std::string(szTarName) == "background") {
 		game_over.SetSpriteVisible(true);
 		game_close.SetSpriteVisible(true);

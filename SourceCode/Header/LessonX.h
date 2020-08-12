@@ -33,6 +33,9 @@ private:
 	CTextSprite* sun_num;
 	// 地图精灵
 	CSprite* game_map;
+	Assist* progress_bar;
+	Assist* progress_flag;
+	Assist* progress_head;
 
 	// 精灵数量
 	int zombie_count = 0;
