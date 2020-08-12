@@ -7,8 +7,6 @@
 #include <stdio.h>
 #include "CommonClass.h"
 #include "LessonX.h"
-#include <cstdlib>
-#include <ctime>
 
 //#define random(a,b) (rand()%(b-a)+a)	//c 产生 [a, b) 随机数
 ////////////////////////////////////////////////////////////////////////////////
@@ -135,14 +133,20 @@ void CGameMain::GameMainLoop(float	fDeltaTime)
 // 每局开始前进行初始化，清空上一局相关数据
 void CGameMain::GameInit()
 {
-	///*welcome.t2d*/
-	CSystem::LoadMap("welcome.t2d");
-	CSprite title("Title");
-	title.SpriteMoveTo(-0.909, -27.080, 18, true);
-	CSprite load("load");
-	load.SetSpriteAngularVelocity(80);
-	load.SpriteMoveTo(0.75 + 41.5 / 2 - 6, 30.875 - 11.75 / 2 + 2.7, 10, true);
-	load.SetSpriteLifeTime(4);
+	// 背景音乐
+	SuperSound::sendASoundCommand("open-bday");
+	SuperSound::sendASoundCommand("play-bday");
+
+	///*welcome.t2d
+	if (map_id == MapType::WelcomeType) {
+		CSystem::LoadMap("welcome.t2d");
+		CSprite title("Title");
+		title.SpriteMoveTo(-0.909, -27.080, 18, true);
+		CSprite load("load");
+		load.SetSpriteAngularVelocity(80);
+		load.SpriteMoveTo(0.75 + 41.5 / 2 - 6, 30.875 - 11.75 / 2 + 2.7, 10, true);
+		load.SetSpriteLifeTime(4);
+	}
 }
 //=============================================================================
 //
@@ -502,11 +506,11 @@ void CGameMain::move_bowling_card() {
 }
 
 void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
-	static int OrdinaryZombieCount		= 0;
-	static int BarricadeZombieCount		= 0;
-	static int BucketheadZombieCount	= 0;
-	static int NewspaperZombieCount		= 0;
-	static int FootballZombieCount		= 0;
+	static int OrdinaryZombieCount = 0;
+	static int BarricadeZombieCount = 0;
+	static int BucketheadZombieCount = 0;
+	static int NewspaperZombieCount = 0;
+	static int FootballZombieCount = 0;
 
 	// 当前地图为 冒险模式的地图 且未初始化
 	if (adventure_init == false) {
@@ -516,11 +520,11 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		std::cout << level << std::endl;
 
 		// 从冒险模式config根据关卡，读取关卡信息
-		OrdinaryZombieCount		= GetPrivateProfileInt(level, "OrdinaryZombie", 0, "./adventureConfig.ini");
-		BarricadeZombieCount	= GetPrivateProfileInt(level, "BarricadeZombie", 0, "./adventureConfig.ini");
-		BucketheadZombieCount	= GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
-		NewspaperZombieCount	= GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
-		FootballZombieCount		= GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
+		OrdinaryZombieCount = GetPrivateProfileInt(level, "OrdinaryZombie", 0, "./adventureConfig.ini");
+		BarricadeZombieCount = GetPrivateProfileInt(level, "BarricadeZombie", 0, "./adventureConfig.ini");
+		BucketheadZombieCount = GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
+		NewspaperZombieCount = GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
+		FootballZombieCount = GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
 		for (Card* card : vec_card) {
 			create_gray_mask(card);
 			card->plant_time(fDeltaTime);
@@ -552,7 +556,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 				if (zombie_count > 2 && FootballZombieCount) {
 					FootballZombieCount--;
 					create_fot_zombie(CSystem::RandomRange(0, 4));
-					break;	
+					break;
 				}
 			case 1:
 				if (zombie_count > 2 && NewspaperZombieCount) {

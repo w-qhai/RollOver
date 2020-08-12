@@ -1,5 +1,5 @@
 #include "Plant.h"
-
+#include "SuperSound.h"
 const std::string Plant::type = "Plant";
 
 /* --------------------------------------------------- */
@@ -88,6 +88,7 @@ PeaShooter::PeaShooter(const char* plant_name, Pea* pea) :
 int PeaShooter::attack(float delta_time) {
 	if (pea->is_exist() == false && this->is_exist()) {
 		if (delta_time - next_attack > attack_interval) {
+			SuperSound::closeAndPlay("open-shoot", "play-shoot", "close-shoot");
 			pea->set_exist(true);
 			pea->CloneSprite("Pea");
 			// 微调位置一下 从嘴部发出

@@ -15,6 +15,7 @@
 #include "../VCProject2015/VCProject2015/Zombie.h"
 #include "../VCProject2015/VCProject2015/Plant.h"
 #include "../VCProject2015/VCProject2015/Assist.h"
+#include "../VCProject2015/VCProject2015/SuperSound.h"
 
 
 /////////////////////////////////////////////////////////////////////////////////

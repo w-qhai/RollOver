@@ -10,6 +10,8 @@ CStaticSprite LevelChooser::level_2("level2");
 CStaticSprite LevelChooser::level_3("level3");
 
 void LevelChooser::OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY) {
+	SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
+
 	// 点击不同按钮 加载不同地图
 	if (level_1.IsPointInSprite(fMouseX, fMouseY)) {
 		CSystem::LoadMap("adventure_level1.t2d");

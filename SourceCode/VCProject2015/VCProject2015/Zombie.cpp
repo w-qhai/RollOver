@@ -1,5 +1,6 @@
 #include "Zombie.h"
 #include "Plant.h"
+#include "SuperSound.h"
 const std::string Zombie::type = "Zombie";
 
 Zombie::Zombie(const char* sprite_name, int health, int move_speed, double power) :
@@ -69,6 +70,7 @@ void OrdinaryZombie::eat_plant(Plant* plant, long double delta_time) {
 
 
 void OrdinaryZombie::attacked_by(Arms* arms) {
+    SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
     this->health -= arms->get_power();
     if (this->health <= 0) {
         this->die(arms->get_power());

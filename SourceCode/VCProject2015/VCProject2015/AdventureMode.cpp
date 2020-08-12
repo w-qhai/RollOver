@@ -37,6 +37,7 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 		if (game_menu.IsSpriteVisible()) {
 			// 继续游戏
 			if (continue_.IsPointInSprite(fMouseX, fMouseY)) {
+				SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
 				game_menu.SetSpriteVisible(false);
 				continue_.SetSpriteVisible(false);
 				rebegin.SetSpriteVisible(false);
@@ -45,6 +46,7 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 
 			// 重新开始
 			if (rebegin.IsPointInSprite(fMouseX, fMouseY)) {
+				SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
 				std::string s = "adventure_level";
 				g_GameMain.reload();
 				CSystem::LoadMap(std::string(s + std::to_string(g_GameMain.adventure_level_id) + ".t2d").c_str());
@@ -52,6 +54,7 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 
 			// 主菜单
 			if (main_menu.IsPointInSprite(fMouseX, fMouseY)) {
+				SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
 				CSystem::LoadMap("menu.t2d");
 				g_GameMain.reload();
 				g_GameMain.map_id = CGameMain::MapType::MenuType;
@@ -59,6 +62,7 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 		}
 
 		if (game_menu_btn.IsPointInSprite(fMouseX, fMouseY)) {
+			SuperSound::closeAndPlay("open-click1", "play-click1", "close-click1");
 			if (game_menu.IsSpriteVisible()) {
 				game_menu.SetSpriteVisible(false);
 				continue_.SetSpriteVisible(false);

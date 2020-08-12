@@ -17,13 +17,16 @@ void Menu::OnMouseMove(const float fMouseX, const float fMouseY) {
 void Menu::OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY) {
 	// 点击不同按钮 加载不同地图
 	if (adventure.IsPointInSprite(fMouseX, fMouseY)) {
+		SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
 		CSystem::LoadMap("levelChooser.t2d");
 		g_GameMain.map_id = CGameMain::MapType::LevelChooserType;
 	}
 	else if (mini.IsPointInSprite(fMouseX, fMouseY)) {
+		SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
 		// ...
 	}
 	else if (edu.IsPointInSprite(fMouseX, fMouseY)){
+		SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
 		CSystem::LoadMap("bowling.t2d");
 		g_GameMain.map_id = CGameMain::MapType::BowlingType;
 	}

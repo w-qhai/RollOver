@@ -36,6 +36,7 @@
 # dirs
 Bin/game/data/audio/
 Bin/game/data/images/
+Bin/sound/
 
 .vs/
 Debug/
