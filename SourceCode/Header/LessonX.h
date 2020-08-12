@@ -34,7 +34,7 @@ private:
 	CSprite* game_map;
 
 	// 精灵数量
-	int ord_zombie_count;
+	int zombie_count = 0;
 
 	// 精灵容器
 	std::vector<Car*>               vec_car;

@@ -29,7 +29,7 @@ CGameMain::CGameMain() :
 	sun_count(20000),
 	sun_num(new CTextSprite("SunCount")),
 	game_map(new CSprite("background")),
-	ord_zombie_count(5),
+	zombie_count(0),
 
 	// 模板初始化
 	t_ord_zombie(new OrdinaryZombie("OrdinaryZombie")),
@@ -544,26 +544,49 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		// 随机渲染僵尸
 		if (fDeltaTime - zombie_timer > 2) {
 			zombie_timer = fDeltaTime;
-			if (OrdinaryZombieCount) {
-				OrdinaryZombieCount--;
-				create_ord_zombie(CSystem::RandomRange(0, 4));
+			int zombie_type = CSystem::RandomRange(0, 4);
+			// break在if里，有僵尸产生就break，不然就产生下一种僵尸，保证会有僵尸产生。越下面的僵尸，产生的概率越大
+			switch (zombie_type)
+			{
+			case 0:
+				if (zombie_count > 2 && FootballZombieCount) {
+					FootballZombieCount--;
+					create_fot_zombie(CSystem::RandomRange(0, 4));
+					break;	
+				}
+			case 1:
+				if (zombie_count > 2 && NewspaperZombieCount) {
+					NewspaperZombieCount--;
+					create_new_zombie(CSystem::RandomRange(0, 4));
+					break;
+				}
+			case 2:
+				if (zombie_count > 2 && BucketheadZombieCount) {
+					BucketheadZombieCount--;
+					create_buc_zombie(CSystem::RandomRange(0, 4));
+					break;
+				}
+			case 3:
+				if (zombie_count > 2 && BarricadeZombieCount) {
+					BarricadeZombieCount--;
+					create_bar_zombie(CSystem::RandomRange(0, 4));
+					break;
+				}
+			case 4:
+				if (OrdinaryZombieCount) {
+					OrdinaryZombieCount--;
+					create_ord_zombie(CSystem::RandomRange(0, 4));
+					break;
+				}
+			default:
+				if (zombie_count > 2 && FootballZombieCount) {
+					FootballZombieCount--;
+					create_fot_zombie(CSystem::RandomRange(0, 4));
+					break;
+				}
+				break;
 			}
-			if (BarricadeZombieCount) {
-				BarricadeZombieCount--;
-				create_bar_zombie(CSystem::RandomRange(0, 4));
-			}
-			if (BucketheadZombieCount) {
-				BucketheadZombieCount--;
-				create_buc_zombie(CSystem::RandomRange(0, 4));
-			}
-			if (NewspaperZombieCount) {
-				NewspaperZombieCount--;
-				create_new_zombie(CSystem::RandomRange(0, 4));
-			}
-			if (FootballZombieCount) {
-				FootballZombieCount--;
-				create_fot_zombie(CSystem::RandomRange(0, 4));
-			}
+			zombie_count++;
 			zombie_timer = fDeltaTime;
 		}
 		// 向日葵产生阳光
@@ -600,7 +623,5 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 void CGameMain::reload() {
 	adventure_init = false;
 	bowling_init = false;
-	for (Card* card : vec_card) {
-		
-	}
+	zombie_count = 0;
 }
