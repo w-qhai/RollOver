@@ -34,24 +34,43 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 		shovel = nullptr;
 
 		/*------------------游戏菜单部分-------------------*/
+		if (game_menu.IsSpriteVisible()) {
+			// 继续游戏
+			if (continue_.IsPointInSprite(fMouseX, fMouseY)) {
+				game_menu.SetSpriteVisible(false);
+				continue_.SetSpriteVisible(false);
+				rebegin.SetSpriteVisible(false);
+				main_menu.SetSpriteVisible(false);
+			}
+
+			// 重新开始
+			if (rebegin.IsPointInSprite(fMouseX, fMouseY)) {
+				std::string s = "adventure_level";
+				g_GameMain.reload();
+				CSystem::LoadMap(std::string(s + std::to_string(g_GameMain.adventure_level_id) + ".t2d").c_str());
+			}
+
+			// 主菜单
+			if (main_menu.IsPointInSprite(fMouseX, fMouseY)) {
+				CSystem::LoadMap("menu.t2d");
+				g_GameMain.reload();
+				g_GameMain.map_id = CGameMain::MapType::MenuType;
+			}
+		}
+
 		if (game_menu_btn.IsPointInSprite(fMouseX, fMouseY)) {
 			if (game_menu.IsSpriteVisible()) {
 				game_menu.SetSpriteVisible(false);
 				continue_.SetSpriteVisible(false);
 				rebegin.SetSpriteVisible(false);
 				main_menu.SetSpriteVisible(false);
-			} else {
+			} 
+			else {
 				game_menu.SetSpriteVisible(true);
 				continue_.SetSpriteVisible(true);
 				rebegin.SetSpriteVisible(true);
 				main_menu.SetSpriteVisible(true);
 			}
-		}
-
-		if (main_menu.IsPointInSprite(fMouseX, fMouseY)) {
-			CSystem::LoadMap("menu.t2d");
-			g_GameMain.reload();
-			g_GameMain.map_id = CGameMain::MapType::MenuType;
 		}
 
 
