@@ -517,6 +517,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 	static int BucketheadZombieCount = 0;
 	static int NewspaperZombieCount = 0;
 	static int FootballZombieCount = 0;
+	static int statr_timer = fDeltaTime;
 	static int time_a_game = 30; // 一局时长
 	// 当前地图为 冒险模式的地图 且未初始化
 	if (adventure_init == false) {
@@ -534,12 +535,14 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		progress_bar->SetSpritePosition(44.000, 35.171);
 		progress_bar->SetSpriteWidth(2.880);
 		progress_bar->SetSpriteHeight(1.022);
-		progress_head->SetSpritePosition(42.535, 34.941);
-		progress_head->SpriteMoveTo(26.451, 34.987, (progress_head->GetSpritePositionX() - 26.451) / time_a_game,  true);
+
+		/*progress_head->SpriteMountToSprite(progress_bar->GetName(), -progress_bar->GetSpriteWidth() / 2, 0);*/
+
 		for (Card* card : vec_card) {
 			create_gray_mask(card);
 			card->plant_time(fDeltaTime);
 		}
+
 		//create_car(-47.5, -5 + -17)->set_exist(true);
 		//create_car(-47.5, -5 + -5)->set_exist(true);
 		//create_car(-47.5, -5 + 9)->set_exist(true);
@@ -548,23 +551,28 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 
 		sun_num->SetTextValue(sun_count);
 		adventure_init = true;
+		statr_timer = fDeltaTime;
 	}
 
 	if (adventure_init == true) {
-		static int statr_timer = fDeltaTime;
+		
 		if (fDeltaTime - timer > 4) {
 			output_sun();
 			timer = fDeltaTime;
 		}
 
 		if ((fDeltaTime - statr_timer) / time_a_game <= 1) {
-			progress_bar->SetSpriteWidth(32 * (fDeltaTime - statr_timer) / time_a_game);
+			std::cout << (fDeltaTime - statr_timer) / time_a_game << std::endl;
+			// 32 是进度条总长度 根据游戏时间 设置进度条长度
+			progress_bar->SetSpriteWidth(17 * (fDeltaTime - statr_timer) / time_a_game);
+			progress_bar->SetSpritePosition(44.000 - progress_bar->GetSpriteWidth() / 2, 35.171);
+			progress_head->SetSpritePosition(44.000 - progress_bar->GetSpriteWidth(), 35.171);
 		}
 		// 随机渲染僵尸
 		if (fDeltaTime - zombie_timer > 2) {
 			zombie_timer = fDeltaTime;
 			int zombie_type = CSystem::RandomRange(0, 4);
-			//progress_bar->SetSpritePositionX(progress_bar->GetSpritePositionX() - progress_bar->GetSpriteWidth() / 2);
+			
 			// break在if里，有僵尸产生就break，不然就产生下一种僵尸，保证会有僵尸产生。越下面的僵尸，产生的概率越大
 			switch (zombie_type)
 			{
