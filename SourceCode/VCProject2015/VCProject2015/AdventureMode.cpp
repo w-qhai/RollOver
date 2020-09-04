@@ -287,7 +287,10 @@ void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) 
 		if (src->get_type() == "Arms" && tar->get_type() == "Zombie") {
 			Arms* a = reinterpret_cast<Arms*>(src);
 			Zombie* z = reinterpret_cast<Zombie*>(tar);
-			z->attacked_by(a);
+			// Èç¹ûÓĞ½©Ê¬ËÀÍö£¬ÅĞ¶ÏÊÇ·ñÊ¤Àû
+			if (z->attacked_by(a)) {
+
+			}
 		}
 	}
 }

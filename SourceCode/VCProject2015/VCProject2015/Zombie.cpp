@@ -38,6 +38,15 @@ void Zombie::set_eating_plant(Plant* eating_plant) {
         this->eating_plant = eating_plant;
 }
 
+bool Zombie::attacked_by(Arms* arm) {
+    if (this->health <= 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 /////////////////////////
 // ÆÕÍ¨½©Ê¬
 
@@ -67,9 +76,7 @@ void OrdinaryZombie::eat_plant(Plant* plant, long double delta_time) {
     }
 }
 
-
-
-void OrdinaryZombie::attacked_by(Arms* arms) {
+bool OrdinaryZombie::attacked_by(Arms* arms) {
     SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
     this->health -= arms->get_power();
     if (this->health <= 0) {
@@ -79,6 +86,7 @@ void OrdinaryZombie::attacked_by(Arms* arms) {
         this->set_status();
     }
     arms->after_hit();
+    return Zombie::attacked_by(arm);
 }
 
 /// <summary>
@@ -180,7 +188,7 @@ void BarricadeZombie::eat_plant(Plant* plant, long double delta_time) {
 
 
 
-void BarricadeZombie::attacked_by(Arms* arms) {
+bool BarricadeZombie::attacked_by(Arms* arms) {
         this->health -= arms->get_power();
 
         std::cout << "Â·ÕÏ½©Ê¬µ±Ç°ÑªÁ¿£º" << this->health << std::endl;
@@ -192,6 +200,7 @@ void BarricadeZombie::attacked_by(Arms* arms) {
                 this->set_status();
         }
         arms->after_hit();
+        return Zombie::attacked_by(arm);
 }
 
 /// <summary>
@@ -327,7 +336,7 @@ void BucketheadZombie::eat_plant(Plant* plant, long double delta_time) {
 
 
 
-void BucketheadZombie::attacked_by(Arms* arms) {
+bool BucketheadZombie::attacked_by(Arms* arms) {
         this->health -= arms->get_power();
 
         std::cout << "ÌúÍ°½©Ê¬µ±Ç°ÑªÁ¿£º" << this->health << std::endl;
@@ -339,6 +348,7 @@ void BucketheadZombie::attacked_by(Arms* arms) {
                 this->set_status();
         }
         arms->after_hit();
+        return Zombie::attacked_by(arm);
 }
 
 /// <summary>
@@ -474,7 +484,7 @@ void NewspaperZombie::eat_plant(Plant* plant, long double delta_time) {
 
 
 
-void NewspaperZombie::attacked_by(Arms* arms) {
+bool NewspaperZombie::attacked_by(Arms* arms) {
         this->health -= arms->get_power();
 
         std::cout << "±¨Ö½½©Ê¬µ±Ç°ÑªÁ¿£º" << this->health << std::endl;
@@ -486,6 +496,7 @@ void NewspaperZombie::attacked_by(Arms* arms) {
                 this->set_status();
         }
         arms->after_hit();
+        return Zombie::attacked_by(arm);
 }
 
 /// <summary>
@@ -643,7 +654,7 @@ void FootballZombie::eat_plant(Plant* plant, long double delta_time) {
 
 
 
-void FootballZombie::attacked_by(Arms* arms) {
+bool FootballZombie::attacked_by(Arms* arms) {
         this->health -= arms->get_power();
 
         std::cout << "éÏé­Çò½©Ê¬µ±Ç°ÑªÁ¿£º" << this->health << std::endl;
@@ -655,6 +666,7 @@ void FootballZombie::attacked_by(Arms* arms) {
                 this->set_status();
         }
         arms->after_hit();
+        return Zombie::attacked_by(arm);
 }
 
 /// <summary>
