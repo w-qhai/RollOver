@@ -56,7 +56,7 @@
       imageMap = "SelectedBoxImageMap1";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-20.341 -31.816";
       size = "55.375 10.750";
@@ -109,7 +109,7 @@
       imageMap = "ShovelBackImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "11.940 -32.764";
       size = "9.528 5.528";
@@ -123,7 +123,7 @@
       imageMap = "ShovelImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "12.630 -32.500";
       Layer = "19";
@@ -135,7 +135,7 @@
       imageMap = "SeedChooserImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-35.000 -32.143";
       size = "6.000 8.000";
@@ -164,7 +164,7 @@
       imageMap = "SeedChooserImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "2.500 -32.143";
       size = "6.000 8.000";
@@ -178,7 +178,7 @@
       imageMap = "SeedChooserImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-5.000 -32.143";
       size = "6.000 8.000";
@@ -192,7 +192,7 @@
       imageMap = "SeedChooserImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-12.550 -32.143";
       size = "6.000 8.000";
@@ -206,7 +206,7 @@
       imageMap = "SeedChooserImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-20.000 -32.143";
       size = "6.000 8.000";
@@ -220,7 +220,7 @@
       imageMap = "SeedChooserImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-27.500 -32.143";
       size = "6.000 8.000";
@@ -234,7 +234,7 @@
       imageMap = "SunflowerCardImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-35.000 -32.143";
       size = "6.000 8.500";
@@ -279,7 +279,7 @@
       imageMap = "PeashooterCardImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-27.500 -32.143";
       size = "6.000 8.500";
@@ -320,7 +320,7 @@
    new t2dStaticSprite(CherryBombCard) {
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "0.000 -12.143";
       size = "6.000 8.500";
@@ -332,7 +332,7 @@
       imageMap = "CherryBombCardImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-5.000 -32.143";
       size = "6.000 8.500";
@@ -348,7 +348,7 @@
       imageMap = "WallNutCardImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-20.000 -32.143";
       size = "6.000 8.500";
@@ -393,7 +393,7 @@
       imageMap = "carImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "40.625 -44.907";
       size = "8.750 7.125";
@@ -464,7 +464,7 @@
       imageMap = "PotatoMineCardImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-12.550 -32.143";
       size = "6.000 8.500";
@@ -498,6 +498,7 @@
          mountID = "34";
    };
    new t2dAnimatedSprite(PotatoMine) {
+      animationName = "PotatoMine1Animation";
       canSaveDynamicFields = "1";
       Position = "66.152 -43.125";
       size = "4.500 3.750";
@@ -548,7 +549,7 @@
       imageMap = "ThreePeaterCardImageMap1";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "2.500 -32.143";
       size = "6.000 8.500";
@@ -588,7 +589,7 @@
    new t2dStaticSprite(JalapenoCard) {
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-88.000 -59.250";
       size = "6.000 8.500";
@@ -600,7 +601,7 @@
       imageMap = "ZombiesWonImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "-0.000 -8.750";
@@ -613,7 +614,7 @@
       imageMap = "CloseGameImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "-28.938 25.875";
@@ -626,7 +627,7 @@
       imageMap = "PlayAgainImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "28.937 25.875";
@@ -639,7 +640,7 @@
       imageMap = "GameMenuImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "42.500 -33.938";
       size = "15.000 7.125";
@@ -651,7 +652,7 @@
       imageMap = "MenuContainerImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "-0.662 -2.499";
@@ -665,7 +666,7 @@
       imageMap = "ContinueImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "-0.662 -9.598";
@@ -681,7 +682,7 @@
       imageMap = "RebeginImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "-0.662 -0.796";
@@ -698,7 +699,7 @@
       imageMap = "MainMenuImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.37778e-039 6.22921e-039";
+      sourceRect = "2.37778e-039 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "-0.662 8.553";
@@ -717,7 +718,7 @@
       imageMap = "day_yard_bgImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37261e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "9.591 -0.000";
       size = "175.000 75.000";

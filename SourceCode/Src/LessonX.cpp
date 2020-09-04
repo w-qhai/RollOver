@@ -658,8 +658,6 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		for (Card* card : vec_card) {
 			card->ready(fDeltaTime);
 		}
-
-		if ()
 	}
 }
 

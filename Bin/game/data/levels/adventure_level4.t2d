@@ -498,6 +498,7 @@
          mountID = "34";
    };
    new t2dAnimatedSprite(PotatoMine) {
+      animationName = "PotatoMine1Animation";
       canSaveDynamicFields = "1";
       Position = "66.152 -43.125";
       size = "4.500 3.750";
@@ -717,7 +718,7 @@
       imageMap = "night_bgImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37778e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "10.369 -0.000";
       size = "175.000 75.000";

@@ -1979,7 +1979,7 @@ $managedDatablockSet = new SimSet() {
       animationCycle = "1";
       randomStart = "0";
       startFrame = "0";
-      animationPingPong = "0";
+      animationPingPong = "1";
       animationReverse = "0";
    };
 };
