@@ -38,6 +38,15 @@ void Zombie::set_eating_plant(Plant* eating_plant) {
 	this->eating_plant = eating_plant;
 }
 
+bool Zombie::attacked_by(Arms* arm) {
+    if (this->health <= 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 /////////////////////////
 // 普通僵尸
 
@@ -68,18 +77,17 @@ void OrdinaryZombie::eat_plant(Plant* plant, long double delta_time) {
 	}
 }
 
-
-
-void OrdinaryZombie::attacked_by(Arms* arms) {
-	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
-	this->health -= arms->get_power();
-	if (this->health <= 0) {
-		this->die(arms->get_power());
-	}
-	else {
-		this->set_status();
-	}
-	arms->after_hit();
+bool OrdinaryZombie::attacked_by(Arms* arms) {
+    SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
+    this->health -= arms->get_power();
+    if (this->health <= 0) {
+        this->die(arms->get_power());
+    }
+    else {
+        this->set_status();
+    }
+    arms->after_hit();
+    return Zombie::attacked_by(arm);
 }
 
 /// <summary>
@@ -187,13 +195,14 @@ void BarricadeZombie::attacked_by(Arms* arms) {
 	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 	std::cout << "路障僵尸当前血量：" << this->health << std::endl;
 
-	if (this->health <= 0) {
-		this->die(arms->get_power());
-	}
-	else {
-		this->set_status();
-	}
-	arms->after_hit();
+        if (this->health <= 0) {
+                this->die(arms->get_power());
+        }
+        else {
+                this->set_status();
+        }
+        arms->after_hit();
+        return Zombie::attacked_by(arm);
 }
 
 /// <summary>
@@ -334,13 +343,14 @@ void BucketheadZombie::attacked_by(Arms* arms) {
 	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 	std::cout << "铁桶僵尸当前血量：" << this->health << std::endl;
 
-	if (this->health <= 0) {
-		this->die(arms->get_power());
-	}
-	else {
-		this->set_status();
-	}
-	arms->after_hit();
+        if (this->health <= 0) {
+                this->die(arms->get_power());
+        }
+        else {
+                this->set_status();
+        }
+        arms->after_hit();
+        return Zombie::attacked_by(arm);
 }
 
 /// <summary>
@@ -481,13 +491,14 @@ void NewspaperZombie::attacked_by(Arms* arms) {
 	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 	std::cout << "报纸僵尸当前血量：" << this->health << std::endl;
 
-	if (this->health <= 0) {
-		this->die(arms->get_power());
-	}
-	else {
-		this->set_status();
-	}
-	arms->after_hit();
+        if (this->health <= 0) {
+                this->die(arms->get_power());
+        }
+        else {
+                this->set_status();
+        }
+        arms->after_hit();
+        return Zombie::attacked_by(arm);
 }
 
 /// <summary>
@@ -650,13 +661,14 @@ void FootballZombie::attacked_by(Arms* arms) {
 	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 	std::cout << "橄榄球僵尸当前血量：" << this->health << std::endl;
 
-	if (this->health <= 0) {
-		this->die(arms->get_power());
-	}
-	else {
-		this->set_status();
-	}
-	arms->after_hit();
+        if (this->health <= 0) {
+                this->die(arms->get_power());
+        }
+        else {
+                this->set_status();
+        }
+        arms->after_hit();
+        return Zombie::attacked_by(arm);
 }
 
 /// <summary>

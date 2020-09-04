@@ -1952,4 +1952,34 @@ $managedDatablockSet = new SimSet() {
       allowUnload = "0";
       force16Bit = "0";
    };
+   new t2dImageMapDatablock(PotatoMine1ImageMap1) {
+      imageName = "~/data/images/PotatoMine1.png";
+      imageMode = "CELL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "1";
+      cellCountY = "1";
+      cellWidth = "36";
+      cellHeight = "30";
+      preload = "0";
+      allowUnload = "0";
+      force16Bit = "0";
+   };
+   new t2dAnimationDatablock(PotatoMine1Animation) {
+      imageMap = "PotatoMine1ImageMap1";
+      animationFrames = "0";
+      animationTime = "0.0333333";
+      animationCycle = "1";
+      randomStart = "0";
+      startFrame = "0";
+      animationPingPong = "0";
+      animationReverse = "0";
+   };
 };

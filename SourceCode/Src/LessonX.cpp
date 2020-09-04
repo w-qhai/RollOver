@@ -518,6 +518,8 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 	static int BucketheadZombieCount = 0;
 	static int NewspaperZombieCount = 0;
 	static int FootballZombieCount = 0;
+	static int total = 0;
+	static int statr_timer = fDeltaTime;
 	static int time_a_game = 30; // 一局时长
 	static int row_min = 0, row_max = 4; // 僵尸生成边界
 
@@ -533,16 +535,19 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		}
 
 		// 从冒险模式config根据关卡，读取关卡信息
-		OrdinaryZombieCount = GetPrivateProfileInt(level, "OrdinaryZombie", 0, "./adventureConfig.ini");
-		BarricadeZombieCount = GetPrivateProfileInt(level, "BarricadeZombie", 0, "./adventureConfig.ini");
-		BucketheadZombieCount = GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
-		NewspaperZombieCount = GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
-		FootballZombieCount = GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
-		progress_bar->SetSpritePosition(44.000, 35.171);
-		progress_bar->SetSpriteWidth(2.880);
-		progress_bar->SetSpriteHeight(1.022);
-		progress_head->SetSpritePosition(42.535, 34.941);
-		progress_head->SpriteMoveTo(26.451, 34.987, (progress_head->GetSpritePositionX() - 26.451) / time_a_game, true);
+		OrdinaryZombieCount		= GetPrivateProfileInt(level, "OrdinaryZombie", 0, "./adventureConfig.ini");
+		BarricadeZombieCount	= GetPrivateProfileInt(level, "BarricadeZombie", 0, "./adventureConfig.ini");
+		BucketheadZombieCount	= GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
+		NewspaperZombieCount	= GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
+		FootballZombieCount		= GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
+
+
+		total = OrdinaryZombieCount +
+			BarricadeZombieCount +
+			BucketheadZombieCount +
+			NewspaperZombieCount +
+			FootballZombieCount;
+
 		for (Card* card : vec_card) {
 			create_gray_mask(card);
 			card->plant_time(fDeltaTime);
@@ -559,17 +564,21 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 
 		sun_num->SetTextValue(sun_count);
 		adventure_init = true;
+		statr_timer = fDeltaTime;
 	}
 
-	if (adventure_init == true) {
-		static int statr_timer = fDeltaTime;
+	if (adventure_init == true) {	
 		if (fDeltaTime - timer > 4) {
 			output_sun();
 			timer = fDeltaTime;
 		}
 
 		if ((fDeltaTime - statr_timer) / time_a_game <= 1) {
-			progress_bar->SetSpriteWidth(32 * (fDeltaTime - statr_timer) / time_a_game);
+			std::cout << (fDeltaTime - statr_timer) / time_a_game << std::endl;
+			// 32 是进度条总长度 根据游戏时间 设置进度条长度
+			progress_bar->SetSpriteWidth(17 * (fDeltaTime - statr_timer) / time_a_game);
+			progress_bar->SetSpritePosition(44.000 - progress_bar->GetSpriteWidth() / 2, 35.171);
+			progress_head->SetSpritePosition(44.000 - progress_bar->GetSpriteWidth(), 35.171);
 		}
 
 		// 随机渲染僵尸
@@ -649,6 +658,8 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		for (Card* card : vec_card) {
 			card->ready(fDeltaTime);
 		}
+
+		if ()
 	}
 }
 
