@@ -517,6 +517,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 	static int BucketheadZombieCount = 0;
 	static int NewspaperZombieCount = 0;
 	static int FootballZombieCount = 0;
+	static int total = 0;
 	static int statr_timer = fDeltaTime;
 	static int time_a_game = 30; // 一局时长
 	// 当前地图为 冒险模式的地图 且未初始化
@@ -527,35 +528,30 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		std::cout << level << std::endl;
 
 		// 从冒险模式config根据关卡，读取关卡信息
-		OrdinaryZombieCount = GetPrivateProfileInt(level, "OrdinaryZombie", 0, "./adventureConfig.ini");
-		BarricadeZombieCount = GetPrivateProfileInt(level, "BarricadeZombie", 0, "./adventureConfig.ini");
-		BucketheadZombieCount = GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
-		NewspaperZombieCount = GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
-		FootballZombieCount = GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
-		progress_bar->SetSpritePosition(44.000, 35.171);
-		progress_bar->SetSpriteWidth(2.880);
-		progress_bar->SetSpriteHeight(1.022);
+		OrdinaryZombieCount		= GetPrivateProfileInt(level, "OrdinaryZombie", 0, "./adventureConfig.ini");
+		BarricadeZombieCount	= GetPrivateProfileInt(level, "BarricadeZombie", 0, "./adventureConfig.ini");
+		BucketheadZombieCount	= GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
+		NewspaperZombieCount	= GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
+		FootballZombieCount		= GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
 
-		/*progress_head->SpriteMountToSprite(progress_bar->GetName(), -progress_bar->GetSpriteWidth() / 2, 0);*/
+
+		total = OrdinaryZombieCount +
+			BarricadeZombieCount +
+			BucketheadZombieCount +
+			NewspaperZombieCount +
+			FootballZombieCount;
 
 		for (Card* card : vec_card) {
 			create_gray_mask(card);
 			card->plant_time(fDeltaTime);
 		}
 
-		//create_car(-47.5, -5 + -17)->set_exist(true);
-		//create_car(-47.5, -5 + -5)->set_exist(true);
-		//create_car(-47.5, -5 + 9)->set_exist(true);
-		//create_car(-47.5, -5 + 20)->set_exist(true);
-		//create_car(-47.5, -5 + 32)->set_exist(true);
-
 		sun_num->SetTextValue(sun_count);
 		adventure_init = true;
 		statr_timer = fDeltaTime;
 	}
 
-	if (adventure_init == true) {
-		
+	if (adventure_init == true) {	
 		if (fDeltaTime - timer > 4) {
 			output_sun();
 			timer = fDeltaTime;
@@ -645,6 +641,8 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		for (Card* card : vec_card) {
 			card->ready(fDeltaTime);
 		}
+
+		if ()
 	}
 }
 

@@ -12,7 +12,7 @@ public:
     virtual void stop() = 0;
     virtual void eat_plant(Plant* plant, long double delta_time) = 0;
     virtual void die(int power) = 0;
-    virtual void attacked_by(Arms* arm) = 0;
+    virtual bool attacked_by(Arms* arm) = 0;
     virtual double get_power() = 0;
     virtual void set_status() = 0;
 
@@ -42,7 +42,7 @@ public:
     void stop() override;
     void eat_plant(Plant* plant, long double delta_time) override;
     void die(int power) override;
-    void attacked_by(Arms* arm) override;
+	bool attacked_by(Arms* arm) override;
     double  get_power() override;
     void set_status() override;
 };
@@ -56,7 +56,7 @@ public:
 	void stop() override;
 	void eat_plant(Plant* plant, long double delta_time) override;
 	void die(int power) override;
-	void attacked_by(Arms* arm) override;
+	bool attacked_by(Arms* arm) override;
 	double  get_power() override;
 	void set_status() override;
 };
@@ -71,7 +71,7 @@ public:
 	void stop() override;
 	void eat_plant(Plant* plant, long double delta_time) override;
 	void die(int power) override;
-	void attacked_by(Arms* arm) override;
+	bool attacked_by(Arms* arm) override;
 	double  get_power() override;
 	void set_status() override;
 };
@@ -85,7 +85,7 @@ public:
 	void stop() override;
 	void eat_plant(Plant* plant, long double delta_time) override;
 	void die(int power) override;
-	void attacked_by(Arms* arm) override;
+	bool attacked_by(Arms* arm) override;
 	double  get_power() override;
 	void set_status() override;
 private:
@@ -100,7 +100,7 @@ public:
 	void stop() override;
 	void eat_plant(Plant* plant, long double delta_time) override;
 	void die(int power) override;
-	void attacked_by(Arms* arm) override;
+	bool attacked_by(Arms* arm) override;
 	double  get_power() override;
 	void set_status() override;
 };
