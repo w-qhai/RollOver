@@ -102,6 +102,7 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 			// 选中的位置有太阳
 			if (sprite->get_type() == "Sun") {
 				Sun* sun = reinterpret_cast<Sun*>(sprite);
+				SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 				sun->SpriteMoveTo(-43.275, -33.275, 100, true);
 				sun->SetSpriteLifeTime(1);
 				g_GameMain.add_sun(sun->get_num());

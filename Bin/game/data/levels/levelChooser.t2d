@@ -82,4 +82,26 @@
       FillMode = "0";
          mountID = "5";
    };
+   new t2dShapeVector(level4) {
+      canSaveDynamicFields = "1";
+      Position = "-4.928 -16.729";
+      size = "9.856 16.542";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      LineColor = "1 1 1 1";
+      fillColor = "0.5 0.5 0.5 1";
+      FillMode = "0";
+         mountID = "6";
+   };
+   new t2dShapeVector(level5) {
+      canSaveDynamicFields = "1";
+      Position = "5.072 -16.729";
+      size = "9.856 16.542";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      LineColor = "1 1 1 1";
+      fillColor = "0.5 0.5 0.5 1";
+      FillMode = "0";
+         mountID = "7";
+   };
 };

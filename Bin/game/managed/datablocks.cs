@@ -1702,26 +1702,6 @@ $managedDatablockSet = new SimSet() {
       allowUnload = "0";
       force16Bit = "0";
    };
-   new t2dImageMapDatablock(fall_yard_bgImageMap) {
-      imageName = "~/data/images/fall_yard_bg.jpg";
-      imageMode = "FULL";
-      frameCount = "-1";
-      filterMode = "SMOOTH";
-      filterPad = "1";
-      preferPerf = "1";
-      cellRowOrder = "1";
-      cellOffsetX = "0";
-      cellOffsetY = "0";
-      cellStrideX = "0";
-      cellStrideY = "0";
-      cellCountX = "-1";
-      cellCountY = "-1";
-      cellWidth = "0";
-      cellHeight = "0";
-      preload = "1";
-      allowUnload = "0";
-      force16Bit = "0";
-   };
    new t2dImageMapDatablock(CherryBoomImageMap) {
       imageName = "~/data/images/CherryBoom.png";
       imageMode = "CELL";
@@ -1932,8 +1912,8 @@ $managedDatablockSet = new SimSet() {
       allowUnload = "0";
       force16Bit = "0";
    };
-   new t2dImageMapDatablock(fall_yard_bgImageMap1) {
-      imageName = "~/data/images/fall_yard_bg.jpg";
+   new t2dImageMapDatablock(day_yard_baseImageMap) {
+      imageName = "~/data/images/day_yard_base.jpg";
       imageMode = "FULL";
       frameCount = "-1";
       filterMode = "SMOOTH";
@@ -1952,88 +1932,8 @@ $managedDatablockSet = new SimSet() {
       allowUnload = "0";
       force16Bit = "0";
    };
-   new t2dImageMapDatablock(FlagImageMap) {
-      imageName = "~/data/images/static/Flag.png";
-      imageMode = "FULL";
-      frameCount = "-1";
-      filterMode = "SMOOTH";
-      filterPad = "1";
-      preferPerf = "1";
-      cellRowOrder = "1";
-      cellOffsetX = "0";
-      cellOffsetY = "0";
-      cellStrideX = "0";
-      cellStrideY = "0";
-      cellCountX = "-1";
-      cellCountY = "-1";
-      cellWidth = "0";
-      cellHeight = "0";
-      preload = "1";
-      allowUnload = "0";
-      force16Bit = "0";
-   };
-   new t2dImageMapDatablock(FlagMeterEmpImageMap) {
-      imageName = "~/data/images/static/FlagMeterEmp.png";
-      imageMode = "FULL";
-      frameCount = "-1";
-      filterMode = "SMOOTH";
-      filterPad = "1";
-      preferPerf = "1";
-      cellRowOrder = "1";
-      cellOffsetX = "0";
-      cellOffsetY = "0";
-      cellStrideX = "0";
-      cellStrideY = "0";
-      cellCountX = "-1";
-      cellCountY = "-1";
-      cellWidth = "0";
-      cellHeight = "0";
-      preload = "1";
-      allowUnload = "0";
-      force16Bit = "0";
-   };
-   new t2dImageMapDatablock(FlagMeterFullImageMap) {
-      imageName = "~/data/images/static/FlagMeterFull.png";
-      imageMode = "FULL";
-      frameCount = "-1";
-      filterMode = "SMOOTH";
-      filterPad = "1";
-      preferPerf = "1";
-      cellRowOrder = "1";
-      cellOffsetX = "0";
-      cellOffsetY = "0";
-      cellStrideX = "0";
-      cellStrideY = "0";
-      cellCountX = "-1";
-      cellCountY = "-1";
-      cellWidth = "0";
-      cellHeight = "0";
-      preload = "1";
-      allowUnload = "0";
-      force16Bit = "0";
-   };
-   new t2dImageMapDatablock(FlagMeterLevImageMap) {
-      imageName = "~/data/images/static/FlagMeterLev.png";
-      imageMode = "FULL";
-      frameCount = "-1";
-      filterMode = "SMOOTH";
-      filterPad = "1";
-      preferPerf = "1";
-      cellRowOrder = "1";
-      cellOffsetX = "0";
-      cellOffsetY = "0";
-      cellStrideX = "0";
-      cellStrideY = "0";
-      cellCountX = "-1";
-      cellCountY = "-1";
-      cellWidth = "0";
-      cellHeight = "0";
-      preload = "1";
-      allowUnload = "0";
-      force16Bit = "0";
-   };
-   new t2dImageMapDatablock(ZombieHeadImageMap) {
-      imageName = "~/data/images/static/ZombieHead.png";
+   new t2dImageMapDatablock(day_yard_bgImageMap) {
+      imageName = "~/data/images/day_yard_bg.jpg";
       imageMode = "FULL";
       frameCount = "-1";
       filterMode = "SMOOTH";

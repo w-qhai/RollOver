@@ -133,6 +133,7 @@ CherryBomb::CherryBomb(const char* plant_name, Boom* boom, long double plant_tim
 
 int CherryBomb::attack(float delta_time) {
 	if (this->is_exist()) {
+		SuperSound::closeAndPlay("open-boom", "play-boom", "close-boom");
 		boom->set_exist(true);
 		boom->CloneSprite("CherryBoom");
 		boom->SpriteMountToSprite(this->GetName(), 0, 0);
@@ -175,6 +176,7 @@ int PotatoMine::attack(float delta_time) {
 		if (this->is_exist()) {
 			if (delta_time - next_attack > attack_interval) {
 				std::cout << "Boom" << std::endl;
+				SuperSound::closeAndPlay("open-boom", "play-boom", "close-boom");
 				boom->set_exist(true);
 				boom->CloneSprite("PotatoMineBoom");
 				boom->SpriteMountToSprite(this->GetName(), 0, 0);
@@ -240,7 +242,7 @@ bool WallNut::attacked_by(Zombie* zombie) {
 }
 
 /* --------------------------------------------------- */
-// 	Ó£ÌÒÕ¨µ¯ CherryBomb
+// 	À±½· CherryBomb
 Jalapeno::Jalapeno(const char* plant_name, Boom* boom, long double plant_time) :
 	Plant(plant_name, 300, 2, 150),
 	boom(boom),
@@ -251,6 +253,7 @@ Jalapeno::Jalapeno(const char* plant_name, Boom* boom, long double plant_time) :
 
 int Jalapeno::attack(float delta_time) {
 	if (this->is_exist()) {
+		SuperSound::closeAndPlay("open-boom", "play-boom", "close-boom");
 		this->SetSpriteVisible(false);
 		boom->set_exist(true);
 		boom->CloneSprite("JalapenoAttack");

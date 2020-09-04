@@ -714,12 +714,12 @@
          mountToID = "46";
    };
    new t2dStaticSprite(background) {
-      imageMap = "day_yard_bgImageMap";
+      imageMap = "night_bgImageMap";
       frame = "0";
       useSourceRect = "0";
       sourceRect = "0 0 0 0";
       canSaveDynamicFields = "1";
-      Position = "9.591 -0.000";
+      Position = "9.203 0.000";
       size = "175.000 75.000";
       Layer = "21";
       WorldLimitMin = "-50.000 -37.500";

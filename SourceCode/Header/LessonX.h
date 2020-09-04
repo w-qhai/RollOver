@@ -16,6 +16,7 @@
 #include "../VCProject2015/VCProject2015/Plant.h"
 #include "../VCProject2015/VCProject2015/Assist.h"
 #include "../VCProject2015/VCProject2015/SuperSound.h"
+#include "../VCProject2015/VCProject2015/ConfigConvert.h"
 
 
 /////////////////////////////////////////////////////////////////////////////////

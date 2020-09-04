@@ -7,6 +7,8 @@ namespace LevelChooser {
     extern CStaticSprite level_1;	    // 第一关
     extern CStaticSprite level_2;	    // 第二关
     extern CStaticSprite level_3;	    // 第三关
+    extern CStaticSprite level_4;	    // 第四关
+    extern CStaticSprite level_5;	    // 第五关
 
     void		OnMouseMove(const float fMouseX, const float fMouseY);
     void		OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY);

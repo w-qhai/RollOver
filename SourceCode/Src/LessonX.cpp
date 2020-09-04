@@ -165,6 +165,7 @@ void CGameMain::GameRun(float fDeltaTime)
 	switch (map_id) {
 	case MapType::AdventureType:
 		load_adventure_level(adventure_level_id, fDeltaTime);
+		ConfigConvert::addConfig("./sss.ini", "key", "value", "test");
 		break;
 	case MapType::BowlingType:
 		if (bowling_init == false) {
@@ -518,12 +519,18 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 	static int NewspaperZombieCount = 0;
 	static int FootballZombieCount = 0;
 	static int time_a_game = 30; // 一局时长
+	static int row_min = 0, row_max = 4; // 僵尸生成边界
+
 	// 当前地图为 冒险模式的地图 且未初始化
 	if (adventure_init == false) {
 		// 从配置文件加载僵尸数量信息
 		char level[20];
 		sprintf(level, "level_%d", level_id);
 		std::cout << level << std::endl;
+
+		if (level_id == 1) {
+			row_min = 1, row_max = 3;
+		}
 
 		// 从冒险模式config根据关卡，读取关卡信息
 		OrdinaryZombieCount = GetPrivateProfileInt(level, "OrdinaryZombie", 0, "./adventureConfig.ini");
@@ -535,10 +542,14 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		progress_bar->SetSpriteWidth(2.880);
 		progress_bar->SetSpriteHeight(1.022);
 		progress_head->SetSpritePosition(42.535, 34.941);
-		progress_head->SpriteMoveTo(26.451, 34.987, (progress_head->GetSpritePositionX() - 26.451) / time_a_game,  true);
+		progress_head->SpriteMoveTo(26.451, 34.987, (progress_head->GetSpritePositionX() - 26.451) / time_a_game, true);
 		for (Card* card : vec_card) {
 			create_gray_mask(card);
 			card->plant_time(fDeltaTime);
+		}
+
+		for (int i = row_min; i <= row_max; i++) {
+			create_car(-47.5, -5 + -17 + i * 12)->set_exist(true);
 		}
 		//create_car(-47.5, -5 + -17)->set_exist(true);
 		//create_car(-47.5, -5 + -5)->set_exist(true);
@@ -560,10 +571,11 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		if ((fDeltaTime - statr_timer) / time_a_game <= 1) {
 			progress_bar->SetSpriteWidth(32 * (fDeltaTime - statr_timer) / time_a_game);
 		}
+
 		// 随机渲染僵尸
 		if (fDeltaTime - zombie_timer > 2) {
 			zombie_timer = fDeltaTime;
-			int zombie_type = CSystem::RandomRange(0, 4);
+			int zombie_type = CSystem::RandomRange(row_min, row_max);
 			//progress_bar->SetSpritePositionX(progress_bar->GetSpritePositionX() - progress_bar->GetSpriteWidth() / 2);
 			// break在if里，有僵尸产生就break，不然就产生下一种僵尸，保证会有僵尸产生。越下面的僵尸，产生的概率越大
 			switch (zombie_type)
@@ -571,37 +583,37 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 			case 0:
 				if (zombie_count > 2 && FootballZombieCount) {
 					FootballZombieCount--;
-					create_fot_zombie(CSystem::RandomRange(0, 4));
+					create_fot_zombie(CSystem::RandomRange(row_min, row_max));
 					break;
 				}
 			case 1:
 				if (zombie_count > 2 && NewspaperZombieCount) {
 					NewspaperZombieCount--;
-					create_new_zombie(CSystem::RandomRange(0, 4));
+					create_new_zombie(CSystem::RandomRange(row_min, row_max));
 					break;
 				}
 			case 2:
 				if (zombie_count > 2 && BucketheadZombieCount) {
 					BucketheadZombieCount--;
-					create_buc_zombie(CSystem::RandomRange(0, 4));
+					create_buc_zombie(CSystem::RandomRange(row_min, row_max));
 					break;
 				}
 			case 3:
 				if (zombie_count > 2 && BarricadeZombieCount) {
 					BarricadeZombieCount--;
-					create_bar_zombie(CSystem::RandomRange(0, 4));
+					create_bar_zombie(CSystem::RandomRange(row_min, row_max));
 					break;
 				}
 			case 4:
 				if (OrdinaryZombieCount) {
 					OrdinaryZombieCount--;
-					create_ord_zombie(CSystem::RandomRange(0, 4));
+					create_ord_zombie(CSystem::RandomRange(row_min, row_max));
 					break;
 				}
 			default:
 				if (zombie_count > 2 && FootballZombieCount) {
 					FootballZombieCount--;
-					create_fot_zombie(CSystem::RandomRange(0, 4));
+					create_fot_zombie(CSystem::RandomRange(row_min, row_max));
 					break;
 				}
 				break;
