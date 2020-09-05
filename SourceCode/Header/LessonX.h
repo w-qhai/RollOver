@@ -130,7 +130,7 @@ public:
 
 	Car* create_car(float x, float y);
 	Plant*	create_pea_shooter(float x, float y);
-	Plant*	create_sunflower(float x, float y);
+	Plant*	create_sunflower(float x, float y, long double plant_time);
 	Plant*	create_cherry_bomb(float x, float y, long double plant_time);
 	Plant*	create_wall_nut (float x, float y);
 	Plant*	create_potato_mine(float x, float y, long double plant_time);

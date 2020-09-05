@@ -165,7 +165,7 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 						seed = g_GameMain.create_pea_shooter(fMouseX, fMouseY);
 					}
 					else if (sprite->get_type() == "SunflowerCard") {
-						seed = g_GameMain.create_sunflower(fMouseX, fMouseY);
+						seed = g_GameMain.create_sunflower(fMouseX, fMouseY, fTimeDelta);
 					}
 					else if (sprite->get_type() == "CherryBombCard") {
 						// 种下的时间 用来判断是否自动爆炸
