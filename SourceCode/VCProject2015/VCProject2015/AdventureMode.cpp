@@ -9,6 +9,10 @@ CSprite     Adventure::game_over("GameOver");
 CSprite     Adventure::game_close("GameClose");
 CSprite     Adventure::play_again("PlayAgain");
 
+CSprite     Adventure::game_win("GameWin");
+CSprite     Adventure::game_close2("GameClose2");
+CSprite     Adventure::next("Next");
+
 // 游戏中的菜单
 CSprite     Adventure::game_menu_btn("GameMenuBtn");
 CSprite     Adventure::game_menu("GameMenu");
@@ -78,7 +82,7 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 		}
 
 
-		/*------------------游戏中主体部分-------------------*/
+		/*------------------游戏失败中主体部分-------------------*/
 		if (game_over.IsSpriteVisible()) {
 			if (game_close.IsPointInSprite(fMouseX, fMouseY)) {
 				CSystem::LoadMap("menu.t2d");
@@ -90,6 +94,33 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 				game_over.SetSpriteVisible(false);
 				game_close.SetSpriteVisible(false);
 				play_again.SetSpriteVisible(false);
+				std::string s = "adventure_level";
+				g_GameMain.reload();
+				CSystem::LoadMap(std::string(s + std::to_string(g_GameMain.adventure_level_id) + ".t2d").c_str());
+			}
+		}
+
+		if (game_win.IsSpriteVisible()) {
+			if (game_close2.IsPointInSprite(fMouseX, fMouseY)) {
+				CSystem::LoadMap("menu.t2d");
+				g_GameMain.reload();
+				g_GameMain.map_id = CGameMain::MapType::MenuType;
+			}
+
+			if (next.IsPointInSprite(fMouseX, fMouseY)) {
+				game_over.SetSpriteVisible(false);
+				game_close.SetSpriteVisible(false);
+				play_again.SetSpriteVisible(false);
+
+				//g_GameMain.adventure_level_id++;
+				if (g_GameMain.adventure_level_id > 5) {
+					std::cout << "完成全部关卡" << std::endl;
+					CSystem::LoadMap("menu.t2d");
+					g_GameMain.reload();
+					g_GameMain.map_id = CGameMain::MapType::MenuType;
+					return;
+				}
+
 				std::string s = "adventure_level";
 				g_GameMain.reload();
 				CSystem::LoadMap(std::string(s + std::to_string(g_GameMain.adventure_level_id) + ".t2d").c_str());
@@ -290,7 +321,17 @@ void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) 
 			Zombie* z = reinterpret_cast<Zombie*>(tar);
 			// 如果有僵尸死亡，判断是否胜利
 			if (z->attacked_by(a)) {
-
+				total_zombie--;
+				std::cout << total_zombie << std::endl;
+				if (total_zombie == 0) {
+					// 游戏胜利 
+					if (!game_win.IsSpriteVisible()) {
+						game_win.SetSpriteVisible(true);
+						game_close2.SetSpriteVisible(true);
+						next.SetSpriteVisible(true);
+						return;
+					}
+				}
 			}
 		}
 	}

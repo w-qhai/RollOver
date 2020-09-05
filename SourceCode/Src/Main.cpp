@@ -16,6 +16,7 @@
 #undef max
 
 long double 	fTimeDelta;
+int total_zombie;
 FILE* stream;
 void init();
 int PASCAL WinMain(HINSTANCE hInstance,
