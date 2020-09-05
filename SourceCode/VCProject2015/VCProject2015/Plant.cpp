@@ -102,10 +102,10 @@ int PeaShooter::attack(float delta_time) {
 /* --------------------------------------------------- */
 // ÏòÈÕ¿û
 
-Sunflower::Sunflower(const char* sprite_name, Sun* sun) :
+Sunflower::Sunflower(const char* sprite_name, Sun* sun, long double plant_time) :
 	Plant(sprite_name, 300, 10, 50),
 	sun(sun) {
-	
+	next_attack = plant_time;
 }
 
 int Sunflower::attack(float delta_time) {

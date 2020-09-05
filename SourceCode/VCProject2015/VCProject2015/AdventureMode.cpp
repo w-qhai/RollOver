@@ -182,7 +182,7 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 						seed = g_GameMain.create_pea_shooter(fMouseX, fMouseY);
 					}
 					else if (sprite->get_type() == "SunflowerCard") {
-						seed = g_GameMain.create_sunflower(fMouseX, fMouseY);
+						seed = g_GameMain.create_sunflower(fMouseX, fMouseY, fTimeDelta);
 					}
 					else if (sprite->get_type() == "CherryBombCard") {
 						// 种下的时间 用来判断是否自动爆炸
@@ -314,6 +314,12 @@ void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) 
 		// 一大波僵尸
 	}
 
+	PvZSprite* src = g_GameMain.get_sprite_by_name(szSrcName);
+	PvZSprite* tar = g_GameMain.get_sprite_by_name(szTarName);
+
+	std::string srz_name(szSrcName);
+	std::cout << szTarName << " " << szSrcName << std::endl;
+	if (!game_over.IsSpriteVisible() && std::string(szTarName) == "background" && src->get_type() == "Zombie") {
 	// 游戏失败
 	if (!game_over.IsSpriteVisible() && std::string(szTarName) == "background") {
 		SuperSound::sendASoundCommand("close-all");
@@ -324,8 +330,7 @@ void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) 
 		play_again.SetSpriteVisible(true);
 		return;
 	}
-	PvZSprite* src = g_GameMain.get_sprite_by_name(szSrcName);
-	PvZSprite* tar = g_GameMain.get_sprite_by_name(szTarName);
+
 
 	if (src && tar) {
 

@@ -14,6 +14,7 @@
 //
 CGameMain		g_GameMain;
 extern int total_zombie;
+extern int bowling_counter;
 //==============================================================================
 //
 // 大体的程序流程为：GameMainLoop函数为主循环函数，在引擎每帧刷新屏幕图像之后，都会被调用一次。
@@ -43,7 +44,7 @@ CGameMain::CGameMain() :
 	t_pea(new Pea("Pea")),
 	t_range(new Range("AttackRange")),
 	t_sun(new Sun("Sun", 25)),
-	t_sunflower(new Sunflower("Sunflower", nullptr)),
+	t_sunflower(new Sunflower("Sunflower", nullptr, 0)),
 	t_boom(new Boom("Boom")),
 	t_cherry_bomb(new CherryBomb("CherryBomb", nullptr, 0)),
 	t_wall_nut(new WallNut("WallNut")),
@@ -173,16 +174,20 @@ void CGameMain::GameRun(float fDeltaTime)
 			CSprite convery_belt("ConveryBelt");
 			convery_belt.SetSpriteImmovable(true);
 			bowling_init = true;
+			bowling_counter = 0;
 		}
 
 		if (fDeltaTime - timer > 3) {
 			create_ord_zombie(CSystem::RandomRange(0, 4));
-			WallNutCard* wnc = new WallNutCard(CSystem::MakeSpriteName(wall_nut_card->GetName(), vec_card.size()));
-			vec_card.push_back(wnc);
-			name_to_sprite[wnc->GetName()] = wnc;
-			wnc->CloneSprite("WallNutCard");
-			wnc->SetSpritePosition(14.310, -32.600);
-			wnc->SetSpriteLinearVelocityX(-10);
+			if (bowling_counter < 10) {
+				WallNutCard* wnc = new WallNutCard(CSystem::MakeSpriteName(wall_nut_card->GetName(), vec_card.size()));
+				vec_card.push_back(wnc);
+				name_to_sprite[wnc->GetName()] = wnc;
+				wnc->CloneSprite("WallNutCard");
+				wnc->SetSpritePosition(14.310, -32.600);
+				wnc->SetSpriteLinearVelocityX(-10);
+				bowling_counter++;
+			}
 			timer = fDeltaTime;
 		}
 		break;
@@ -310,14 +315,14 @@ Plant* CGameMain::create_pea_shooter(float x, float y) {
 	return pshtr;
 }
 
-Plant* CGameMain::create_sunflower(float x, float y) {
+Plant* CGameMain::create_sunflower(float x, float y, long double fTimeDelta) {
 	Sun* sun = new Sun(CSystem::MakeSpriteName(t_sun->GetName(), vec_sun.size()), 25);
 	vec_sun.push_back(sun);
 	name_to_sprite[sun->GetName()] = sun;
 	sun->set_exist(false);
 	std::cout << sun->is_exist() << std::endl;
 
-	Sunflower* sf = new Sunflower(CSystem::MakeSpriteName(t_sunflower->GetName(), vec_sunflower.size()), sun);
+	Sunflower* sf = new Sunflower(CSystem::MakeSpriteName(t_sunflower->GetName(), vec_sunflower.size()), sun, fTimeDelta);
 	vec_sunflower.push_back(sf);
 	name_to_sprite[sf->GetName()] = sf;
 
@@ -522,7 +527,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 	static int statr_timer = fDeltaTime;
 	static int time_a_game = 30; // 一局时长
 	static int row_min = 0, row_max = 4; // 僵尸生成边界
-
+	static float zombie_interval; // 僵尸生成边界
 	// 当前地图为 冒险模式的地图 且未初始化
 	if (adventure_init == false) {
 		// 从配置文件加载僵尸数量信息
@@ -535,11 +540,11 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		}
 
 		// 从冒险模式config根据关卡，读取关卡信息
-		OrdinaryZombieCount = GetPrivateProfileInt(level, "OrdinaryZombie", 0, "./adventureConfig.ini");
-		BarricadeZombieCount = GetPrivateProfileInt(level, "BarricadeZombie", 0, "./adventureConfig.ini");
-		BucketheadZombieCount = GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
-		NewspaperZombieCount = GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
-		FootballZombieCount = GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
+		OrdinaryZombieCount		= GetPrivateProfileInt(level, "OrdinaryZombie", 0, "./adventureConfig.ini");
+		BarricadeZombieCount	= GetPrivateProfileInt(level, "BarricadeZombie", 0, "./adventureConfig.ini");
+		BucketheadZombieCount	= GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
+		NewspaperZombieCount	= GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
+		FootballZombieCount		= GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
 
 		total_zombie = OrdinaryZombieCount +
 			BarricadeZombieCount +
@@ -560,6 +565,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		sun_num->SetTextValue(sun_count);
 		adventure_init = true;
 		statr_timer = fDeltaTime;
+		zombie_interval = 2;
 	}
 
 	if (adventure_init == true) {
@@ -576,10 +582,14 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		}
 
 		// 随机渲染僵尸
-		if (fDeltaTime - zombie_timer > 2) {
+		if (fDeltaTime - zombie_timer > zombie_interval) {
+			zombie_interval /= 1.5;
+			if (zombie_interval < 2) {
+				zombie_interval = 2;
+			}
 			zombie_timer = fDeltaTime;
 			int zombie_type = CSystem::RandomRange(row_min, row_max);
-			//progress_bar->SetSpritePositionX(progress_bar->GetSpritePositionX() - progress_bar->GetSpriteWidth() / 2);
+			
 			// break在if里，有僵尸产生就break，不然就产生下一种僵尸，保证会有僵尸产生。越下面的僵尸，产生的概率越大
 			switch (zombie_type)
 			{

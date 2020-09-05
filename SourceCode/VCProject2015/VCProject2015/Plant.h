@@ -42,7 +42,7 @@ private:
 class Sunflower : public Plant {
 
 public:
-    Sunflower(const char* plant_name, Sun* sun);
+    Sunflower(const char* plant_name, Sun* sun, long double plant_time);
     int attack(float delta_time) override;
 private:
     Sun* sun;
