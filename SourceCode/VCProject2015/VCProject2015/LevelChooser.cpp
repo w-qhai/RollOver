@@ -45,6 +45,19 @@ void LevelChooser::OnMouseClick(const int iMouseType, const float fMouseX, const
 		g_GameMain.map_id = CGameMain::MapType::AdventureType;
 		g_GameMain.adventure_level_id = 5;
 	}
+
+	// ≤ªÕ¨µÿÕº«–ªª“Ù¿÷
+	SuperSound::sendASoundCommand("close-all");
+	if (g_GameMain.adventure_level_id <= 3) {
+		SuperSound::sendASoundCommand("open-day");
+		SuperSound::sendASoundCommand("play-day");
+	}
+	else {
+		SuperSound::sendASoundCommand("open-night");
+		SuperSound::sendASoundCommand("play-night");
+	}
+
+
 }
 
 void LevelChooser::OnMouseMove(const float fMouseX, const float fMouseY) {}

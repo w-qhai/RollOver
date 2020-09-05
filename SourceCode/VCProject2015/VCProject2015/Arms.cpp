@@ -20,7 +20,7 @@ const std::string Arms::get_type() {
 ///////////////////////////////////////
 
 Pea::Pea(const char* arms_name) :
-    Arms(arms_name, 20)
+    Arms(arms_name, 25)
 {
 
 }

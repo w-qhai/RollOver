@@ -28,7 +28,7 @@ void Menu::OnMouseMove(const float fMouseX, const float fMouseY) {
 
 void Menu::OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY) {
 	// 点击不同按钮 加载不同地图
-	if (!score_board.IsSpriteVisible()) {
+	if (!score_board.IsSpriteVisible() && help_msg.GetSpritePositionY() < -10) {
 		if (adventure.IsPointInSprite(fMouseX, fMouseY)) {
 			SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
 			CSystem::LoadMap("levelChooser.t2d");
@@ -44,19 +44,26 @@ void Menu::OnMouseClick(const int iMouseType, const float fMouseX, const float f
 			g_GameMain.map_id = CGameMain::MapType::BowlingType;
 		}
 
-		if (help_btn.IsPointInSprite(fMouseX, fMouseY)) {
-			help_msg.SpriteMoveTo(1.094, -5.124, 50, true);
-		}
-		if (help_close.IsPointInSprite(fMouseX, fMouseY)) {
-			help_msg.SpriteMoveTo(-0.198, -64.815, 80, true);
-		}
 		if (exit_.IsPointInSprite(fMouseX, fMouseY)) {
+			SuperSound::closeAndPlay("open-click1", "play-click1", "close-click1");
 			exit(0);
 		}
 	}
 
+	// 
+	if (help_btn.IsPointInSprite(fMouseX, fMouseY)) {
+		SuperSound::closeAndPlay("open-click1", "play-click1", "close-click1");
+		help_msg.SpriteMoveTo(1.094, -5.124, 50, true);
+	}
+	if (help_close.IsPointInSprite(fMouseX, fMouseY)) {
+		SuperSound::closeAndPlay("open-click1", "play-click1", "close-click1");
+		help_msg.SpriteMoveTo(-0.198, -64.815, 80, true);
+	}
+
+
 	// 成就面板
 	if (achievement.IsPointInSprite(fMouseX, fMouseY)) {
+		SuperSound::closeAndPlay("open-click1", "play-click1", "close-click1");
 		score_board.SetSpriteVisible(true);
 		score_close.SetSpriteVisible(true);
 		int level1 = GetPrivateProfileInt("level_score", "level_1", 0, "./score.ini");
@@ -71,6 +78,7 @@ void Menu::OnMouseClick(const int iMouseType, const float fMouseX, const float f
 		level_5.SetSpriteVisible(level5 == 1);
 	}
 	if (score_close.IsPointInSprite(fMouseX, fMouseY)) {
+		SuperSound::closeAndPlay("open-click1", "play-click1", "close-click1");
 		score_board.SetSpriteVisible(false);
 		score_close.SetSpriteVisible(false);
 		level_1.SetSpriteVisible(false);

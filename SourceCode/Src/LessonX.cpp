@@ -141,8 +141,8 @@ void CGameMain::GameMainLoop(float	fDeltaTime)
 void CGameMain::GameInit()
 {
 	// 背景音乐
-	SuperSound::sendASoundCommand("open-bday");
-	SuperSound::sendASoundCommand("play-bday");
+	SuperSound::sendASoundCommand("open-menu");
+	SuperSound::sendASoundCommand("play-menu");
 
 	///*welcome.t2d
 	if (map_id == MapType::WelcomeType) {
@@ -166,7 +166,7 @@ void CGameMain::GameRun(float fDeltaTime)
 	switch (map_id) {
 	case MapType::AdventureType:
 		load_adventure_level(adventure_level_id, fDeltaTime);
-		ConfigConvert::addConfig("./sss.ini", "key", "value", "test");
+		//ConfigConvert::addConfig("./sss.ini", "key", "value", "test");
 		break;
 	case MapType::BowlingType:
 		if (bowling_init == false) {
@@ -535,16 +535,13 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		}
 
 		// 从冒险模式config根据关卡，读取关卡信息
-		OrdinaryZombieCount		= GetPrivateProfileInt(level, "OrdinaryZombie", 0, "./adventureConfig.ini");
-		BarricadeZombieCount	= GetPrivateProfileInt(level, "BarricadeZombie", 0, "./adventureConfig.ini");
-		BucketheadZombieCount	= GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
-		NewspaperZombieCount	= GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
-		FootballZombieCount		= GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
+		OrdinaryZombieCount = GetPrivateProfileInt(level, "OrdinaryZombie", 0, "./adventureConfig.ini");
+		BarricadeZombieCount = GetPrivateProfileInt(level, "BarricadeZombie", 0, "./adventureConfig.ini");
+		BucketheadZombieCount = GetPrivateProfileInt(level, "BucketheadZombie", 0, "./adventureConfig.ini");
+		NewspaperZombieCount = GetPrivateProfileInt(level, "NewspaperZombie", 0, "./adventureConfig.ini");
+		FootballZombieCount = GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
 
-
-		/*WritePrivateProfileString("hh", "122", "3331212", "./adventureConfig.ini");*/
-
-		total = OrdinaryZombieCount +
+		total_zombie = OrdinaryZombieCount +
 			BarricadeZombieCount +
 			BucketheadZombieCount +
 			NewspaperZombieCount +
@@ -555,16 +552,17 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 			card->plant_time(fDeltaTime);
 		}
 
-		for (int i = row_min; i <= row_max; i++) {
+		// 创建小车
+		/*for (int i = row_min; i <= row_max; i++) {
 			create_car(-47.5, -5 + -17 + i * 12)->set_exist(true);
-		}
+		}*/
 
 		sun_num->SetTextValue(sun_count);
 		adventure_init = true;
 		statr_timer = fDeltaTime;
 	}
 
-	if (adventure_init == true) {	
+	if (adventure_init == true) {
 		if (fDeltaTime - timer > 4) {
 			output_sun();
 			timer = fDeltaTime;

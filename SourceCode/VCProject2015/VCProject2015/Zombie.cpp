@@ -39,18 +39,18 @@ void Zombie::set_eating_plant(Plant* eating_plant) {
 }
 
 bool Zombie::attacked_by(Arms* arm) {
-    if (this->health <= 0) {
-        return true;
-    }
-    else {
-        return false;
-    }
+	if (this->health <= 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 /////////////////////////
 // ÆÕÍ¨½©Ê¬
 
-OrdinaryZombie::OrdinaryZombie(const char* zombie_name) : Zombie(zombie_name, 200, 3, 50)
+OrdinaryZombie::OrdinaryZombie(const char* zombie_name) : Zombie(zombie_name, 200, 2, 50)
 {
 
 }
@@ -78,16 +78,16 @@ void OrdinaryZombie::eat_plant(Plant* plant, long double delta_time) {
 }
 
 bool OrdinaryZombie::attacked_by(Arms* arms) {
-    SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
-    this->health -= arms->get_power();
-    if (this->health <= 0) {
-        this->die(arms->get_power());
-    }
-    else {
-        this->set_status();
-    }
-    arms->after_hit();
-    return Zombie::attacked_by(arms);
+	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
+	this->health -= arms->get_power();
+	if (this->health <= 0) {
+		this->die(arms->get_power());
+	}
+	else {
+		this->set_status();
+	}
+	arms->after_hit();
+	return Zombie::attacked_by(arms);
 }
 
 /// <summary>
@@ -161,7 +161,7 @@ void OrdinaryZombie::set_status() {
 /////////////////////////
 // Â·ÕÏ½©Ê¬
 
-BarricadeZombie::BarricadeZombie(const char* zombie_name) : Zombie(zombie_name, 640, 3, 50)
+BarricadeZombie::BarricadeZombie(const char* zombie_name) : Zombie(zombie_name, 640, 2, 50)
 {
 
 }
@@ -195,14 +195,14 @@ bool BarricadeZombie::attacked_by(Arms* arms) {
 	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 	std::cout << "Â·ÕÏ½©Ê¬µ±Ç°ÑªÁ¿£º" << this->health << std::endl;
 
-        if (this->health <= 0) {
-                this->die(arms->get_power());
-        }
-        else {
-                this->set_status();
-        }
-        arms->after_hit();
-        return Zombie::attacked_by(arms);
+	if (this->health <= 0) {
+		this->die(arms->get_power());
+	}
+	else {
+		this->set_status();
+	}
+	arms->after_hit();
+	return Zombie::attacked_by(arms);
 }
 
 /// <summary>
@@ -309,7 +309,7 @@ void BarricadeZombie::set_status() {
 /////////////////////////
 // ÌúÍ°½©Ê¬
 
-BucketheadZombie::BucketheadZombie(const char* zombie_name) : Zombie(zombie_name, 1370, 3, 50)
+BucketheadZombie::BucketheadZombie(const char* zombie_name) : Zombie(zombie_name, 1370, 2, 50)
 {
 
 }
@@ -343,14 +343,14 @@ bool BucketheadZombie::attacked_by(Arms* arms) {
 	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 	std::cout << "ÌúÍ°½©Ê¬µ±Ç°ÑªÁ¿£º" << this->health << std::endl;
 
-        if (this->health <= 0) {
-                this->die(arms->get_power());
-        }
-        else {
-                this->set_status();
-        }
-        arms->after_hit();
-        return Zombie::attacked_by(arms);
+	if (this->health <= 0) {
+		this->die(arms->get_power());
+	}
+	else {
+		this->set_status();
+	}
+	arms->after_hit();
+	return Zombie::attacked_by(arms);
 }
 
 /// <summary>
@@ -457,7 +457,7 @@ void BucketheadZombie::set_status() {
 /////////////////////////
 // ¶ş´óÒ¯
 
-NewspaperZombie::NewspaperZombie(const char* zombie_name) : Zombie(zombie_name, 450, 3, 50)
+NewspaperZombie::NewspaperZombie(const char* zombie_name) : Zombie(zombie_name, 450, 2, 50)
 {
 	this->hasnewspaper = true;
 }
@@ -491,14 +491,14 @@ bool NewspaperZombie::attacked_by(Arms* arms) {
 	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 	std::cout << "±¨Ö½½©Ê¬µ±Ç°ÑªÁ¿£º" << this->health << std::endl;
 
-        if (this->health <= 0) {
-                this->die(arms->get_power());
-        }
-        else {
-                this->set_status();
-        }
-        arms->after_hit();
-        return Zombie::attacked_by(arms);
+	if (this->health <= 0) {
+		this->die(arms->get_power());
+	}
+	else {
+		this->set_status();
+	}
+	arms->after_hit();
+	return Zombie::attacked_by(arms);
 }
 
 /// <summary>
@@ -627,7 +627,7 @@ void NewspaperZombie::set_status() {
 /////////////////////////
 // éÏé­Çò½©Ê¬
 
-FootballZombie::FootballZombie(const char* zombie_name) : Zombie(zombie_name, 1600, 4.5, 50)
+FootballZombie::FootballZombie(const char* zombie_name) : Zombie(zombie_name, 1400, 3.5, 50)
 {
 
 }
@@ -661,14 +661,14 @@ bool FootballZombie::attacked_by(Arms* arms) {
 	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 	std::cout << "éÏé­Çò½©Ê¬µ±Ç°ÑªÁ¿£º" << this->health << std::endl;
 
-        if (this->health <= 0) {
-                this->die(arms->get_power());
-        }
-        else {
-                this->set_status();
-        }
-        arms->after_hit();
-        return Zombie::attacked_by(arms);
+	if (this->health <= 0) {
+		this->die(arms->get_power());
+	}
+	else {
+		this->set_status();
+	}
+	arms->after_hit();
+	return Zombie::attacked_by(arms);
 }
 
 /// <summary>

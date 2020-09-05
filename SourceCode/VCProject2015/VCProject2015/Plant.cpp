@@ -75,7 +75,7 @@ void Plant::change_zombie_animation() {
 /* --------------------------------------------------- */
 // 豌豆射手
 PeaShooter::PeaShooter(const char* plant_name, Pea* pea) :
-	Plant(plant_name, 300, 2, 100),
+	Plant(plant_name, 500, 2, 100),
 	pea(pea)
 {
 
@@ -163,7 +163,7 @@ void CherryBomb::set_exist(bool exist) {
 /* --------------------------------------------------- */
 // 	土豆地雷 PotatoMine
 PotatoMine::PotatoMine(const char* plant_name, Boom* boom, long double plant_time) :
-	Plant(plant_name, 300, 2, 25),
+	Plant(plant_name, 500, 2, 25),
 	boom(boom),
 	plant_time(plant_time),
 	preparation_time(2)
@@ -205,7 +205,7 @@ bool PotatoMine::preparation(float delta_time) {
 /* --------------------------------------------------- */
 // 	坚果 WallNut
 WallNut::WallNut(const char* plant_name) :
-	Plant(plant_name, 100000, 2, 50)
+	Plant(plant_name, 4000, 2, 50)
 {
 
 }
@@ -287,7 +287,7 @@ void Jalapeno::set_exist(bool exist) {
 /* --------------------------------------------------- */
 // 三线射手
 ThreePeater::ThreePeater(const char* plant_name, const std::vector<Pea*>& pea) :
-	Plant(plant_name, 300, 2, 100),
+	Plant(plant_name, 500, 2, 325),
 	peas(pea)
 {
 

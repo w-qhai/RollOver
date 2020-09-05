@@ -1,9 +1,9 @@
 #include "AdventureMode.h"
 
 bool		Adventure::left_pressed;	// 鼠标左键是否按下;
-Card*		Adventure::card;			// 植物卡d;
-Plant*		Adventure::seed;			// 植物种子
-Shovel*		Adventure::shovel;			// 选中了小铲子
+Card* Adventure::card;			// 植物卡d;
+Plant* Adventure::seed;			// 植物种子
+Shovel* Adventure::shovel;			// 选中了小铲子
 CSprite		Adventure::background("background");
 CSprite     Adventure::game_over("GameOver");
 CSprite     Adventure::game_close("GameClose");
@@ -42,6 +42,8 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 			// 继续游戏
 			if (continue_.IsPointInSprite(fMouseX, fMouseY)) {
 				SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
+				SuperSound::sendASoundCommand("open-day");
+				SuperSound::sendASoundCommand("play-day");
 				game_menu.SetSpriteVisible(false);
 				continue_.SetSpriteVisible(false);
 				rebegin.SetSpriteVisible(false);
@@ -51,6 +53,8 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 			// 重新开始
 			if (rebegin.IsPointInSprite(fMouseX, fMouseY)) {
 				SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
+				SuperSound::sendASoundCommand("open-day");
+				SuperSound::sendASoundCommand("play-day");
 				std::string s = "adventure_level";
 				g_GameMain.reload();
 				CSystem::LoadMap(std::string(s + std::to_string(g_GameMain.adventure_level_id) + ".t2d").c_str());
@@ -59,6 +63,8 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 			// 主菜单
 			if (main_menu.IsPointInSprite(fMouseX, fMouseY)) {
 				SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
+				SuperSound::sendASoundCommand("open-menu");
+				SuperSound::sendASoundCommand("play-menu");
 				CSystem::LoadMap("menu.t2d");
 				g_GameMain.reload();
 				g_GameMain.map_id = CGameMain::MapType::MenuType;
@@ -67,12 +73,13 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 
 		if (game_menu_btn.IsPointInSprite(fMouseX, fMouseY)) {
 			SuperSound::closeAndPlay("open-click1", "play-click1", "close-click1");
+			SuperSound::sendASoundCommand("close-all");
 			if (game_menu.IsSpriteVisible()) {
 				game_menu.SetSpriteVisible(false);
 				continue_.SetSpriteVisible(false);
 				rebegin.SetSpriteVisible(false);
 				main_menu.SetSpriteVisible(false);
-			} 
+			}
 			else {
 				game_menu.SetSpriteVisible(true);
 				continue_.SetSpriteVisible(true);
@@ -86,11 +93,16 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 		if (game_over.IsSpriteVisible()) {
 			if (game_close.IsPointInSprite(fMouseX, fMouseY)) {
 				CSystem::LoadMap("menu.t2d");
+				SuperSound::sendASoundCommand("open-menu");
+				SuperSound::sendASoundCommand("play-menu");
 				g_GameMain.reload();
 				g_GameMain.map_id = CGameMain::MapType::MenuType;
 			}
 
 			if (play_again.IsPointInSprite(fMouseX, fMouseY)) {
+				SuperSound::sendASoundCommand("open-day");
+				SuperSound::sendASoundCommand("play-day");
+
 				game_over.SetSpriteVisible(false);
 				game_close.SetSpriteVisible(false);
 				play_again.SetSpriteVisible(false);
@@ -102,12 +114,17 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 
 		if (game_win.IsSpriteVisible()) {
 			if (game_close2.IsPointInSprite(fMouseX, fMouseY)) {
+				SuperSound::sendASoundCommand("open-day");
+				SuperSound::sendASoundCommand("play-day");
 				CSystem::LoadMap("menu.t2d");
 				g_GameMain.reload();
 				g_GameMain.map_id = CGameMain::MapType::MenuType;
 			}
 
 			if (next.IsPointInSprite(fMouseX, fMouseY)) {
+				SuperSound::sendASoundCommand("open-day");
+				SuperSound::sendASoundCommand("play-day");
+
 				game_over.SetSpriteVisible(false);
 				game_close.SetSpriteVisible(false);
 				play_again.SetSpriteVisible(false);
@@ -274,13 +291,34 @@ void Adventure::OnKeyUp(const int iKey) {
 
 }
 
+static void is_victory(int total_zombie) {
+	if (total_zombie == 0) {
+		SuperSound::sendASoundCommand("close-all");
+		SuperSound::closeAndPlay("open-victory", "play-victory", "close-victory");
+		// 游戏胜利 
+		if (!Adventure::game_win.IsSpriteVisible()) {
+			Adventure::game_win.SetSpriteVisible(true);
+			Adventure::game_close2.SetSpriteVisible(true);
+			Adventure::next.SetSpriteVisible(true);
+
+			WritePrivateProfileString("level_score", std::string("level_" + std::to_string(g_GameMain.adventure_level_id)).c_str(), "1", "./score.ini");
+
+			return;
+		}
+	}
+}
+
 void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) {
 
 	if (std::string(szSrcName) == "ZombieHead" && std::string(szTarName) == "Flag") {
 		// 一大波僵尸
 	}
 
+	// 游戏失败
 	if (!game_over.IsSpriteVisible() && std::string(szTarName) == "background") {
+		SuperSound::sendASoundCommand("close-all");
+		SuperSound::closeAndPlay("open-defeat", "play-defeat", "close-defeat");
+		WritePrivateProfileString("level_score", std::string("level_" + std::to_string(g_GameMain.adventure_level_id)).c_str(), "0", "./score.ini");
 		game_over.SetSpriteVisible(true);
 		game_close.SetSpriteVisible(true);
 		play_again.SetSpriteVisible(true);
@@ -300,15 +338,16 @@ void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) 
 			z->die(0);
 			total_zombie--;
 			std::cout << total_zombie << std::endl;
-			if (total_zombie == 0) {
-				// 游戏胜利 
-				if (!game_win.IsSpriteVisible()) {
-					game_win.SetSpriteVisible(true);
-					game_close2.SetSpriteVisible(true);
-					next.SetSpriteVisible(true);
-					return;
-				}
-			}
+			//if (total_zombie == 0) {
+			//	// 游戏胜利 
+			//	if (!game_win.IsSpriteVisible()) {
+			//		game_win.SetSpriteVisible(true);
+			//		game_close2.SetSpriteVisible(true);
+			//		next.SetSpriteVisible(true);
+			//		return;
+			//	}
+			//}
+			is_victory(total_zombie);
 		}
 
 		// 僵尸进入攻击范围
@@ -334,15 +373,7 @@ void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) 
 			if (z->attacked_by(a)) {
 				total_zombie--;
 				std::cout << total_zombie << std::endl;
-				if (total_zombie == 0) {
-					// 游戏胜利 
-					if (!game_win.IsSpriteVisible()) {
-						game_win.SetSpriteVisible(true);
-						game_close2.SetSpriteVisible(true);
-						next.SetSpriteVisible(true);
-						return;
-					}
-				}
+				is_victory(total_zombie);
 			}
 		}
 	}
