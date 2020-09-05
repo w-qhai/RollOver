@@ -720,7 +720,7 @@
       useSourceRect = "0";
       sourceRect = "2.37257e-039 0 2.36012e-039 6.22921e-039";
       canSaveDynamicFields = "1";
-      Position = "10.240 0.000";
+      Position = "11.240 0.000";
       size = "175.000 75.000";
       Layer = "21";
       WorldLimitMin = "-50.000 -37.500";
@@ -765,5 +765,65 @@
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "53";
+   };
+   new t2dStaticSprite() {
+      imageMap = "FlagMeterLevImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "35.375 36.313";
+      size = "10.750 1.375";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "55";
+   };
+   new t2dStaticSprite() {
+      imageMap = "FlagMeterEmpImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "34.813 35.171";
+      size = "19.625 2.625";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "54";
+   };
+   new t2dStaticSprite(ProgressBar) {
+      imageMap = "FlagMeterFullImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "43.000 35.171";
+      size = "2.000 1.125";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "56";
+   };
+   new t2dStaticSprite(Flag) {
+      imageMap = "FlagImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "26.250 34.000";
+      size = "2.500 2.250";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "58";
+   };
+   new t2dStaticSprite(ZombieHead) {
+      imageMap = "ZombieHeadImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "41.375 35.171";
+      size = "2.750 2.875";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "57";
    };
 };

@@ -298,6 +298,17 @@ void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) 
 			Car* c = reinterpret_cast<Car*>(src);
 			c->SetSpriteLinearVelocityX(25.0);
 			z->die(0);
+			total_zombie--;
+			std::cout << total_zombie << std::endl;
+			if (total_zombie == 0) {
+				// ÓÎÏ·Ê¤Àû 
+				if (!game_win.IsSpriteVisible()) {
+					game_win.SetSpriteVisible(true);
+					game_close2.SetSpriteVisible(true);
+					next.SetSpriteVisible(true);
+					return;
+				}
+			}
 		}
 
 		// ½©Ê¬½øÈë¹¥»÷·¶Î§
