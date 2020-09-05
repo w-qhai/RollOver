@@ -280,14 +280,18 @@ void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) 
 		// Ò»´ó²¨½©Ê¬
 	}
 
-	if (!game_over.IsSpriteVisible() && std::string(szTarName) == "background") {
+	PvZSprite* src = g_GameMain.get_sprite_by_name(szSrcName);
+	PvZSprite* tar = g_GameMain.get_sprite_by_name(szTarName);
+
+	std::string srz_name(szSrcName);
+	std::cout << szTarName << " " << szSrcName << std::endl;
+	if (!game_over.IsSpriteVisible() && std::string(szTarName) == "background" && src->get_type() == "Zombie") {
 		game_over.SetSpriteVisible(true);
 		game_close.SetSpriteVisible(true);
 		play_again.SetSpriteVisible(true);
 		return;
 	}
-	PvZSprite* src = g_GameMain.get_sprite_by_name(szSrcName);
-	PvZSprite* tar = g_GameMain.get_sprite_by_name(szTarName);
+
 
 	if (src && tar) {
 

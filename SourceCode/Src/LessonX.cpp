@@ -558,13 +558,13 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		}
 
 		for (int i = row_min; i <= row_max; i++) {
-			create_car(-47.5, -5 + -17 + i * 12)->set_exist(true);
+			//create_car(-47.5, -5 + -17 + i * 12)->set_exist(true);
 		}
 
 		sun_num->SetTextValue(sun_count);
 		adventure_init = true;
 		statr_timer = fDeltaTime;
-		zombie_interval = 30;
+		zombie_interval = 2;
 	}
 
 	if (adventure_init == true) {	
