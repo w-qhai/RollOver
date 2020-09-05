@@ -14,6 +14,7 @@
 //
 CGameMain		g_GameMain;
 extern int total_zombie;
+extern int bowling_counter;
 //==============================================================================
 //
 // 大体的程序流程为：GameMainLoop函数为主循环函数，在引擎每帧刷新屏幕图像之后，都会被调用一次。
@@ -173,16 +174,20 @@ void CGameMain::GameRun(float fDeltaTime)
 			CSprite convery_belt("ConveryBelt");
 			convery_belt.SetSpriteImmovable(true);
 			bowling_init = true;
+			bowling_counter = 0;
 		}
 
 		if (fDeltaTime - timer > 3) {
 			create_ord_zombie(CSystem::RandomRange(0, 4));
-			WallNutCard* wnc = new WallNutCard(CSystem::MakeSpriteName(wall_nut_card->GetName(), vec_card.size()));
-			vec_card.push_back(wnc);
-			name_to_sprite[wnc->GetName()] = wnc;
-			wnc->CloneSprite("WallNutCard");
-			wnc->SetSpritePosition(14.310, -32.600);
-			wnc->SetSpriteLinearVelocityX(-10);
+			if (bowling_counter < 10) {
+				WallNutCard* wnc = new WallNutCard(CSystem::MakeSpriteName(wall_nut_card->GetName(), vec_card.size()));
+				vec_card.push_back(wnc);
+				name_to_sprite[wnc->GetName()] = wnc;
+				wnc->CloneSprite("WallNutCard");
+				wnc->SetSpritePosition(14.310, -32.600);
+				wnc->SetSpriteLinearVelocityX(-10);
+				bowling_counter++;
+			}
 			timer = fDeltaTime;
 		}
 		break;

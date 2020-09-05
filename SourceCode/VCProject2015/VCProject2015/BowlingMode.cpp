@@ -1,8 +1,10 @@
 #include "BowlingMode.h"
 
-bool		Bowling::left_pressed;	// 鼠标左键是否按下;
-Card*       Bowling::card;			// 植物卡d;
-Plant*      Bowling::seed;			// 植物种子
+bool				Bowling::left_pressed;	// 鼠标左键是否按下;
+Card*				Bowling::card;			// 植物卡d;
+Plant*				Bowling::seed;			// 植物种子
+CSprite				Bowling::top_side("TopSide");
+CSprite				Bowling::bottom_side("BottomSide");
 WallNutBowling		Bowling::bowling("bowling");
 void Bowling::OnMouseMove(const float fMouseX, const float fMouseY) {
 	if (left_pressed && seed) {
@@ -52,13 +54,6 @@ void Bowling::OnMouseUp(const int iMouseType, const float fMouseX, const float f
 			seed->SetSpriteColorAlpha(255);
 			bool planting = true;
 
-			for (const auto& sprite : sprites) {
-				if (sprite->get_type() == "Zombie") {
-					planting = false;
-					break;
-				}
-			}
-
 			// 地形许可 & 阳光充足
 			if (planting && card && x < 2) {
 				seed->SetSpritePosition(x_slot[x], y_slot[y] - seed->GetSpriteHeight() / 2);
@@ -69,6 +64,7 @@ void Bowling::OnMouseUp(const int iMouseType, const float fMouseX, const float f
 				g_GameMain.move_bowling_card();
 				card->DeleteSprite();
 				card->set_exist(false);
+				bowling_counter--;
 			}
 			else {
 				seed->DeleteSprite();
@@ -88,13 +84,27 @@ void Bowling::OnKeyUp(const int iKey) {
 }
 
 void Bowling::OnSpriteColSprite(const char* szSrcName, const char* szTarName) {
+
+	std::cout << szSrcName << " " << szTarName << std::endl;
+
 	PvZSprite* src = g_GameMain.get_sprite_by_name(szSrcName);
 	PvZSprite* tar = g_GameMain.get_sprite_by_name(szTarName);
 	if (std::string(szTarName) == "ConveryBelt") {
 		src->SetSpriteImmovable(true);
 	}
 
+	if ((std::string(szTarName) == "TopSide" || std::string(szTarName) == "BottomSide") && src->get_type() == "Plant") {
+		if (src->GetSpriteLinearVelocityY()) {
+			src->SetSpriteLinearVelocityY(-src->GetSpriteLinearVelocityY());
+		}
+		// 坚果直走，碰撞后给个Y轴速度
+		else {
+			src->SetSpriteLinearVelocityY((int)src % 2 ? 20 : -20);
+		}
+	}
+
 	if (src && tar) {
+
 		if (src->get_type() == "WallNutCard" && tar->get_type() == "WallNutCard") {
 			src->SetSpriteImmovable(tar->GetSpriteImmovable());
 		}

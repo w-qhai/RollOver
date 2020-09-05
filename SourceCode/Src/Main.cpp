@@ -17,6 +17,7 @@
 
 long double 	fTimeDelta;
 int total_zombie;
+int bowling_counter;
 FILE* stream;
 void init();
 int PASCAL WinMain(HINSTANCE hInstance,
