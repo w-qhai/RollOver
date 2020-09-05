@@ -2,6 +2,7 @@
 #include "LessonX.h"
 
 extern long double fTimeDelta;
+extern int         total_zombie;
 
 namespace Adventure {
     extern bool			left_pressed;   // 鼠标左键是否按下
@@ -9,9 +10,14 @@ namespace Adventure {
     extern Plant*       seed;		    // 植物种子
     extern Shovel*      shovel;         // 选中了小铲子
     extern CSprite      background;
-    extern CSprite      game_over;
-    extern CSprite      game_close;
-    extern CSprite      play_again;
+
+    extern CSprite      game_over;      // 游戏失败图片
+    extern CSprite      game_close;     // 返回主菜单按钮
+    extern CSprite      play_again;     // 重新开始按钮
+
+    extern CSprite      game_win;        // 游戏胜利图片
+    extern CSprite      game_close2;    // 返回主菜单按钮
+    extern CSprite      next;           // 下一关按钮 
 
     // 游戏中的菜单
     extern CSprite      game_menu_btn;

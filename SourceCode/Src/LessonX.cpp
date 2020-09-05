@@ -13,6 +13,7 @@
 //
 //
 CGameMain		g_GameMain;
+extern int total_zombie;
 //==============================================================================
 //
 // 大体的程序流程为：GameMainLoop函数为主循环函数，在引擎每帧刷新屏幕图像之后，都会被调用一次。
@@ -518,7 +519,6 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 	static int BucketheadZombieCount = 0;
 	static int NewspaperZombieCount = 0;
 	static int FootballZombieCount = 0;
-	static int total = 0;
 	static int statr_timer = fDeltaTime;
 	static int time_a_game = 30; // 一局时长
 	static int row_min = 0, row_max = 4; // 僵尸生成边界
@@ -558,11 +558,6 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		for (int i = row_min; i <= row_max; i++) {
 			create_car(-47.5, -5 + -17 + i * 12)->set_exist(true);
 		}
-		//create_car(-47.5, -5 + -17)->set_exist(true);
-		//create_car(-47.5, -5 + -5)->set_exist(true);
-		//create_car(-47.5, -5 + 9)->set_exist(true);
-		//create_car(-47.5, -5 + 20)->set_exist(true);
-		//create_car(-47.5, -5 + 32)->set_exist(true);
 
 		sun_num->SetTextValue(sun_count);
 		adventure_init = true;
@@ -576,8 +571,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		}
 
 		if ((fDeltaTime - statr_timer) / time_a_game <= 1) {
-			std::cout << (fDeltaTime - statr_timer) / time_a_game << std::endl;
-			// 32 是进度条总长度 根据游戏时间 设置进度条长度
+			// 根据游戏时间 设置进度条长度
 			progress_bar->SetSpriteWidth(17 * (fDeltaTime - statr_timer) / time_a_game);
 			progress_bar->SetSpritePosition(44.000 - progress_bar->GetSpriteWidth() / 2, 35.171);
 			progress_head->SetSpritePosition(44.000 - progress_bar->GetSpriteWidth(), 35.171);

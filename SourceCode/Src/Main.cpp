@@ -16,6 +16,7 @@
 #undef max
 
 long double 	fTimeDelta;
+int total_zombie;
 FILE* stream;
 void init();
 int PASCAL WinMain(HINSTANCE hInstance,
@@ -24,9 +25,11 @@ int PASCAL WinMain(HINSTANCE hInstance,
 	int       nCmdShow)
 {
 	init();
+
 	if (!CSystem::InitGameEngine(hInstance, lpCmdLine)) {
 		return 0;
 	}
+	CSystem::LoadMap("welcome.t2d");
 	CSystem::SetWindowTitle("PvZ");
 	CSystem::LoadMap("welcome.t2d");
 	while (CSystem::EngineMainLoop()) {
