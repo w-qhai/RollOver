@@ -104,7 +104,7 @@ public:
 		AdventureType,
 		BowlingType,
 		GameOverType
-	} map_id;
+	} map_id = MapType::WelcomeType;
 
 	int adventure_level_id; // Ã°ÏÕÄ£Ê½ ¹Ø¿¨id
 

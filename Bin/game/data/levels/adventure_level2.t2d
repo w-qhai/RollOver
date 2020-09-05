@@ -579,7 +579,7 @@
       canSaveDynamicFields = "1";
       Position = "15.000 -54.750";
       size = "30.000 29.500";
-      Layer = "4";
+      Layer = "1";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
       CollisionActiveSend = "1";

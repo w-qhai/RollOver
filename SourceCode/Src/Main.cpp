@@ -25,10 +25,13 @@ int PASCAL WinMain(HINSTANCE hInstance,
 	int       nCmdShow)
 {
 	init();
+
 	if (!CSystem::InitGameEngine(hInstance, lpCmdLine)) {
 		return 0;
 	}
+	CSystem::LoadMap("welcome.t2d");
 	CSystem::SetWindowTitle("PvZ");
+
 	while (CSystem::EngineMainLoop()) {
 		g_GameMain.GameMainLoop(fTimeDelta);
 	};
