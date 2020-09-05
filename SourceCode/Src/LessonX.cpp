@@ -542,6 +542,8 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		FootballZombieCount		= GetPrivateProfileInt(level, "FootballZombie", 0, "./adventureConfig.ini");
 
 
+		/*WritePrivateProfileString("hh", "122", "3331212", "./adventureConfig.ini");*/
+
 		total = OrdinaryZombieCount +
 			BarricadeZombieCount +
 			BucketheadZombieCount +

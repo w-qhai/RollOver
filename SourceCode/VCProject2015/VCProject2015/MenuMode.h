@@ -9,6 +9,18 @@ namespace Menu {
     extern CStaticSprite help_btn;		// 帮助按钮
     extern CStaticSprite help_msg;		// 帮助消息面板
     extern CStaticSprite help_close;	// 帮助关闭按钮
+    extern CStaticSprite exit_;	        // 退出游戏
+
+    extern CStaticSprite achievement;   // 成就按钮
+    extern CStaticSprite score_board;   // 成就面板
+    extern CStaticSprite score_close;   // 成就面板关闭
+
+    extern CStaticSprite level_1;
+    extern CStaticSprite level_2;
+    extern CStaticSprite level_3;
+    extern CStaticSprite level_4;
+    extern CStaticSprite level_5;
+
 
     void		OnMouseMove(const float fMouseX, const float fMouseY);
     void		OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY);
