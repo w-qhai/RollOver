@@ -72,6 +72,7 @@ void CSystem::OnMouseClick(const int iMouseType, const float fMouseX, const floa
 	{
 	case CGameMain::MapType::WelcomeType:
 		if (load_bar.IsPointInSprite(fMouseX, fMouseY)) {
+			SuperSound::closeAndPlay("open-click1", "play-click1", "close-click1");
 			CSystem::LoadMap("menu.t2d");
 			g_GameMain.map_id = CGameMain::MapType::MenuType;
 		}

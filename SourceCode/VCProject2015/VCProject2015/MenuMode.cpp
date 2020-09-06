@@ -20,10 +20,42 @@ CStaticSprite Menu::level_5("level_5");
 
 void Menu::OnMouseMove(const float fMouseX, const float fMouseY) {
 	// 根据鼠标位置 显示不同图片
+	static CStaticSprite* last = nullptr;
+	CStaticSprite* now = nullptr;
+
+	if (adventure.IsPointInSprite(fMouseX, fMouseY)) {
+		now = &adventure;
+	}
+
+	if (mini.IsPointInSprite(fMouseX, fMouseY)) {
+		now = &mini;
+	}
+
+	if (edu.IsPointInSprite(fMouseX, fMouseY)) {
+		now = &edu;
+	}
+
+	if (achievement.IsPointInSprite(fMouseX, fMouseY)) {
+		now = &achievement;
+	}
+
+	if (adventure.IsPointInSprite(fMouseX, fMouseY) ||
+		mini.IsPointInSprite(fMouseX, fMouseY) ||
+		edu.IsPointInSprite(fMouseX, fMouseY) ||
+		achievement.IsPointInSprite(fMouseX, fMouseY)) {
+		if (last != now) {
+			SuperSound::closeAndPlay("open-hover", "play-hover", "close-hover");
+		}
+		
+	}
+
+
 	adventure.SetStaticSpriteImage("AdventureModeImageMap", adventure.IsPointInSprite(fMouseX, fMouseY));
 	mini.SetStaticSpriteImage("MiniModeImageMap", mini.IsPointInSprite(fMouseX, fMouseY));
 	edu.SetStaticSpriteImage("EduModeImageMap", edu.IsPointInSprite(fMouseX, fMouseY));
 	achievement.SetStaticSpriteImage("AchievementImageMap1", achievement.IsPointInSprite(fMouseX, fMouseY));
+
+	last = now;
 }
 
 void Menu::OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY) {
@@ -40,6 +72,9 @@ void Menu::OnMouseClick(const int iMouseType, const float fMouseX, const float f
 		}
 		else if (edu.IsPointInSprite(fMouseX, fMouseY)) {
 			SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
+			SuperSound::sendASoundCommand("close-all");
+			SuperSound::sendASoundCommand("open-bowling");
+			SuperSound::sendASoundCommand("play-bowling");
 			CSystem::LoadMap("bowling.t2d");
 			g_GameMain.map_id = CGameMain::MapType::BowlingType;
 		}
