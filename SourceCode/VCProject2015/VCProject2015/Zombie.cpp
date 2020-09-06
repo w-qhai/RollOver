@@ -487,9 +487,12 @@ void NewspaperZombie::eat_plant(Plant* plant, long double delta_time) {
 
 
 bool NewspaperZombie::attacked_by(Arms* arms) {
+	int last_health = this->health;
 	this->health -= arms->get_power();
+	if (last_health >= 350 && this->health < 350) {
+		SuperSound::closeAndPlay("open-news-paper-broken", "play-news-paper-broken", "close-news-paper-broken");
+	}
 	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
-	std::cout << "报纸僵尸当前血量：" << this->health << std::endl;
 
 	if (this->health <= 0) {
 		this->die(arms->get_power());

@@ -11,8 +11,17 @@ CStaticSprite LevelChooser::level_3("level3");
 CStaticSprite LevelChooser::level_4("level4");
 CStaticSprite LevelChooser::level_5("level5");
 
+CStaticSprite LevelChooser::back2menu("back2menu");
+
+
 void LevelChooser::OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY) {
-	
+
+	if (back2menu.IsPointInSprite(fMouseX, fMouseY)) {
+		SuperSound::closeAndPlay("open-click1", "play-click1", "close-click1");
+		CSystem::LoadMap("menu.t2d");
+		g_GameMain.map_id = CGameMain::MapType::MenuType;
+		return;
+	}
 
 	// 点击不同按钮 加载不同地图
 	if (level_1.IsPointInSprite(fMouseX, fMouseY)) {

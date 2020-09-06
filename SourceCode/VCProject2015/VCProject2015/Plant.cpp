@@ -166,7 +166,7 @@ PotatoMine::PotatoMine(const char* plant_name, Boom* boom, long double plant_tim
 	Plant(plant_name, 500, 2, 25),
 	boom(boom),
 	plant_time(plant_time),
-	preparation_time(2)
+	preparation_time(8)
 {
 
 }
@@ -193,6 +193,7 @@ bool PotatoMine::preparation(float delta_time) {
 	// 时间到了 出头
 	if (delta_time - plant_time >= preparation_time) {
 		if (std::string(this->GetAnimateSpriteAnimationName()) != "PotatoMine2Animation") {
+			SuperSound::closeAndPlay("open-potato", "play-potato", "close-potato");
 			this->AnimateSpritePlayAnimation("PotatoMine2Animation", false);
 			this->SetSpriteWidth(9.250);
 			this->SetSpriteHeight(6.875);

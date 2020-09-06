@@ -104,4 +104,16 @@
       FillMode = "0";
          mountID = "7";
    };
+   new t2dStaticSprite(back2menu) {
+      imageMap = "backImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "-40.169 32.438";
+      size = "12.500 4.875";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "8";
+   };
 };
