@@ -540,14 +540,16 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		}
 
 		// 创建小车
-		/*for (int i = row_min; i <= row_max; i++) {
+		for (int i = row_min; i <= row_max; i++) {
 			create_car(-47.5, -5 + -17 + i * 12)->set_exist(true);
-		}*/
+		}
 
 		sun_num->SetTextValue(sun_count);
 		adventure_init = true;
 		statr_timer = fDeltaTime;
 		zombie_interval = 2;
+
+		SuperSound::closeAndPlay("open-zombie-howl", "play-zombie-howl", "close-zombie-howl");
 	}
 
 	if (adventure_init == true) {

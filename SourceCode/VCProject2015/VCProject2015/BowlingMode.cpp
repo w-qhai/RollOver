@@ -39,19 +39,20 @@ void Bowling::OnMouseClick(const int iMouseType, const float fMouseX, const floa
 			// 继续游戏
 			if (continue_.IsPointInSprite(fMouseX, fMouseY)) {
 				SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
-				SuperSound::sendASoundCommand("open-day");
-				SuperSound::sendASoundCommand("play-day");
-				game_menu.SetSpriteVisible(false);
+				SuperSound::sendASoundCommand("open-bowling");
+				SuperSound::sendASoundCommand("play-bowling");
 				continue_.SetSpriteVisible(false);
+				game_menu.SetSpriteVisible(false);
 				rebegin.SetSpriteVisible(false);
 				main_menu.SetSpriteVisible(false);
+
 			}
 
 			// 重新开始
 			if (rebegin.IsPointInSprite(fMouseX, fMouseY)) {
 				SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
-				SuperSound::sendASoundCommand("open-day");
-				SuperSound::sendASoundCommand("play-day");
+				SuperSound::sendASoundCommand("open-bowling");
+				SuperSound::sendASoundCommand("play-bowling");
 				std::string s = "bowling";
 				g_GameMain.reload();
 				CSystem::LoadMap(std::string(s + ".t2d").c_str());
@@ -143,7 +144,7 @@ void Bowling::OnMouseClick(const int iMouseType, const float fMouseX, const floa
 
 
 		// 游戏中
-		std::vector<PvZSprite*> sprites = g_GameMain.get_sprites_by_position(fMouseX, fMouseY);
+		std::vector<PvZSprite*>&& sprites = g_GameMain.get_sprites_by_position(fMouseX, fMouseY);
 		for (const auto& sprite : sprites) {
 			std::string type = sprite->get_type();
 			if (type.substr(type.size() - 4, 4) == "Card") {
@@ -229,6 +230,7 @@ static void is_victory(int total_zombie) {
 void Bowling::OnSpriteColSprite(const char* szSrcName, const char* szTarName) {
 	if (std::string(szSrcName) == "ZombieHead" && std::string(szTarName) == "Flag") {
 		// 一大波僵尸
+		SuperSound::closeAndPlay("open-zombie-howl", "play-zombie-howl", "close-zombie-howl");
 	}
 
 	std::cout << szSrcName << " " << szTarName << std::endl;
@@ -269,6 +271,8 @@ void Bowling::OnSpriteColSprite(const char* szSrcName, const char* szTarName) {
 
 		// 僵尸碰坚果或者坚果碰僵尸
 		if (src->get_type() == "Plant" && tar->get_type() == "Zombie") {
+			SuperSound::closeAndPlay("open-bow-hit", "play-bow-hit", "close-bow-hit");
+
 			Plant* p = reinterpret_cast<Plant*>(src);
 			Zombie* z = reinterpret_cast<Zombie*>(tar);
 		
@@ -289,6 +293,7 @@ void Bowling::OnSpriteColSprite(const char* szSrcName, const char* szTarName) {
 		}
 
 		if (src->get_type() == "Zombie" && tar->get_type() == "Plant") {
+			SuperSound::closeAndPlay("open-bow-hit", "play-bow-hit", "close-bow-hit");
 			Plant* p = reinterpret_cast<Plant*>(tar);
 			Zombie* z = reinterpret_cast<Zombie*>(src);
 

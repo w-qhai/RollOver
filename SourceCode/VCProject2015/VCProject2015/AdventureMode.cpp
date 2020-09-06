@@ -150,7 +150,7 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 			// 选中的位置有太阳
 			if (sprite->get_type() == "Sun") {
 				Sun* sun = reinterpret_cast<Sun*>(sprite);
-				SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
+				SuperSound::closeAndPlay("open-sun-hit", "play-sun-hit", "close-sun-hit");
 				sun->SpriteMoveTo(-43.275, -33.275, 100, true);
 				sun->SetSpriteLifeTime(1);
 				g_GameMain.add_sun(sun->get_num());
@@ -311,12 +311,13 @@ static void is_victory(int total_zombie) {
 void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) {
 	if (std::string(szSrcName) == "ZombieHead" && std::string(szTarName) == "Flag") {
 		// 一大波僵尸
+		SuperSound::closeAndPlay("open-zombie-howl", "play-zombie-howl", "close-zombie-howl");
 	}
 
 	PvZSprite* src = g_GameMain.get_sprite_by_name(szSrcName);
 	PvZSprite* tar = g_GameMain.get_sprite_by_name(szTarName);
 
-	if (!game_over.IsSpriteVisible() && std::string(szTarName) == "background") {
+	if (!game_over.IsSpriteVisible() && std::string(szTarName) == "background" && src->get_type() == "Zombie") {
 		SuperSound::sendASoundCommand("close-all");
 		SuperSound::closeAndPlay("open-defeat", "play-defeat", "close-defeat");
 		WritePrivateProfileString("level_score", std::string("level_" + std::to_string(g_GameMain.adventure_level_id)).c_str(), "0", "./score.ini");
@@ -331,7 +332,7 @@ void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) 
 
 		// 小车启动
 		if (src->get_type() == "Car" && tar->get_type() == "Zombie") {
-			std::cout << "src:" << src->get_type() << "  tar:" << tar->get_type() << std::endl;
+			SuperSound::closeAndPlay("open-car", "play-car", "close-car");
 			Zombie* z = reinterpret_cast<Zombie*>(tar);
 			Car* c = reinterpret_cast<Car*>(src);
 			c->SetSpriteLinearVelocityX(25.0);
