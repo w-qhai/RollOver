@@ -52,9 +52,9 @@ void Bowling::OnMouseClick(const int iMouseType, const float fMouseX, const floa
 				SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
 				SuperSound::sendASoundCommand("open-day");
 				SuperSound::sendASoundCommand("play-day");
-				std::string s = "adventure_level";
+				std::string s = "bowling";
 				g_GameMain.reload();
-				CSystem::LoadMap(std::string(s + std::to_string(g_GameMain.adventure_level_id) + ".t2d").c_str());
+				CSystem::LoadMap(std::string(s + ".t2d").c_str());
 			}
 
 			// Ö÷²Ëµ¥

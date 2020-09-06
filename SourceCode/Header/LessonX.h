@@ -143,6 +143,7 @@ public:
 	void	add_sun(int num);
 	void	reload();
 	void	load_adventure_level(int level_id, long double fDeltaTime);  // 根据level_id 从 levelConfig.ini加载配置信息渲染冒险模式地图
+	void	load_bowling(long double fDeltaTime);
 };
 
 /////////////////////////////////////////////////////////////////////////////////

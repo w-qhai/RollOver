@@ -2142,8 +2142,8 @@ $managedDatablockSet = new SimSet() {
       allowUnload = "0";
       force16Bit = "0";
    };
-   new t2dImageMapDatablock(completeImageMap) {
-      imageName = "~/data/images/static/complete.png";
+   new t2dImageMapDatablock(ScoreBoardImageMap) {
+      imageName = "~/data/images/static/ScoreBoard.jpg";
       imageMode = "FULL";
       frameCount = "-1";
       filterMode = "SMOOTH";
@@ -2162,8 +2162,8 @@ $managedDatablockSet = new SimSet() {
       allowUnload = "0";
       force16Bit = "0";
    };
-   new t2dImageMapDatablock(ScoreBoardImageMap) {
-      imageName = "~/data/images/static/ScoreBoard.jpg";
+   new t2dImageMapDatablock(completeImageMap) {
+      imageName = "~/data/images/static/complete.png";
       imageMode = "FULL";
       frameCount = "-1";
       filterMode = "SMOOTH";

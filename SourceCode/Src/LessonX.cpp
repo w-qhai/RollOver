@@ -170,27 +170,8 @@ void CGameMain::GameRun(float fDeltaTime)
 		//ConfigConvert::addConfig("./sss.ini", "key", "value", "test");
 		break;
 	case MapType::BowlingType:
-		if (bowling_init == false) {
-			CSprite convery_belt("ConveryBelt");
-			convery_belt.SetSpriteImmovable(true);
-			bowling_init = true;
-			total_zombie = 10;
-			bowling_counter = 0;
-		}
-
-		if (fDeltaTime - timer > 3) {
-			create_ord_zombie(CSystem::RandomRange(0, 4));
-			if (bowling_counter < 10) {
-				WallNutCard* wnc = new WallNutCard(CSystem::MakeSpriteName(wall_nut_card->GetName(), vec_card.size()));
-				vec_card.push_back(wnc);
-				name_to_sprite[wnc->GetName()] = wnc;
-				wnc->CloneSprite("WallNutCard");
-				wnc->SetSpritePosition(14.310, -32.600);
-				wnc->SetSpriteLinearVelocityX(-10);
-				bowling_counter++;
-			}
-			timer = fDeltaTime;
-		}
+		load_bowling(fDeltaTime);
+		
 		break;
 	default:
 		break;
@@ -663,6 +644,36 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		for (Card* card : vec_card) {
 			card->ready(fDeltaTime);
 		}
+	}
+}
+
+void CGameMain::load_bowling(long double fDeltaTime) {
+	static int zombie_counter = 0;
+	if (bowling_init == false) {
+		CSprite convery_belt("ConveryBelt");
+		convery_belt.SetSpriteImmovable(true);
+		bowling_init = true;
+		zombie_counter = 5;
+		total_zombie = zombie_counter;
+		bowling_counter = 0;
+	}
+
+	if (fDeltaTime - timer > 3) {
+		if (zombie_counter > 0) {
+			zombie_counter--;
+			create_ord_zombie(CSystem::RandomRange(0, 4));
+		}
+
+		if (bowling_counter < 10) {
+			WallNutCard* wnc = new WallNutCard(CSystem::MakeSpriteName(wall_nut_card->GetName(), vec_card.size()));
+			vec_card.push_back(wnc);
+			name_to_sprite[wnc->GetName()] = wnc;
+			wnc->CloneSprite("WallNutCard");
+			wnc->SetSpritePosition(14.310, -32.600);
+			wnc->SetSpriteLinearVelocityX(-10);
+			bowling_counter++;
+		}
+		timer = fDeltaTime;
 	}
 }
 

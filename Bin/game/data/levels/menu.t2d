@@ -41,10 +41,11 @@
       imageMap = "MenuBdImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
-      Position = "0.000 -0.062";
+      Position = "0.000 -0.140";
       size = "100.000 74.720";
+      Layer = "20";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "2";
@@ -53,7 +54,7 @@
       imageMap = "MenuWelcomeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-28.883 -51.250";
       size = "37.767 27.500";
@@ -95,7 +96,7 @@
       imageMap = "AdventureModeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "20.688 -19.125";
       size = "41.375 18.250";
@@ -108,7 +109,7 @@
       imageMap = "EduModeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "19.087 7.703";
       size = "35.750 15.250";
@@ -121,7 +122,7 @@
       imageMap = "MiniModeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "19.563 -4.772";
       size = "39.125 16.625";
@@ -133,7 +134,7 @@
    new t2dScroller(helpMsg) {
       imageMap = "HelpImageMap";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.36011e-039 6.2071e-039";
+      sourceRect = "2.36011e-039 0 2.37779e-039 6.2071e-039";
       canSaveDynamicFields = "1";
       Position = "-0.705 -64.804";
       size = "83.965 54.608";
@@ -145,7 +146,7 @@
    new t2dScroller(helpClose) {
       imageMap = "closeImageMap";
       useSourceRect = "0";
-      sourceRect = "2.37778e-039 0 2.36011e-039 6.2071e-039";
+      sourceRect = "2.36011e-039 0 2.37779e-039 6.2071e-039";
       canSaveDynamicFields = "1";
       Position = "31.873 -85.173";
       size = "4.049 3.400";
@@ -174,10 +175,11 @@
       imageMap = "AchievementImageMap1";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 2.36011e-039 6.22921e-039";
+      sourceRect = "2.36011e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "-25.938 20.375";
       size = "18.125 20.750";
+      Layer = "1";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
       CollisionPolyList = "-0.871 0.491 -0.731 -0.319 -0.298 -0.854 0.343 -0.899 0.849 -0.162 0.944 0.540 0.663 0.737 -0.472 0.943";
@@ -199,7 +201,7 @@
       imageMap = "ScoreBoardImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "-0.000 0.039";
@@ -213,10 +215,10 @@
       imageMap = "closeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
-      Position = "41.805 -32.399";
+      Position = "41.800 -32.402";
       size = "5.021 3.792";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
@@ -230,7 +232,7 @@
       imageMap = "completeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "35.518 -22.643";
@@ -243,7 +245,7 @@
       imageMap = "completeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "35.183 -13.577";
@@ -256,7 +258,7 @@
       imageMap = "completeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 2.3783e-039 6.22921e-039";
+      sourceRect = "2.3783e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "35.978 5.444";
@@ -269,7 +271,7 @@
       imageMap = "completeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 2.3783e-039 6.22921e-039";
+      sourceRect = "2.3783e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "36.108 14.634";
@@ -282,7 +284,7 @@
       imageMap = "completeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 2.3783e-039 6.22921e-039";
+      sourceRect = "2.3783e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "35.449 -4.634";
