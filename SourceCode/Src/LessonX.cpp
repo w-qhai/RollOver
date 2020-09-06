@@ -174,6 +174,7 @@ void CGameMain::GameRun(float fDeltaTime)
 			CSprite convery_belt("ConveryBelt");
 			convery_belt.SetSpriteImmovable(true);
 			bowling_init = true;
+			total_zombie = 10;
 			bowling_counter = 0;
 		}
 

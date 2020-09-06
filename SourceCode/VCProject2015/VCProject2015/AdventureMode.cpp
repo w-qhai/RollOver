@@ -144,8 +144,8 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 			}
 		}
 
-		// 右值引用 提高效率
-		std::vector<PvZSprite*>&& sprites = g_GameMain.get_sprites_by_position(fMouseX, fMouseY);
+		// 游戏中
+		std::vector<PvZSprite*> sprites = g_GameMain.get_sprites_by_position(fMouseX, fMouseY);
 		for (const auto& sprite : sprites) {
 			// 选中的位置有太阳
 			if (sprite->get_type() == "Sun") {
@@ -309,7 +309,6 @@ static void is_victory(int total_zombie) {
 }
 
 void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) {
-
 	if (std::string(szSrcName) == "ZombieHead" && std::string(szTarName) == "Flag") {
 		// 一大波僵尸
 	}
@@ -317,10 +316,6 @@ void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) 
 	PvZSprite* src = g_GameMain.get_sprite_by_name(szSrcName);
 	PvZSprite* tar = g_GameMain.get_sprite_by_name(szTarName);
 
-	std::string srz_name(szSrcName);
-	std::cout << szTarName << " " << szSrcName << std::endl;
-	if (!game_over.IsSpriteVisible() && std::string(szTarName) == "background" && src->get_type() == "Zombie") {
-	// 游戏失败
 	if (!game_over.IsSpriteVisible() && std::string(szTarName) == "background") {
 		SuperSound::sendASoundCommand("close-all");
 		SuperSound::closeAndPlay("open-defeat", "play-defeat", "close-defeat");
@@ -343,15 +338,6 @@ void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) 
 			z->die(0);
 			total_zombie--;
 			std::cout << total_zombie << std::endl;
-			//if (total_zombie == 0) {
-			//	// 游戏胜利 
-			//	if (!game_win.IsSpriteVisible()) {
-			//		game_win.SetSpriteVisible(true);
-			//		game_close2.SetSpriteVisible(true);
-			//		next.SetSpriteVisible(true);
-			//		return;
-			//	}
-			//}
 			is_victory(total_zombie);
 		}
 
