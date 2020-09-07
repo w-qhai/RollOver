@@ -48,6 +48,7 @@ Boom::Boom(const char* arms_name) :
 /// 攻击之后的特效
 /// </summary>
 void Boom::after_hit() {
+    
     this->SetSpriteCollisionActive(false, false);
     this->SetSpriteLifeTime(0.5);
     exist = false;

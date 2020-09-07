@@ -313,7 +313,7 @@ static void is_victory(int total_zombie) {
 
 void Adventure::OnSpriteColSprite(const char* szSrcName, const char* szTarName) {
 	if (std::string(szSrcName) == "ZombieHead" && std::string(szTarName) == "Flag") {
-		// Ò»´ó²¨½©Ê¬
+		g_GameMain.zombie_wave();
 		SuperSound::closeAndPlay("open-zombie-howl", "play-zombie-howl", "close-zombie-howl");
 	}
 

@@ -508,7 +508,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 	static int NewspaperZombieCount = 0;
 	static int FootballZombieCount = 0;
 	static int statr_timer = fDeltaTime;
-	static int time_a_game = 30; // 一局时长
+	static int time_a_game = 10; // 一局时长
 	static int row_min = 0, row_max = 4; // 僵尸生成边界
 	static float zombie_interval; // 僵尸生成边界
 	// 当前地图为 冒险模式的地图 且未初始化
@@ -562,7 +562,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 
 		if ((fDeltaTime - statr_timer) / time_a_game <= 1) {
 			// 根据游戏时间 设置进度条长度
-			progress_bar->SetSpriteWidth(17 * (fDeltaTime - statr_timer) / time_a_game);
+			progress_bar->SetSpriteWidth(18 * (fDeltaTime - statr_timer) / time_a_game);
 			progress_bar->SetSpritePosition(44.000 - progress_bar->GetSpriteWidth() / 2, 35.171);
 			progress_head->SetSpritePosition(44.000 - progress_bar->GetSpriteWidth(), 35.171);
 		}
@@ -683,7 +683,48 @@ void CGameMain::load_bowling(long double fDeltaTime) {
 }
 
 void CGameMain::reload() {
+	CStaticSprite flag("Flag");
+	flag.SetSpriteEnable(true);
 	adventure_init = false;
 	bowling_init = false;
 	zombie_count = 0;
+}
+
+
+void CGameMain::zombie_wave() {
+	CStaticSprite flag("Flag");
+	flag.SetSpriteEnable(false);
+	std::cout << "wave" << std::endl;
+	int row_min = 0, row_max = 4; // 僵尸生成边界
+	if (this->adventure_level_id == 1) {
+		row_min = 1;
+		row_max = 3;
+	}
+
+	for (int i = row_min; i <= row_max; i++) {
+		if (CSystem::RandomRange(0, 1)) {
+			create_fot_zombie(i);
+			total_zombie++;
+		}
+
+		if (CSystem::RandomRange(0, 1)) {
+			create_new_zombie(i);
+			total_zombie++;
+		}
+
+		if (CSystem::RandomRange(0, 1)) {
+			create_buc_zombie(i);
+			total_zombie++;
+		}
+
+		if (CSystem::RandomRange(0, 1)) {
+			create_ord_zombie(i);
+			total_zombie++;
+		}
+
+		if (CSystem::RandomRange(0, 1)) {
+			create_bar_zombie(i);
+			total_zombie++;
+		}
+	}
 }
