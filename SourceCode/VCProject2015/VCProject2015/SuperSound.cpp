@@ -41,7 +41,7 @@ void SuperSound::sendASoundCommand(const char* key) {
 /// <param name="closekey">≈‰÷√πÿ±’KEY</param>
 /// <returns></returns>
 
-void SuperSound::closeAndPlay(const char* openkey, const char* playkey, const char* closekey) {
+void SuperSound::closeAndPlay(const char* openkey, const char* playkey, const char* closekey, int maxMusicLength) {
 
 	std::thread t([=] {
 

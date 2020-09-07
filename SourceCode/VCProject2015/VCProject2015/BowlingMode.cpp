@@ -98,8 +98,8 @@ void Bowling::OnMouseClick(const int iMouseType, const float fMouseX, const floa
 			}
 
 			if (play_again.IsPointInSprite(fMouseX, fMouseY)) {
-				SuperSound::sendASoundCommand("open-day");
-				SuperSound::sendASoundCommand("play-day");
+				SuperSound::sendASoundCommand("open-bowling");
+				SuperSound::sendASoundCommand("play-bowling");
 
 				game_over.SetSpriteVisible(false);
 				game_close.SetSpriteVisible(false);
@@ -112,16 +112,16 @@ void Bowling::OnMouseClick(const int iMouseType, const float fMouseX, const floa
 
 		if (game_win.IsSpriteVisible()) {
 			if (game_close2.IsPointInSprite(fMouseX, fMouseY)) {
-				SuperSound::sendASoundCommand("open-day");
-				SuperSound::sendASoundCommand("play-day");
+				SuperSound::sendASoundCommand("open-bowling");
+				SuperSound::sendASoundCommand("play-bowling");
 				CSystem::LoadMap("menu.t2d");
 				g_GameMain.reload();
 				g_GameMain.map_id = CGameMain::MapType::MenuType;
 			}
 
 			if (next.IsPointInSprite(fMouseX, fMouseY)) {
-				SuperSound::sendASoundCommand("open-day");
-				SuperSound::sendASoundCommand("play-day");
+				SuperSound::sendASoundCommand("open-bowling");
+				SuperSound::sendASoundCommand("play-bowling");
 
 				game_over.SetSpriteVisible(false);
 				game_close.SetSpriteVisible(false);
@@ -182,6 +182,7 @@ void Bowling::OnMouseUp(const int iMouseType, const float fMouseX, const float f
 
 			// 地形许可 & 阳光充足
 			if (planting && card && x < 2) {
+				SuperSound::closeAndPlay("open-plant", "play-plant", "close-plant");
 				seed->SetSpritePosition(x_slot[x], y_slot[y] - seed->GetSpriteHeight() / 2);
 				seed->set_exist(true);
 				seed->SetSpriteImmovable(false);

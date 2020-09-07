@@ -20,6 +20,9 @@ CSprite     Adventure::continue_("Continue");
 CSprite     Adventure::main_menu("MainMenu");
 CSprite     Adventure::rebegin("ReBegin");
 
+CTextSprite Adventure::score("score");
+
+
 void Adventure::OnMouseMove(const float fMouseX, const float fMouseY) {
 	if (left_pressed && shovel) {
 		shovel->SetSpritePosition(fMouseX, fMouseY);
@@ -256,6 +259,7 @@ void Adventure::OnMouseUp(const int iMouseType, const float fMouseX, const float
 
 			// 地形许可 & 阳光充足
 			if (planting && g_GameMain.planting(seed) && card) {
+				SuperSound::closeAndPlay("open-plant", "play-plant", "close-plant");
 				seed->SetSpritePosition(x_slot[x], y_slot[y] - seed->GetSpriteHeight() / 2);
 				seed->set_exist(true);
 				card->plant_time(fTimeDelta);
@@ -300,9 +304,9 @@ static void is_victory(int total_zombie) {
 			Adventure::game_win.SetSpriteVisible(true);
 			Adventure::game_close2.SetSpriteVisible(true);
 			Adventure::next.SetSpriteVisible(true);
-
+			Adventure::score.SetSpriteVisible(true);
 			WritePrivateProfileString("level_score", std::string("level_" + std::to_string(g_GameMain.adventure_level_id)).c_str(), "1", "./score.ini");
-
+			Adventure::score.SetTextString("123");
 			return;
 		}
 	}
