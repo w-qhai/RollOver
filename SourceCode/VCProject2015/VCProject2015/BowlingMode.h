@@ -1,9 +1,9 @@
 #pragma once
 #include "LessonX.h"
 extern long double fTimeDelta;
+extern long double game_start;
 extern int bowling_counter;
 extern int total_zombie;
-
 namespace Bowling {
     extern bool			    left_pressed;   // 鼠标左键是否按下
     extern Card*            card;		    // 植物卡

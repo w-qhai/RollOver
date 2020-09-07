@@ -2,6 +2,7 @@
 #include "LessonX.h"
 
 extern long double fTimeDelta;
+extern long double game_start;
 extern int         total_zombie;
 
 namespace Adventure {
