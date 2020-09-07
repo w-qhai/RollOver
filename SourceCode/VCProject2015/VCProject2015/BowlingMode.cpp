@@ -98,8 +98,8 @@ void Bowling::OnMouseClick(const int iMouseType, const float fMouseX, const floa
 			}
 
 			if (play_again.IsPointInSprite(fMouseX, fMouseY)) {
-				SuperSound::sendASoundCommand("open-day");
-				SuperSound::sendASoundCommand("play-day");
+				SuperSound::sendASoundCommand("open-bowling");
+				SuperSound::sendASoundCommand("play-bowling");
 
 				game_over.SetSpriteVisible(false);
 				game_close.SetSpriteVisible(false);
@@ -120,8 +120,8 @@ void Bowling::OnMouseClick(const int iMouseType, const float fMouseX, const floa
 			}
 
 			if (next.IsPointInSprite(fMouseX, fMouseY)) {
-				SuperSound::sendASoundCommand("open-day");
-				SuperSound::sendASoundCommand("play-day");
+				SuperSound::sendASoundCommand("open-bowling");
+				SuperSound::sendASoundCommand("play-bowling");
 
 				game_over.SetSpriteVisible(false);
 				game_close.SetSpriteVisible(false);
@@ -216,11 +216,13 @@ static void is_victory(int total_zombie) {
 		SuperSound::closeAndPlay("open-victory", "play-victory", "close-victory");
 		// ÓÎÏ·Ê¤Àû 
 		if (!Bowling::game_win.IsSpriteVisible()) {
+			long double game_cost = fTimeDelta - game_start;
+			std::cout << __LINE__ << ": " << game_cost << std::endl;
 			Bowling::game_win.SetSpriteVisible(true);
 			Bowling::game_close2.SetSpriteVisible(true);
 			Bowling::next.SetSpriteVisible(true);
 
-			WritePrivateProfileString("level_score", std::string("level_" + std::to_string(g_GameMain.adventure_level_id)).c_str(), "1", "./score.ini");
+			/*WritePrivateProfileString("level_score", std::string("level_" + std::to_string(g_GameMain.adventure_level_id)).c_str(), "1", "./score.ini");*/
 
 			return;
 		}

@@ -15,6 +15,7 @@
 CGameMain		g_GameMain;
 extern int total_zombie;
 extern int bowling_counter;
+extern long double game_start;
 //==============================================================================
 //
 // 大体的程序流程为：GameMainLoop函数为主循环函数，在引擎每帧刷新屏幕图像之后，都会被调用一次。
@@ -512,6 +513,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 	static float zombie_interval; // 僵尸生成边界
 	// 当前地图为 冒险模式的地图 且未初始化
 	if (adventure_init == false) {
+		game_start = fDeltaTime;
 		// 从配置文件加载僵尸数量信息
 		char level[20];
 		sprintf(level, "level_%d", level_id);
@@ -652,6 +654,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 void CGameMain::load_bowling(long double fDeltaTime) {
 	static int zombie_counter = 0;
 	if (bowling_init == false) {
+		game_start = fDeltaTime;
 		CSprite convery_belt("ConveryBelt");
 		convery_belt.SetSpriteImmovable(true);
 		bowling_init = true;

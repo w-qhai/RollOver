@@ -1,9 +1,9 @@
 #include "AdventureMode.h"
 
 bool		Adventure::left_pressed;	// 鼠标左键是否按下;
-Card* Adventure::card;			// 植物卡d;
-Plant* Adventure::seed;			// 植物种子
-Shovel* Adventure::shovel;			// 选中了小铲子
+Card*		Adventure::card;			// 植物卡d;
+Plant*		Adventure::seed;			// 植物种子
+Shovel*		Adventure::shovel;			// 选中了小铲子
 CSprite		Adventure::background("background");
 CSprite     Adventure::game_over("GameOver");
 CSprite     Adventure::game_close("GameClose");
@@ -300,6 +300,9 @@ static void is_victory(int total_zombie) {
 			Adventure::game_win.SetSpriteVisible(true);
 			Adventure::game_close2.SetSpriteVisible(true);
 			Adventure::next.SetSpriteVisible(true);
+
+			long double game_cost = fTimeDelta - game_start;
+			std::cout << __LINE__ << ": " << game_cost << std::endl;
 
 			WritePrivateProfileString("level_score", std::string("level_" + std::to_string(g_GameMain.adventure_level_id)).c_str(), "1", "./score.ini");
 

@@ -1,6 +1,8 @@
 #pragma once
 #include "LessonX.h"
 
+
+
 namespace Menu {
     extern CStaticSprite adventure;	    // Ã°ÏÕÄ£Ê½
     extern CStaticSprite mini;			// ÃÔÄãÓÎÏ·

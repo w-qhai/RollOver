@@ -16,6 +16,7 @@
 #undef max
 
 long double 	fTimeDelta;
+long double 	game_start;
 int total_zombie;
 int bowling_counter;
 FILE* stream;
