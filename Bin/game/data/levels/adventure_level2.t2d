@@ -761,6 +761,7 @@
       useSourceRect = "0";
       sourceRect = "2.36012e-039 0 2.37778e-039 6.22921e-039";
       canSaveDynamicFields = "1";
+      Visible = "0";
       Position = "-2.332 -6.801";
       size = "78.539 53.602";
       WorldLimitMin = "-50.000 -37.500";
@@ -829,16 +830,18 @@
    };
    new t2dTextObject(score) {
       canSaveDynamicFields = "1";
-      Position = "-4.750 9.307";
-      size = "0.119 4.208";
+      Visible = "0";
+      Position = "-2.257 8.498";
+      size = "12.515 5.106";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
+      text = "00:00";
       font = "Arial";
       wordWrap = "0";
       hideOverflow = "1";
       textAlign = "Left";
-      lineHeight = "4.208";
-      aspectRatio = "970.871";
+      lineHeight = "5.10639";
+      aspectRatio = "1.114";
       lineSpacing = "0";
       characterSpacing = "0";
       autoSize = "1";

@@ -1,9 +1,9 @@
 #include "AdventureMode.h"
 
 bool		Adventure::left_pressed;	// 鼠标左键是否按下;
-Card*		Adventure::card;			// 植物卡d;
-Plant*		Adventure::seed;			// 植物种子
-Shovel*		Adventure::shovel;			// 选中了小铲子
+Card* Adventure::card;			// 植物卡d;
+Plant* Adventure::seed;			// 植物种子
+Shovel* Adventure::shovel;			// 选中了小铲子
 CSprite		Adventure::background("background");
 CSprite     Adventure::game_over("GameOver");
 CSprite     Adventure::game_close("GameClose");
@@ -20,6 +20,7 @@ CSprite     Adventure::continue_("Continue");
 CSprite     Adventure::main_menu("MainMenu");
 CSprite     Adventure::rebegin("ReBegin");
 
+// 用时
 CTextSprite Adventure::score("score");
 
 
@@ -304,12 +305,20 @@ static void is_victory(int total_zombie) {
 			Adventure::game_win.SetSpriteVisible(true);
 			Adventure::game_close2.SetSpriteVisible(true);
 			Adventure::next.SetSpriteVisible(true);
+			Adventure::score.SetSpriteVisible(true);
 
+			// 持久化
 			long double game_cost = fTimeDelta - game_start;
 			std::cout << __LINE__ << ": " << game_cost << std::endl;
-
 			WritePrivateProfileString("level_score", std::string("level_" + std::to_string(g_GameMain.adventure_level_id)).c_str(), "1", "./score.ini");
-			Adventure::score.SetTextString("123");
+			WritePrivateProfileString("level_time", std::string("level_time_" + std::to_string(g_GameMain.adventure_level_id)).c_str(),
+				std::to_string(int(game_cost)).c_str(), "./score.ini");
+
+
+			int min = int(game_cost) / 60;
+			int s = int(game_cost) % 60;
+			std::cout << __LINE__ << std::string(std::to_string(min) + ":" + std::to_string(s)).c_str() << std::endl;
+			Adventure::score.SetTextString(std::string(std::to_string(min) + ":" + std::to_string(s)).c_str());
 			return;
 		}
 	}

@@ -1,5 +1,7 @@
 #pragma once
 #include "PvZSprite.h"
+#include "SuperSound.h"
+
 // ÎäÆ÷»ùÀà
 class Arms : public PvZSprite {
 public:

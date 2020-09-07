@@ -27,6 +27,7 @@ namespace Adventure {
     extern CSprite      rebegin;
     extern CSprite      continue_;
 
+    // ”√ ±
     extern CTextSprite  score;
 
     void		OnMouseMove(const float fMouseX, const float fMouseY);

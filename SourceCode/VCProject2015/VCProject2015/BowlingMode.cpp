@@ -22,6 +22,10 @@ CSprite				Bowling::game_menu("GameMenu");
 CSprite				Bowling::continue_("Continue");
 CSprite				Bowling::main_menu("MainMenu");
 CSprite				Bowling::rebegin("ReBegin");
+
+// 用时
+CTextSprite			Bowling::score("score");
+
 void Bowling::OnMouseMove(const float fMouseX, const float fMouseY) {
 	if (left_pressed && seed) {
 		seed->SetSpritePosition(fMouseX, fMouseY);
@@ -217,13 +221,19 @@ static void is_victory(int total_zombie) {
 		SuperSound::closeAndPlay("open-victory", "play-victory", "close-victory");
 		// 游戏胜利 
 		if (!Bowling::game_win.IsSpriteVisible()) {
-			long double game_cost = fTimeDelta - game_start;
-			std::cout << __LINE__ << ": " << game_cost << std::endl;
 			Bowling::game_win.SetSpriteVisible(true);
 			Bowling::game_close2.SetSpriteVisible(true);
 			Bowling::next.SetSpriteVisible(true);
+			Bowling::score.SetSpriteVisible(true);
 
 			/*WritePrivateProfileString("level_score", std::string("level_" + std::to_string(g_GameMain.adventure_level_id)).c_str(), "1", "./score.ini");*/
+
+			// 持久化
+			long double game_cost = fTimeDelta - game_start;
+			WritePrivateProfileString("other_time", "bowling_time",std::to_string(int(game_cost)).c_str(), "./score.ini");
+			int min = int(game_cost) / 60;
+			int s = int(game_cost) % 60;
+			Bowling::score.SetTextString(std::string(std::to_string(min) + ":" + std::to_string(s)).c_str());
 
 			return;
 		}

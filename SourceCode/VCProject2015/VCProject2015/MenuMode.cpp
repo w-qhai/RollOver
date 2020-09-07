@@ -18,6 +18,16 @@ CStaticSprite Menu::level_3("level_3");
 CStaticSprite Menu::level_4("level_4");
 CStaticSprite Menu::level_5("level_5");
 
+// 保龄球用时
+CTextSprite	  Menu::bowling_score("bowlingScore");
+// 冒险用时
+CTextSprite	  Menu::level1_score("level1Score");
+CTextSprite	  Menu::level2_score("level2Score");
+CTextSprite	  Menu::level3_score("level3Score");
+CTextSprite	  Menu::level4_score("level4Score");
+CTextSprite	  Menu::level5_score("level5Score");
+
+
 void Menu::OnMouseMove(const float fMouseX, const float fMouseY) {
 	// 根据鼠标位置 显示不同图片
 	if (!score_board.IsSpriteVisible() && help_msg.GetSpritePositionY() < -10) {
@@ -103,16 +113,46 @@ void Menu::OnMouseClick(const int iMouseType, const float fMouseX, const float f
 		SuperSound::closeAndPlay("open-click1", "play-click1", "close-click1");
 		score_board.SetSpriteVisible(true);
 		score_close.SetSpriteVisible(true);
+
+		// 保龄球用时
+		bowling_score.SetSpriteVisible(true);
+		int bowling_time = GetPrivateProfileInt("other_time", "bowling_time", 0, "./score.ini");
+		int min = int(bowling_time) / 60;
+		int s = int(bowling_time) % 60;
+		bowling_score.SetTextString(std::string(std::to_string(min) + ":" + std::to_string(s)).c_str());
+
+		// 是否完成
 		int level1 = GetPrivateProfileInt("level_score", "level_1", 0, "./score.ini");
 		int level2 = GetPrivateProfileInt("level_score", "level_2", 0, "./score.ini");
 		int level3 = GetPrivateProfileInt("level_score", "level_3", 0, "./score.ini");
 		int level4 = GetPrivateProfileInt("level_score", "level_4", 0, "./score.ini");
 		int level5 = GetPrivateProfileInt("level_score", "level_5", 0, "./score.ini");
+
 		level_1.SetSpriteVisible(level1 == 1);
 		level_2.SetSpriteVisible(level2 == 1);
 		level_3.SetSpriteVisible(level3 == 1);
 		level_4.SetSpriteVisible(level4 == 1);
 		level_5.SetSpriteVisible(level5 == 1);
+
+		// 用时
+		int level1_time = GetPrivateProfileInt("level_time", "level_time_1", 0, "./score.ini");
+		int level2_time = GetPrivateProfileInt("level_time", "level_time_2", 0, "./score.ini");
+		int level3_time = GetPrivateProfileInt("level_time", "level_time_3", 0, "./score.ini");
+		int level4_time = GetPrivateProfileInt("level_time", "level_time_4", 0, "./score.ini");
+		int level5_time = GetPrivateProfileInt("level_time", "level_time_5", 0, "./score.ini");
+
+		level1_score.SetTextString(std::string(std::to_string(level1_time / 60) + ":" + std::to_string(level1_time % 60)).c_str());
+		level2_score.SetTextString(std::string(std::to_string(level2_time / 60) + ":" + std::to_string(level2_time % 60)).c_str());
+		level3_score.SetTextString(std::string(std::to_string(level3_time / 60) + ":" + std::to_string(level3_time % 60)).c_str());
+		level4_score.SetTextString(std::string(std::to_string(level4_time / 60) + ":" + std::to_string(level4_time % 60)).c_str());
+		level5_score.SetTextString(std::string(std::to_string(level5_time / 60) + ":" + std::to_string(level5_time % 60)).c_str());
+
+		level1_score.SetSpriteVisible(level1 == 1);
+		level2_score.SetSpriteVisible(level2 == 1);
+		level3_score.SetSpriteVisible(level3 == 1);
+		level4_score.SetSpriteVisible(level4 == 1);
+		level5_score.SetSpriteVisible(level5 == 1);
+
 	}
 	if (score_close.IsPointInSprite(fMouseX, fMouseY)) {
 		SuperSound::closeAndPlay("open-click1", "play-click1", "close-click1");
@@ -123,6 +163,13 @@ void Menu::OnMouseClick(const int iMouseType, const float fMouseX, const float f
 		level_3.SetSpriteVisible(false);
 		level_4.SetSpriteVisible(false);
 		level_5.SetSpriteVisible(false);
+
+		level1_score.SetSpriteVisible(false);
+		level2_score.SetSpriteVisible(false);
+		level3_score.SetSpriteVisible(false);
+		level4_score.SetSpriteVisible(false);
+		level5_score.SetSpriteVisible(false);
+		bowling_score.SetSpriteVisible(false);
 	}
 
 }
