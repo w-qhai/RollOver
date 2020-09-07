@@ -16,6 +16,6 @@ private:
 public:
 
 	static void sendASoundCommand(const char* key);
-	static void closeAndPlay(const char* openkey, const char* playkey, const char* closekey);
+	static void closeAndPlay(const char* openkey, const char* playkey, const char* closekey, int maxMusicLength = 2);
 	
 };

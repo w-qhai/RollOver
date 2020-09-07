@@ -78,7 +78,7 @@ void OrdinaryZombie::eat_plant(Plant* plant, long double delta_time) {
 }
 
 bool OrdinaryZombie::attacked_by(Arms* arms) {
-	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
+	//SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 	this->health -= arms->get_power();
 	if (this->health <= 0) {
 		this->die(arms->get_power());
@@ -192,7 +192,7 @@ void BarricadeZombie::eat_plant(Plant* plant, long double delta_time) {
 
 bool BarricadeZombie::attacked_by(Arms* arms) {
 	this->health -= arms->get_power();
-	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
+	//SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 	std::cout << "路障僵尸当前血量：" << this->health << std::endl;
 
 	if (this->health <= 0) {
@@ -340,7 +340,7 @@ void BucketheadZombie::eat_plant(Plant* plant, long double delta_time) {
 
 bool BucketheadZombie::attacked_by(Arms* arms) {
 	this->health -= arms->get_power();
-	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
+	//SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 	std::cout << "铁桶僵尸当前血量：" << this->health << std::endl;
 
 	if (this->health <= 0) {
@@ -492,7 +492,7 @@ bool NewspaperZombie::attacked_by(Arms* arms) {
 	if (last_health >= 350 && this->health < 350) {
 		SuperSound::closeAndPlay("open-news-paper-broken", "play-news-paper-broken", "close-news-paper-broken");
 	}
-	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
+	//SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 
 	if (this->health <= 0) {
 		this->die(arms->get_power());
@@ -661,7 +661,7 @@ void FootballZombie::eat_plant(Plant* plant, long double delta_time) {
 
 bool FootballZombie::attacked_by(Arms* arms) {
 	this->health -= arms->get_power();
-	SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
+	//SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
 	std::cout << "橄榄球僵尸当前血量：" << this->health << std::endl;
 
 	if (this->health <= 0) {

@@ -23,6 +23,13 @@ namespace Menu {
     extern CStaticSprite level_4;
     extern CStaticSprite level_5;
 
+    // ”√ ±
+    extern CTextSprite	 bowling_score;
+    extern CTextSprite	 level1_score;
+    extern CTextSprite	 level2_score;
+    extern CTextSprite	 level3_score;
+    extern CTextSprite	 level4_score;
+    extern CTextSprite	 level5_score;
 
     void		OnMouseMove(const float fMouseX, const float fMouseY);
     void		OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY);

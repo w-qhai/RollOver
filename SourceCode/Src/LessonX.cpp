@@ -510,7 +510,8 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 	static int statr_timer = fDeltaTime;
 	static int time_a_game = 10; // 一局时长
 	static int row_min = 0, row_max = 4; // 僵尸生成边界
-	static float zombie_interval; // 僵尸生成边界
+	const float first_zombie = 10;
+	static float zombie_interval = first_zombie; // 僵尸生成边界
 	// 当前地图为 冒险模式的地图 且未初始化
 	if (adventure_init == false) {
 		game_start = fDeltaTime;
@@ -549,9 +550,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		sun_num->SetTextValue(sun_count);
 		adventure_init = true;
 		statr_timer = fDeltaTime;
-		zombie_interval = 2;
-
-		SuperSound::closeAndPlay("open-zombie-howl", "play-zombie-howl", "close-zombie-howl");
+		zombie_interval = first_zombie;
 	}
 
 	if (adventure_init == true) {
@@ -569,6 +568,9 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 
 		// 随机渲染僵尸
 		if (fDeltaTime - zombie_timer > zombie_interval) {
+			if (zombie_interval == first_zombie) {
+				SuperSound::closeAndPlay("open-begin", "play-begin", "close-begin", 4);
+			}
 			zombie_interval /= 1.5;
 			if (zombie_interval < 2) {
 				zombie_interval = 2;
