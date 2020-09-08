@@ -75,7 +75,7 @@ void Plant::change_zombie_animation() {
 /* --------------------------------------------------- */
 // 豌豆射手
 PeaShooter::PeaShooter(const char* plant_name, Pea* pea) :
-	Plant(plant_name, 300, 1.4, 100),
+	Plant(plant_name, 300, 2, 100),
 	pea(pea)
 {
 
@@ -288,7 +288,7 @@ void Jalapeno::set_exist(bool exist) {
 /* --------------------------------------------------- */
 // 三线射手
 ThreePeater::ThreePeater(const char* plant_name, const std::vector<Pea*>& pea) :
-	Plant(plant_name, 300, 1.4, 325),
+	Plant(plant_name, 300, 2, 325),
 	peas(pea)
 {
 

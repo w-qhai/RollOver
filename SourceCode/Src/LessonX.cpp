@@ -224,7 +224,8 @@ Zombie* CGameMain::create_bar_zombie(int y) {
 	name_to_sprite[zombie->GetName()] = zombie;
 	zombie->CloneSprite(t_bar_zombie->GetName());
 	zombie->set_exist(true);
-	zombie->SetSpritePosition(CSystem::GetScreenRight(), y_slot[y] - zombie->GetSpriteHeight() / 2);
+	int d = CSystem::RandomRange(10, 20);
+	zombie->SetSpritePosition(CSystem::GetScreenRight() + d, y_slot[y] - zombie->GetSpriteHeight() / 2);
 	zombie->move();
 
 	return zombie;
@@ -239,7 +240,8 @@ Zombie* CGameMain::create_buc_zombie(int y) {
 	name_to_sprite[zombie->GetName()] = zombie;
 	zombie->CloneSprite(t_buc_zombie->GetName());
 	zombie->set_exist(true);
-	zombie->SetSpritePosition(CSystem::GetScreenRight(), y_slot[y] - zombie->GetSpriteHeight() / 2);
+	int d = CSystem::RandomRange(10, 20);
+	zombie->SetSpritePosition(CSystem::GetScreenRight() + d, y_slot[y] - zombie->GetSpriteHeight() / 2);
 	zombie->move();
 
 	return zombie;
@@ -252,7 +254,8 @@ Zombie* CGameMain::create_new_zombie(int y) {
 	name_to_sprite[zombie->GetName()] = zombie;
 	zombie->CloneSprite(t_new_zombie->GetName());
 	zombie->set_exist(true);
-	zombie->SetSpritePosition(CSystem::GetScreenRight(), y_slot[y] - zombie->GetSpriteHeight() / 2);
+	int d = CSystem::RandomRange(10, 20);
+	zombie->SetSpritePosition(CSystem::GetScreenRight() + d, y_slot[y] - zombie->GetSpriteHeight() / 2);
 	zombie->move();
 
 	return zombie;
@@ -265,7 +268,8 @@ Zombie* CGameMain::create_fot_zombie(int y) {
 	name_to_sprite[zombie->GetName()] = zombie;
 	zombie->CloneSprite(t_fot_zombie->GetName());
 	zombie->set_exist(true);
-	zombie->SetSpritePosition(CSystem::GetScreenRight(), y_slot[y] - zombie->GetSpriteHeight() / 2);
+	int d = CSystem::RandomRange(10, 20);
+	zombie->SetSpritePosition(CSystem::GetScreenRight() + d, y_slot[y] - zombie->GetSpriteHeight() / 2);
 	zombie->move();
 
 	return zombie;
@@ -682,6 +686,10 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 
 void CGameMain::load_bowling(long double fDeltaTime) {
 	static int zombie_counter = 0;
+	static int time_a_game = 10; // 一局时长
+	static int statr_timer = fDeltaTime;
+	const float first_zombie = 10;
+	static float zombie_interval = first_zombie; // 僵尸生成边界
 	if (bowling_init == false) {
 		game_start = fDeltaTime;
 		CSprite convery_belt("ConveryBelt");
@@ -690,24 +698,39 @@ void CGameMain::load_bowling(long double fDeltaTime) {
 		zombie_counter = 5;
 		total_zombie = zombie_counter;
 		bowling_counter = 0;
+
+		statr_timer = fDeltaTime;
+		zombie_interval = first_zombie;
 	}
+	if (bowling_init == true) {
 
-	if (fDeltaTime - timer > 3) {
-		if (zombie_counter > 0) {
-			zombie_counter--;
-			create_ord_zombie(CSystem::RandomRange(0, 4));
+		if ((fDeltaTime - statr_timer) / time_a_game <= 1) {
+			// 根据游戏时间 设置进度条长度
+			progress_bar->SetSpriteWidth(18 * (fDeltaTime - statr_timer) / time_a_game);
+			progress_bar->SetSpritePosition(44.000 - progress_bar->GetSpriteWidth() / 2, 35.171);
+			progress_head->SetSpritePosition(44.000 - progress_bar->GetSpriteWidth(), 35.171);
 		}
 
-		if (bowling_counter < 10) {
-			WallNutCard* wnc = new WallNutCard(CSystem::MakeSpriteName(wall_nut_card->GetName(), vec_card.size()));
-			vec_card.push_back(wnc);
-			name_to_sprite[wnc->GetName()] = wnc;
-			wnc->CloneSprite("WallNutCard");
-			wnc->SetSpritePosition(14.310, -32.600);
-			wnc->SetSpriteLinearVelocityX(-10);
-			bowling_counter++;
+		if (fDeltaTime - timer > 3) {
+			if (zombie_counter > 0) {
+				zombie_counter--;
+				create_ord_zombie(CSystem::RandomRange(0, 4));
+			}
+
+			
+
+			if (bowling_counter < 10) {
+
+				WallNutCard* wnc = new WallNutCard(CSystem::MakeSpriteName(wall_nut_card->GetName(), vec_card.size()));
+				vec_card.push_back(wnc);
+				name_to_sprite[wnc->GetName()] = wnc;
+				wnc->CloneSprite("WallNutCard");
+				wnc->SetSpritePosition(14.310, -32.600);
+				wnc->SetSpriteLinearVelocityX(-10);
+				bowling_counter++;
+			}
+			timer = fDeltaTime;
 		}
-		timer = fDeltaTime;
 	}
 }
 

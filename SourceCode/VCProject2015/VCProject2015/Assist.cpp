@@ -178,7 +178,7 @@ const std::string JalapenoCard::get_type() {
 /*¼á¹û*/
 const std::string WallNutCard::type = "WallNutCard";
 WallNutCard::WallNutCard(const char* assist_name) :
-    Card(assist_name, 2)
+    Card(assist_name, 30)
 {
 
 }
