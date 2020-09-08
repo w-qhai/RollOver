@@ -429,11 +429,11 @@ Plant* CGameMain::create_three_peater(float x, float y) {
 		r->set_exist(true);
 		if (i == 0) {
 			r->SetSpriteRotation(15);
-			r->SpriteMountToSprite(tp->GetName(), 10, 2);
+			r->SpriteMountToSprite(tp->GetName(), 10, 2.5);
 		}
 		else if (i == 2) {
 			r->SetSpriteRotation(-15);
-			r->SpriteMountToSprite(tp->GetName(), 10, -2);
+			r->SpriteMountToSprite(tp->GetName(), 10, -2.5);
 		}
 		else {
 			r->SpriteMountToSprite(tp->GetName(), 11, 0);

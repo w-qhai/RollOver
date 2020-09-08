@@ -206,6 +206,7 @@
       useSourceRect = "0";
       sourceRect = "2.37778e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
+      Visible = "0";
       Position = "25.000 27.546";
       size = "20.000 11.216";
       WorldLimitMin = "-50.000 -37.500";

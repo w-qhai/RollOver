@@ -308,8 +308,8 @@ int ThreePeater::attack(float delta_time) {
 				pea->SetSpritePosition(this->GetSpritePositionX() + 1, this->GetSpritePositionY() - 2);
 				pea->SetSpriteLinearVelocityX(40);
 			}
-			peas[0]->SetSpriteLinearVelocityY(10);
-			peas[2]->SetSpriteLinearVelocityY(-10);
+			peas[0]->SetSpriteLinearVelocityY(10.717967697245);
+			peas[2]->SetSpriteLinearVelocityY(-10.717967697245);
 			next_attack = delta_time;
 		}
 	}
