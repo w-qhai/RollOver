@@ -612,9 +612,36 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 					break;
 				}
 			default:
+				if (OrdinaryZombieCount) {
+					OrdinaryZombieCount--;
+					create_ord_zombie(CSystem::RandomRange(row_min, row_max));
+					break;
+				}
 				if (zombie_count > 2 && FootballZombieCount) {
 					FootballZombieCount--;
 					create_fot_zombie(CSystem::RandomRange(row_min, row_max));
+					break;
+				}
+
+				if (zombie_count > 2 && NewspaperZombieCount) {
+					NewspaperZombieCount--;
+					create_new_zombie(CSystem::RandomRange(row_min, row_max));
+					break;
+				}
+				if (zombie_count > 2 && BucketheadZombieCount) {
+					BucketheadZombieCount--;
+					create_buc_zombie(CSystem::RandomRange(row_min, row_max));
+					break;
+				}
+				if (zombie_count > 2 && BarricadeZombieCount) {
+					BarricadeZombieCount--;
+					create_bar_zombie(CSystem::RandomRange(row_min, row_max));
+					break;
+				}
+
+				if (OrdinaryZombieCount) {
+					OrdinaryZombieCount--;
+					create_ord_zombie(CSystem::RandomRange(row_min, row_max));
 					break;
 				}
 				break;
