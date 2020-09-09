@@ -17,6 +17,8 @@ const std::string Arms::get_type() {
 }
 
 
+
+
 ///////////////////////////////////////
 
 Pea::Pea(const char* arms_name) :
@@ -29,7 +31,9 @@ Pea::Pea(const char* arms_name) :
 /// 攻击之后的特效
 /// </summary>
 void Pea::after_hit() {
-    SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");
+    if (this->exist == true) {
+        SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit", 1);
+    }
     this->AnimateSpritePlayAnimation("BoomAnimation", false);
     this->SetSpriteCollisionActive(false, false);
     this->SetSpriteLinearVelocityX(0);
@@ -49,6 +53,7 @@ Boom::Boom(const char* arms_name) :
 /// 攻击之后的特效
 /// </summary>
 void Boom::after_hit() {
+    
     this->SetSpriteCollisionActive(false, false);
     this->SetSpriteLifeTime(0.5);
     exist = false;

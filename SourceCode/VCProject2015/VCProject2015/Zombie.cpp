@@ -490,6 +490,8 @@ bool NewspaperZombie::attacked_by(Arms* arms) {
 	int last_health = this->health;
 	this->health -= arms->get_power();
 	if (last_health >= 350 && this->health < 350) {
+		this->move_speed = 3.5; 
+		this->SetSpriteLinearVelocityX(-this->move_speed);
 		SuperSound::closeAndPlay("open-news-paper-broken", "play-news-paper-broken", "close-news-paper-broken");
 	}
 	//SuperSound::closeAndPlay("open-hit", "play-hit", "close-hit");

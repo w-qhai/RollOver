@@ -118,7 +118,7 @@ void Card::set_mask(CSprite* mask) {
 /*Íã¶¹ÉäÊÖ*/
 const std::string PeaShooterCard::type = "PeaShooterCard";
 PeaShooterCard::PeaShooterCard(const char* card_name) :
-    Card(card_name, 2)
+    Card(card_name, 7.5)
 {
 
 }
@@ -130,7 +130,7 @@ const std::string PeaShooterCard::get_type() {
 /*ÏòÈÕ¿û*/
 const std::string SunflowerCard::type = "SunflowerCard";
 SunflowerCard::SunflowerCard(const char* card_name) :
-    Card(card_name, 2)
+    Card(card_name, 7.5)
 {
 
 }
@@ -142,7 +142,7 @@ const std::string SunflowerCard::get_type() {
 /*Ó£ÌÒÕ¨µ¯*/
 const std::string CherryBombCard::type = "CherryBombCard";
 CherryBombCard::CherryBombCard(const char* card_name) :
-    Card(card_name, 2)
+    Card(card_name, 50)
 {
 
 }
@@ -154,7 +154,7 @@ const std::string CherryBombCard::get_type() {
 /*ÍÁ¶¹µØÀ×*/
 const std::string PotatoMineCard::type = "PotatoMineCard";
 PotatoMineCard::PotatoMineCard(const char* card_name) :
-    Card(card_name, 2)
+    Card(card_name, 30)
 {
 
 }
@@ -166,7 +166,7 @@ const std::string PotatoMineCard::get_type() {
 /*»ğ±¬À±½·*/
 const std::string JalapenoCard::type = "JalapenoCard";
 JalapenoCard::JalapenoCard(const char* card_name) :
-    Card(card_name, 2)
+    Card(card_name, 50)
 {
 
 }
@@ -178,7 +178,7 @@ const std::string JalapenoCard::get_type() {
 /*¼á¹û*/
 const std::string WallNutCard::type = "WallNutCard";
 WallNutCard::WallNutCard(const char* assist_name) :
-    Card(assist_name, 2)
+    Card(assist_name, 30)
 {
 
 }
@@ -190,7 +190,7 @@ const std::string WallNutCard::get_type() {
 /*ÈıÏßÍã¶¹*/
 const std::string ThreePeaterCard::type = "ThreePeaterCard";
 ThreePeaterCard::ThreePeaterCard(const char* assist_name) :
-    Card(assist_name, 2)
+    Card(assist_name, 7.5)
 {
 
 }

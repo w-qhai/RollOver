@@ -110,7 +110,6 @@
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="PvZSprite.cpp" />
     <ClCompile Include="SuperSound.cpp" />
-    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +125,6 @@
     <ClInclude Include="Plant.h" />
     <ClInclude Include="PvZSprite.h" />
     <ClInclude Include="SuperSound.h" />
-    <ClInclude Include="Timer.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>

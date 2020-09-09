@@ -8,6 +8,7 @@ public:
     Arms(const char* sprite_name, int power);
     virtual void after_hit() = 0;
     virtual int get_power();
+    virtual void set_exist(bool exist) { this->exist = exist; }
     const std::string get_type() override;
 protected:
     int power;
