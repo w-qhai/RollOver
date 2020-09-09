@@ -218,7 +218,7 @@ void Bowling::OnKeyUp(const int iKey) {
 static void is_victory(int total_zombie) {
 	if (total_zombie == 0) {
 		SuperSound::sendASoundCommand("close-all");
-		SuperSound::closeAndPlay("open-victory", "play-victory", "close-victory");
+		SuperSound::closeAndPlay("open-victory", "play-victory", "close-victory", 4);
 		// ÓÎÏ·Ê¤Àû 
 		if (!Bowling::game_win.IsSpriteVisible()) {
 			Bowling::game_win.SetSpriteVisible(true);

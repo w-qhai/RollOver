@@ -273,7 +273,7 @@ void Adventure::OnMouseUp(const int iMouseType, const float fMouseX, const float
 			std::vector<PvZSprite*>&& sprites = g_GameMain.get_sprites_by_position(fMouseX, fMouseY);
 			// 位置上有植物 挖走
 			for (const auto& sprite : sprites) {
-				std::cout << sprite->GetName() << std::endl;
+				SuperSound::closeAndPlay("open-plant", "play-plant", "close-plant");
 				if (sprite->get_type() == "Plant") {
 					Plant* p = reinterpret_cast<Plant*>(sprite);
 					p->die();
@@ -299,7 +299,7 @@ void Adventure::OnKeyUp(const int iKey) {
 static void is_victory(int total_zombie) {
 	if (total_zombie == 0) {
 		SuperSound::sendASoundCommand("close-all");
-		SuperSound::closeAndPlay("open-victory", "play-victory", "close-victory");
+		SuperSound::closeAndPlay("open-victory", "play-victory", "close-victory", 4);
 		// 游戏胜利 
 		if (!Adventure::game_win.IsSpriteVisible()) {
 			Adventure::game_win.SetSpriteVisible(true);
