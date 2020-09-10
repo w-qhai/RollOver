@@ -109,6 +109,9 @@ void CSystem::OnMouseUp(const int iMouseType, const float fMouseX, const float f
 	case CGameMain::MapType::BowlingType:
 		Bowling::OnMouseUp(iMouseType, fMouseX, fMouseY);
 		break;
+	case CGameMain::MapType::LianLianKanType:
+		LianLianKan::OnMouseUp(iMouseType, fMouseX, fMouseY);
+		break;
 	default:
 		break;
 	}
