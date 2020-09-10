@@ -259,7 +259,6 @@ bool LianLianKan::two_corner(int x1, int y1, int x2, int y2)
 /// </summary>
 void LianLianKan::game_finish()
 {
-
         menu.SetSpriteVisible(true);
         continue_button.SetSpriteVisible(true);
         back_button.SetSpriteVisible(true);
@@ -282,6 +281,8 @@ void LianLianKan::OnMouseUp(const int iMouseType, const float fMouseX, const flo
                         continue_button.SetSpriteVisible(false);
                         back_button.SetSpriteVisible(false);
                         init();
+                        :reload();
+                        g_GameMain.load_lianliankan(fTimeDelta);
                 }
                 else if (back_button.IsPointInSprite(fMouseX, fMouseY) && back_button.IsSpriteVisible()) {
                         SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
@@ -307,4 +308,13 @@ void LianLianKan::OnMouseUp(const int iMouseType, const float fMouseX, const flo
 
 
         }
+}
+
+void	 LianLianKan::OnSpriteColSprite(const char* szSrcName, const char* szTarName) {
+    if (std::string(szSrcName) == "ZombieHead" && std::string(szTarName) == "Flag") {
+        CStaticSprite flag("Flag");
+        flag.SetSpriteEnable(false);
+        SuperSound::closeAndPlay("open-zombie-howl", "play-zombie-howl", "close-zombie-howl");
+        game_finish();
+    }
 }

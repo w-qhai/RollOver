@@ -94,6 +94,7 @@ private:
 
 	bool adventure_init = false;
 	bool bowling_init = false;
+	bool llk_init = false;
 public:
 	CGameMain();            //构造函数
 	~CGameMain();           //析构函数  
@@ -148,7 +149,7 @@ public:
 	void	reload();
 	void	load_adventure_level(int level_id, long double fDeltaTime);  // 根据level_id 从 levelConfig.ini加载配置信息渲染冒险模式地图
 	void	load_bowling(long double fDeltaTime);
-	void	load_lianliankan();
+	void	load_lianliankan(long double fDeltaTime);
 	void	zombie_wave();
 };
 

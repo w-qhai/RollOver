@@ -1,6 +1,9 @@
 #pragma once
 #include "LessonX.h"
 
+extern long double fTimeDelta;
+extern long double game_start;
+
 const int ROW = 5;      //游戏界面总行数 
 const int COL = 8;      //游戏界面总列数 
 
@@ -27,12 +30,13 @@ namespace LianLianKan {
 
 
 	void		init();
-	int		clicked(const int x, const int y, CStaticSprite* sprite);
-	int		judge(const int x1, const int y1, const int x2, const int y2);
+	int			clicked(const int x, const int y, CStaticSprite* sprite);
+	int			judge(const int x1, const int y1, const int x2, const int y2);
 	bool		zero_corner(const int x1, const int y1, const int x2, const int y2);
 	bool		one_corner(const int x1, const int y1, const int x2, const int y2);
 	bool		two_corner(const int x1, const int y1, const int x2, const int y2);
 	void		game_finish();
 
 	void		OnMouseUp(const int iMouseType, const float fMouseX, const float fMouseY);
+	void		OnSpriteColSprite(const char* szSrcName, const char* szTarName);
 };

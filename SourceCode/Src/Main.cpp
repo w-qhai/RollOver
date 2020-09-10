@@ -167,6 +167,9 @@ void CSystem::OnSpriteColSprite(const char* szSrcName, const char* szTarName)
 	case CGameMain::MapType::BowlingType:
 		Bowling::OnSpriteColSprite(szSrcName, szTarName);
 		break;
+	case CGameMain::MapType::LianLianKanType:
+		LianLianKan::OnSpriteColSprite(szSrcName, szTarName);
+		break;
 	default:
 		break;
 	}
