@@ -54,6 +54,9 @@
     <ClCompile Include="SuperSound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LianLianKanMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Header\LessonX.h">
@@ -93,6 +96,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SuperSound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LianLianKanMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
