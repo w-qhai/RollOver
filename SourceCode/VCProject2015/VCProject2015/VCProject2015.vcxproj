@@ -106,6 +106,7 @@
     <ClCompile Include="BowlingMode.cpp" />
     <ClCompile Include="ConfigConvert.cpp" />
     <ClCompile Include="LevelChooser.cpp" />
+    <ClCompile Include="LianLianKanMode.cpp" />
     <ClCompile Include="MenuMode.cpp" />
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="PvZSprite.cpp" />
@@ -121,6 +122,7 @@
     <ClInclude Include="BowlingMode.h" />
     <ClInclude Include="ConfigConvert.h" />
     <ClInclude Include="LevelChooser.h" />
+    <ClInclude Include="LianLianKanMode.h" />
     <ClInclude Include="MenuMode.h" />
     <ClInclude Include="Plant.h" />
     <ClInclude Include="PvZSprite.h" />

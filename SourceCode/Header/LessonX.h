@@ -15,6 +15,7 @@
 #include "../VCProject2015/VCProject2015/Zombie.h"
 #include "../VCProject2015/VCProject2015/Plant.h"
 #include "../VCProject2015/VCProject2015/Assist.h"
+#include "../VCProject2015/VCProject2015/LianliankanMode.h"
 #include "../VCProject2015/VCProject2015/SuperSound.h"
 #include "../VCProject2015/VCProject2015/ConfigConvert.h"
 
@@ -103,17 +104,20 @@ public:
 		LevelChooserType,
 		AdventureType,
 		BowlingType,
-		GameOverType
+		GameOverType,
+		LianLianKanType
 	} map_id = MapType::WelcomeType;
 
 	int adventure_level_id; // 冒险模式 关卡id
-
+	static bool lianliankan_init;
 
 	// Get方法
 	int				GetGameState()											{ return m_iGameState; }
+	static bool GetLianLianKan() { return lianliankan_init; }
 
 	// Set方法
 	void			SetGameState( const int iState )						{ m_iGameState = iState; }
+	static void SetLianLianKan(bool bState) { lianliankan_init = bState; }
 
 	// 游戏主循环等
 	void			GameMainLoop( float	fDeltaTime );
@@ -144,6 +148,7 @@ public:
 	void	reload();
 	void	load_adventure_level(int level_id, long double fDeltaTime);  // 根据level_id 从 levelConfig.ini加载配置信息渲染冒险模式地图
 	void	load_bowling(long double fDeltaTime);
+	void	load_lianliankan();
 	void	zombie_wave();
 };
 

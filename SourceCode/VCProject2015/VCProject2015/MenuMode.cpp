@@ -80,7 +80,8 @@ void Menu::OnMouseClick(const int iMouseType, const float fMouseX, const float f
 		}
 		else if (mini.IsPointInSprite(fMouseX, fMouseY)) {
 			SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
-			// ...
+			CSystem::LoadMap("lianliankan.t2d");
+			g_GameMain.map_id = CGameMain::MapType::LianLianKanType;
 		}
 		else if (edu.IsPointInSprite(fMouseX, fMouseY)) {
 			SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");

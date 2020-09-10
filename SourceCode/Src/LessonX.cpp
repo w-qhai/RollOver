@@ -13,6 +13,7 @@
 //
 //
 CGameMain		g_GameMain;
+bool CGameMain::lianliankan_init = false;
 extern int total_zombie;
 extern int bowling_counter;
 extern long double game_start;
@@ -173,6 +174,9 @@ void CGameMain::GameRun(float fDeltaTime)
 	case MapType::BowlingType:
 		load_bowling(fDeltaTime);
 		
+		break;
+	case MapType::LianLianKanType:
+		load_lianliankan();
 		break;
 	default:
 		break;
@@ -731,6 +735,15 @@ void CGameMain::load_bowling(long double fDeltaTime) {
 			}
 			timer = fDeltaTime;
 		}
+	}
+}
+
+void CGameMain::load_lianliankan()
+{
+	if (!CGameMain::GetLianLianKan()) {
+		// 初始化连连看配置
+		LianLianKan::init();
+		CGameMain::SetLianLianKan(true);
 	}
 }
 
