@@ -27,6 +27,16 @@ void LianLianKan::init()
         total = ROW * COL;
 
         memset(gameData, 0, sizeof(gameData));
+        for (int i = 1; i <= ROW; i++) {
+            for (int j = 1; j <= COL; j++) {
+                Lian.SetStaticSpriteImage("llkmapImageMap", gameData[i][j] - 1);
+                char* map_name = CSystem::MakeSpriteName("llkmapImageMap", i * COL + j);
+                CStaticSprite* temp = new CStaticSprite(map_name);
+                temp->DeleteSprite();
+                one_map[map_name] = 0;
+
+            }
+        }
         one_map.clear();
         srand(time(NULL));
 
@@ -259,6 +269,7 @@ bool LianLianKan::two_corner(int x1, int y1, int x2, int y2)
 /// </summary>
 void LianLianKan::game_finish()
 {
+        is_clicked = false;
         menu.SetSpriteVisible(true);
         continue_button.SetSpriteVisible(true);
         back_button.SetSpriteVisible(true);
@@ -280,13 +291,12 @@ void LianLianKan::OnMouseUp(const int iMouseType, const float fMouseX, const flo
                         menu.SetSpriteVisible(false);
                         continue_button.SetSpriteVisible(false);
                         back_button.SetSpriteVisible(false);
-                        init();
-                        :reload();
-                        g_GameMain.load_lianliankan(fTimeDelta);
+                        g_GameMain.reload(); 
                 }
                 else if (back_button.IsPointInSprite(fMouseX, fMouseY) && back_button.IsSpriteVisible()) {
                         SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
                         CSystem::LoadMap("menu.t2d");
+                        g_GameMain.reload();
                         CGameMain::SetLianLianKan(false);
                         g_GameMain.map_id = CGameMain::MapType::MenuType;
                 }
