@@ -133,7 +133,7 @@ void Adventure::OnMouseClick(const int iMouseType, const float fMouseX, const fl
 				game_close.SetSpriteVisible(false);
 				play_again.SetSpriteVisible(false);
 
-				//g_GameMain.adventure_level_id++;
+				g_GameMain.adventure_level_id++;
 				if (g_GameMain.adventure_level_id > 5) {
 					std::cout << "完成全部关卡" << std::endl;
 					CSystem::LoadMap("menu.t2d");
@@ -256,6 +256,9 @@ void Adventure::OnMouseUp(const int iMouseType, const float fMouseX, const float
 					}
 					break;
 				}
+			}
+			if (g_GameMain.adventure_level_id == 1 && (y == 0 || y == 4)) {
+				planting = false;
 			}
 
 			// 地形许可 & 阳光充足

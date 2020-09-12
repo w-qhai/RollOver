@@ -559,8 +559,10 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 
 	if (adventure_init == true) {
 		if (fDeltaTime - timer > 4) {
-			output_sun();
-			timer = fDeltaTime;
+			if (level_id < 4) {
+				output_sun();
+				timer = fDeltaTime;
+			}
 		}
 
 		if ((fDeltaTime - game_start) / time_a_game <= 1) {
