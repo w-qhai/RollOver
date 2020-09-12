@@ -513,7 +513,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 	static int BucketheadZombieCount = 0;
 	static int NewspaperZombieCount = 0;
 	static int FootballZombieCount = 0;
-	static int time_a_game = 10; // 一局时长
+	static int time_a_game = 180; // 一局时长
 	static int row_min = 0, row_max = 4; // 僵尸生成边界
 	const float first_zombie = 10;
 	static float zombie_interval = first_zombie; // 僵尸生成边界
@@ -686,7 +686,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 
 void CGameMain::load_bowling(long double fDeltaTime) {
 	static int zombie_counter = 0;
-	static int time_a_game = 10; // 一局时长
+	static int time_a_game = 180; // 一局时长
 	static int statr_timer = fDeltaTime;
 	const float first_zombie = 10;
 	static float zombie_interval = first_zombie; // 僵尸生成边界
@@ -735,7 +735,7 @@ void CGameMain::load_bowling(long double fDeltaTime) {
 
 void CGameMain::load_lianliankan(long double fDeltaTime)
 {
-	static int time_a_game = 10; // 一局时长
+	static int time_a_game = 120; // 一局时长
 	static int statr_timer = fDeltaTime;
 	if (llk_init == false) {
 

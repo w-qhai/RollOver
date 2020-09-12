@@ -299,7 +299,7 @@ ThreePeater::ThreePeater(const char* plant_name, const std::vector<Pea*>& pea) :
 /// </summary>
 /// <param name="delta_time">每次时间间隔</param>
 int ThreePeater::attack(float delta_time) {
-	if (!peas[0]->is_exist() && !peas[1]->is_exist() && !peas[2]->is_exist() && this->is_exist()) {
+	if (this->is_exist()) {
 		if (delta_time - next_attack > attack_interval) {
 			for (Pea* pea : peas) {
 				pea->set_exist(true);
