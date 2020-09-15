@@ -95,6 +95,11 @@ private:
 	bool adventure_init = false;
 	bool bowling_init = false;
 	bool llk_init = false;
+	int OrdinaryZombieCount = 0;
+	int BarricadeZombieCount = 0;
+	int BucketheadZombieCount = 0;
+	int NewspaperZombieCount = 0;
+	int FootballZombieCount = 0;
 public:
 	CGameMain();            //构造函数
 	~CGameMain();           //析构函数  

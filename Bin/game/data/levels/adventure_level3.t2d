@@ -155,9 +155,9 @@
       CollisionActiveSend = "1";
       CollisionLayers = "4";
       PolyList = "-1.000 -1.000 -1.000 1.000 1.000 1.000 1.000 -1.000";
-      LineColor = "1 1 1 1";
+      LineColor = "1 1 1 0";
       fillColor = "0.713726 0 0 0.39216";
-      FillMode = "1";
+      FillMode = "0";
          mountID = "12";
    };
    new t2dStaticSprite() {

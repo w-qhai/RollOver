@@ -116,8 +116,8 @@ void Bowling::OnMouseClick(const int iMouseType, const float fMouseX, const floa
 
 		if (game_win.IsSpriteVisible()) {
 			if (game_close2.IsPointInSprite(fMouseX, fMouseY)) {
-				SuperSound::sendASoundCommand("open-bowling");
-				SuperSound::sendASoundCommand("play-bowling");
+				SuperSound::sendASoundCommand("open-menu");
+				SuperSound::sendASoundCommand("play-menu");
 				CSystem::LoadMap("menu.t2d");
 				g_GameMain.reload();
 				g_GameMain.map_id = CGameMain::MapType::MenuType;

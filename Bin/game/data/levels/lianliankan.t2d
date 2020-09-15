@@ -40,7 +40,7 @@
    new t2dStaticSprite(LianLianKanBase) {
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36012e-039 0 2.37779e-039 6.22921e-039";
+      sourceRect = "2.37779e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "37.291 -46.846";
       size = "6.500 9.750";
@@ -52,7 +52,7 @@
       imageMap = "day_yard_bgImageMap1";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36012e-039 0 2.37779e-039 6.22921e-039";
+      sourceRect = "2.37779e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "10.847 0.000";
       size = "175.000 75.000";
@@ -62,9 +62,10 @@
          mountID = "3";
    };
    new t2dStaticSprite() {
+      imageMap = "LtitleImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36012e-039 0 2.37779e-039 6.22921e-039";
+      sourceRect = "2.37779e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "3.022 -30.906";
       size = "23.957 13.187";
@@ -76,7 +77,7 @@
       imageMap = "MenuContainerImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36012e-039 0 2.37779e-039 6.22921e-039";
+      sourceRect = "2.37779e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "2.249 0.188";
@@ -88,7 +89,7 @@
    new t2dStaticSprite(LianRe) {
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36012e-039 0 2.37779e-039 6.22921e-039";
+      sourceRect = "2.37779e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "2.480 -6.188";
@@ -101,7 +102,7 @@
       imageMap = "llkmapImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36012e-039 0 2.37779e-039 6.22921e-039";
+      sourceRect = "2.37779e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "47.960 -46.670";
       size = "6.500 9.750";
@@ -114,82 +115,94 @@
       imageMap = "FlagMeterEmpImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37779e-039 0 2.37831e-039 6.22921e-039";
+      sourceRect = "2.37831e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "34.813 35.171";
       size = "19.625 2.625";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "16";
+         mountID = "8";
    };
    new t2dStaticSprite(LianMenu) {
       imageMap = "MenuContainerImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36012e-039 0 2.37779e-039 6.22921e-039";
+      sourceRect = "2.37779e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "0.750 0.188";
       size = "51.500 60.375";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "8";
+         mountID = "9";
    };
    new t2dStaticSprite() {
       imageMap = "MainMenuImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36012e-039 0 2.37779e-039 6.22921e-039";
+      sourceRect = "2.37779e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "1.250 -6.813";
       size = "17.500 9.625";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "9";
+         mountID = "10";
    };
    new t2dStaticSprite(LianRe) {
       imageMap = "RebeginImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36012e-039 0 2.37779e-039 6.22921e-039";
+      sourceRect = "2.37779e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "1.694 8.047";
       size = "18.625 9.625";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "10";
+         mountID = "11";
    };
    new t2dStaticSprite(LianBack) {
       imageMap = "MainMenuImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36012e-039 0 2.37779e-039 6.22921e-039";
+      sourceRect = "2.37779e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Visible = "0";
       Position = "1.250 -4.812";
       size = "17.500 9.625";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "11";
+         mountID = "12";
    };
    new t2dStaticSprite() {
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36012e-039 0 2.37779e-039 6.22921e-039";
+      sourceRect = "2.37779e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "3.078 -32.108";
       size = "21.698 10.784";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "12";
+         mountID = "13";
+   };
+   new t2dStaticSprite() {
+      imageMap = "FlagMeterLevImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "2.37831e-039 0 2.37779e-039 6.22921e-039";
+      canSaveDynamicFields = "1";
+      Position = "35.375 36.313";
+      size = "10.750 1.375";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "17";
    };
    new t2dStaticSprite(Flag) {
       imageMap = "FlagImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37779e-039 0 2.37831e-039 6.22921e-039";
+      sourceRect = "2.37831e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "26.250 34.000";
       size = "2.500 2.250";
@@ -202,7 +215,7 @@
       imageMap = "FlagMeterFullImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37779e-039 0 2.37831e-039 6.22921e-039";
+      sourceRect = "2.37831e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
       Position = "43.000 35.171";
       size = "2.000 1.125";
@@ -214,35 +227,23 @@
       imageMap = "ZombieHeadImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37779e-039 0 2.37831e-039 6.22921e-039";
+      sourceRect = "2.37831e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
-      Position = "41.375 35.171";
+      Position = "42.375 35.171";
       size = "2.750 2.875";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
       CollisionActiveSend = "1";
       CollisionActiveReceive = "1";
-         mountID = "13";
-   };
-   new t2dStaticSprite() {
-      imageMap = "FlagMeterLevImageMap";
-      frame = "0";
-      useSourceRect = "0";
-      sourceRect = "2.37779e-039 0 2.37831e-039 6.22921e-039";
-      canSaveDynamicFields = "1";
-      Position = "35.375 36.313";
-      size = "10.750 1.375";
-      WorldLimitMin = "-50.000 -37.500";
-      WorldLimitMax = "50.000 37.500";
-         mountID = "17";
+         mountID = "16";
    };
    new t2dStaticSprite(background) {
       imageMap = "day_yard_bgImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.37779e-039 0 2.37831e-039 6.22921e-039";
+      sourceRect = "2.37831e-039 0 2.37779e-039 6.22921e-039";
       canSaveDynamicFields = "1";
-      Position = "12.500 0.000";
+      Position = "9.500 0.000";
       size = "175.000 75.000";
       Layer = "21";
       WorldLimitMin = "-50.000 -37.500";

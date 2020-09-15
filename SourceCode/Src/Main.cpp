@@ -198,8 +198,8 @@ void CSystem::OnSpriteColWorldLimit(const char* szName, const int iColSide)
 
 void init() {
 	//开启控制台，方便调试信息输出
-	AllocConsole();
-	freopen_s(&stream, "CONOUT$", "a+", stdout);
+	//AllocConsole();
+	//freopen_s(&stream, "CONOUT$", "a+", stdout);
 
 	std::thread timer([&]() {
 		while (true) {

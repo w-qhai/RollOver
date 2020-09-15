@@ -124,6 +124,7 @@ int LianLianKan::clicked(int x, int y, CStaticSprite* sprite)
 
                         if (judge(clicked_pos_x, clicked_pos_y, x, y))
                         {
+                                SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
                                 first_choose->DeleteSprite();
                                 second_choose->DeleteSprite();
                                 // 消除两个，并且量两个置0
@@ -295,6 +296,8 @@ void LianLianKan::OnMouseUp(const int iMouseType, const float fMouseX, const flo
                 }
                 else if (back_button.IsPointInSprite(fMouseX, fMouseY) && back_button.IsSpriteVisible()) {
                         SuperSound::closeAndPlay("open-click2", "play-click2", "close-click2");
+                        SuperSound::sendASoundCommand("open-menu");
+                        SuperSound::sendASoundCommand("play-menu");
                         CSystem::LoadMap("menu.t2d");
                         g_GameMain.reload();
                         CGameMain::SetLianLianKan(false);

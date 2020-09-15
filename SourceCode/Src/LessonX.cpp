@@ -28,7 +28,7 @@ CGameMain::CGameMain() :
 	m_iGameState(1),
 	timer(0),
 	zombie_timer(0),
-	sun_count(20000),
+	sun_count(100),
 	sun_num(new CTextSprite("SunCount")),
 	game_map(new CSprite("background")),
 	zombie_count(0),
@@ -508,14 +508,10 @@ void CGameMain::move_bowling_card() {
 }
 
 void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
-	static int OrdinaryZombieCount = 0;
-	static int BarricadeZombieCount = 0;
-	static int BucketheadZombieCount = 0;
-	static int NewspaperZombieCount = 0;
-	static int FootballZombieCount = 0;
+
 	static int time_a_game = 180; // 一局时长
 	static int row_min = 0, row_max = 4; // 僵尸生成边界
-	const float first_zombie = 10;
+	const float first_zombie = 35;
 	static float zombie_interval = first_zombie; // 僵尸生成边界
 	// 当前地图为 冒险模式的地图 且未初始化
 	if (adventure_init == false) {
@@ -526,6 +522,9 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 
 		if (level_id == 1) {
 			row_min = 1, row_max = 3;
+		}
+		else {
+			row_min = 0, row_max = 4;
 		}
 
 		// 从冒险模式config根据关卡，读取关卡信息
@@ -540,7 +539,7 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 			BucketheadZombieCount +
 			NewspaperZombieCount +
 			FootballZombieCount;
-
+		time_a_game = total_zombie * 15;
 		for (Card* card : vec_card) {
 			create_gray_mask(card);
 			card->plant_time(fDeltaTime);
@@ -555,10 +554,11 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 		adventure_init = true;
 		game_start = fDeltaTime;
 		zombie_interval = first_zombie;
+		zombie_timer = fDeltaTime;
 	}
 
 	if (adventure_init == true) {
-		if (fDeltaTime - timer > 4) {
+		if (fDeltaTime - timer > 15) {
 			if (level_id < 4) {
 				output_sun();
 				timer = fDeltaTime;
@@ -578,8 +578,8 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 				SuperSound::closeAndPlay("open-begin", "play-begin", "close-begin", 4);
 			}
 			zombie_interval /= 1.5;
-			if (zombie_interval < 2) {
-				zombie_interval = 2;
+			if (zombie_interval < 5) {
+				zombie_interval = 5;
 			}
 			zombie_timer = fDeltaTime;
 			int zombie_type = CSystem::RandomRange(row_min, row_max);
@@ -688,18 +688,17 @@ void CGameMain::load_adventure_level(int level_id, long double fDeltaTime) {
 
 void CGameMain::load_bowling(long double fDeltaTime) {
 	static int zombie_counter = 0;
-	static int time_a_game = 180; // 一局时长
-	static int statr_timer = fDeltaTime;
+	static int time_a_game = 30; // 一局时长
 	const float first_zombie = 10;
 	static float zombie_interval = first_zombie; // 僵尸生成边界
 	if (bowling_init == false) {
 		CSprite convery_belt("ConveryBelt");
 		convery_belt.SetSpriteImmovable(true);
 		bowling_init = true;
-		zombie_counter = 5;
+		zombie_counter = 15;
 		total_zombie = zombie_counter;
 		bowling_counter = 0;
-
+		time_a_game = zombie_counter * 7;
 		game_start = fDeltaTime;
 		zombie_interval = first_zombie;
 	}
@@ -707,7 +706,8 @@ void CGameMain::load_bowling(long double fDeltaTime) {
 
 		if ((fDeltaTime - game_start) / time_a_game <= 1) {
 			// 根据游戏时间 设置进度条长度
-			progress_bar->SetSpriteWidth(18 * (fDeltaTime - statr_timer) / time_a_game);
+			std::cout << "sss" << std::endl;
+			progress_bar->SetSpriteWidth(18 * (fDeltaTime - game_start) / time_a_game);
 			progress_bar->SetSpritePosition(44.000 - progress_bar->GetSpriteWidth() / 2, 35.171);
 			progress_head->SetSpritePosition(44.000 - progress_bar->GetSpriteWidth(), 35.171);
 		}
@@ -759,7 +759,10 @@ void CGameMain::reload() {
 	CStaticSprite flag("Flag");
 	flag.SetSpriteEnable(true);
 
-
+	for (auto p : vec_sun) {
+		p->DeleteSprite();
+	}
+	sun_count = 100;
 	adventure_init = false;
 	bowling_init = false;
 	llk_init = false;
@@ -778,29 +781,34 @@ void CGameMain::zombie_wave() {
 	}
 
 	for (int i = row_min; i <= row_max; i++) {
-		if (CSystem::RandomRange(0, 1)) {
+		if (CSystem::RandomRange(0, 1) && FootballZombieCount > 0 && adventure_level_id != 1) {
 			create_fot_zombie(i);
-			total_zombie++;
+			//total_zombie++;
+			FootballZombieCount--;
 		}
 
-		if (CSystem::RandomRange(0, 1)) {
+		if (CSystem::RandomRange(0, 1) && NewspaperZombieCount > 0 && adventure_level_id != 1) {
 			create_new_zombie(i);
-			total_zombie++;
+			//total_zombie++;
+			NewspaperZombieCount--;
 		}
 
-		if (CSystem::RandomRange(0, 1)) {
+		if (CSystem::RandomRange(0, 1) && BucketheadZombieCount > 0 && adventure_level_id != 1) {
 			create_buc_zombie(i);
-			total_zombie++;
+			//total_zombie++;
+			BucketheadZombieCount--;
 		}
 
-		if (CSystem::RandomRange(0, 1)) {
+		if (CSystem::RandomRange(0, 1) && OrdinaryZombieCount > 0) {
 			create_ord_zombie(i);
-			total_zombie++;
+			//total_zombie++;
+			OrdinaryZombieCount--;
 		}
 
-		if (CSystem::RandomRange(0, 1)) {
+		if (CSystem::RandomRange(0, 1) && BarricadeZombieCount > 0 && adventure_level_id != 1) {
 			create_bar_zombie(i);
-			total_zombie++;
+			//total_zombie++;
+			BarricadeZombieCount--;
 		}
 	}
 }

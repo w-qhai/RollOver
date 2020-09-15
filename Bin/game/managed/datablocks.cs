@@ -2182,46 +2182,6 @@ $managedDatablockSet = new SimSet() {
       allowUnload = "0";
       force16Bit = "0";
    };
-   new t2dImageMapDatablock(LbackImageMap) {
-      imageName = "~/data/images/Lback.png";
-      imageMode = "FULL";
-      frameCount = "-1";
-      filterMode = "SMOOTH";
-      filterPad = "1";
-      preferPerf = "1";
-      cellRowOrder = "1";
-      cellOffsetX = "0";
-      cellOffsetY = "0";
-      cellStrideX = "0";
-      cellStrideY = "0";
-      cellCountX = "-1";
-      cellCountY = "-1";
-      cellWidth = "0";
-      cellHeight = "0";
-      preload = "1";
-      allowUnload = "0";
-      force16Bit = "0";
-   };
-   new t2dImageMapDatablock(LrebeginImageMap) {
-      imageName = "~/data/images/Lrebegin.png";
-      imageMode = "FULL";
-      frameCount = "-1";
-      filterMode = "SMOOTH";
-      filterPad = "1";
-      preferPerf = "1";
-      cellRowOrder = "1";
-      cellOffsetX = "0";
-      cellOffsetY = "0";
-      cellStrideX = "0";
-      cellStrideY = "0";
-      cellCountX = "-1";
-      cellCountY = "-1";
-      cellWidth = "0";
-      cellHeight = "0";
-      preload = "1";
-      allowUnload = "0";
-      force16Bit = "0";
-   };
    new t2dImageMapDatablock(llkmapImageMap) {
       imageName = "~/data/images/llkmap.png";
       imageMode = "CELL";
@@ -2243,7 +2203,7 @@ $managedDatablockSet = new SimSet() {
       force16Bit = "0";
    };
    new t2dImageMapDatablock(LtitleImageMap) {
-      imageName = "~/data/images/Ltitle.png";
+      imageName = "~/data/images/static/Ltitle.png";
       imageMode = "FULL";
       frameCount = "-1";
       filterMode = "SMOOTH";
